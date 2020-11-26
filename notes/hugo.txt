@@ -1,0 +1,165 @@
+Hugo
+Notes and Protocol
+
+17.04.2020
+https://gohugo.io/getting-started/quick-start/
+https://www.youtube.com/watch?v=sB0HLHjgQ7E&list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3&index=4
+https://www.manning.com/books/hugo-in-action#toc
+
+Themes
+    https://themes.gohugo.io//theme/cupper-hugo-theme/
+    https://themes.gohugo.io//theme/hugo-theme-fuji/
+    https://themes.gohugo.io//theme/hugo-primer/
+    https://clusterduck.space/
+
+
+--------------------------------------
+Quick Start
+    1. Create a new site
+    $ hugo new site name
+
+    2. Add a theme
+    $ cd name
+    $ git init
+    $ git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke
+
+    3. Add theme to the site configuration
+    $ echo 'theme = "ananke"' >> config.toml
+
+    4. Add some content
+    $ hugo new posts/my-first-post.md
+
+    5. Start the hugo server
+    $ hugo server -D
+
+
+18.04.2020
+--------------------------------------
+Creating a new Site / Directory Structure
+
+    folders
+    archetype   defines meta-data about content
+    content     contains all content
+    data        store data files ex. json, for any data
+    layout      define complex layouts ex. specify header and footer
+    static      store all static elements ex. img, css file, jsp file
+    themes      for pre-build themes
+    config      main settings page for the website
+
+
+--------------------------------------
+Creating and organizing new content
+
+    /Hugo does not create a list page of levels lower than the content directory (by default)
+    /must create manually
+
+    1. download theme via github and place into the /theme directory
+    2. edit config.toml and insert theme = "name"h
+    3. hugo new dirname/filename ex. "hugo new dir1/b.md" /to create new content w/ terminal
+
+/todo break down content into list and single pages
+
+
+--------------------------------------
+Manually adding new list page
+    $ hugo new dir1/dir2/_index.md      //has to be named "_index.md"
+
+
+--------------------------------------
+Add custom taxonomies
+    1. inside config.toml
+    [taxonomies]
+        tag = "tags"                //plural
+        category = "categories"
+        mood = "moods"
+        etc. = etc.
+
+
+--------------------------------------
+List templates
+    1. create a new _default folder inside the /layout directory
+    2. create a new list.html file
+    3. add a new hugo variable with {{ }}
+    {{.Content}} //to show the content from the .md files
+
+    4. display the content as list
+    {{ range .Pages }}
+        {{.Title}} <br> //prints out all titles
+
+
+Todo check what drupal syndication is on https://www.drupal.org/project/syndication
+Todo research on RSS https://de.wikipedia.org/wiki/RSS_(Web-Feed)
+
+19.04.2020
+--------------------------------------
+Single page templates
+    1. name.md are single page files
+    2. default single page template of theme is located in themes/theme_name/_default/single.html
+    3. to overwrite go to layouts/_default/single.html
+    4. to link pages create new hugo variable with {{ }}
+    <body>
+        {{.Content}}
+
+
+--------------------------------------
+Home page templates
+
+    - home page is by default a list page
+
+    1. create a template by inserting an index.html inside layouts/ directory
+
+
+--------------------------------------
+Section templates
+
+    1. create a new folder inside /layouts directory with the same name as the directory in the /content folder
+    2. insert a single.html file inside the corresponding directory
+
+
+--------------------------------------
+Base templates & Blocks
+
+    - more advanced way to organize layouts
+    - insert a main block which can be defined with variables
+
+    1. _default folder inside the /layouts directory
+    2. create a baseof.html inside /layouts/_default directory
+        - the baseof.html is a higher level template to control multiple layouts
+    3. create a block
+        <body>
+        {{ block "main" . }}
+        {{end}}
+    4. create a single.html inside /layouts/_default directory
+        {{ define "main" }}
+            text for every single page
+        {{end}}
+    5. create a list.html inside /layouts/_default directory
+        {{ define "main" }}
+            text for every list page
+        {{end}}
+
+
+
+--------------------------------------
+Variable
+
+    - using variables in conjunction with html elements is useful
+    - there are wide variety of variables at https://gohugo.io/variables/
+
+
+    Front Matter Variable
+    {{ .Title}}
+    {{ .Date}}
+    {{ .URL}}
+
+    Custom Matter (meta-data) Variables
+    {{ customVar }}                     //create custom variables
+    {{ .Params.customVar }}             //inside .html
+
+    Create Custom Variables
+    {{ $customVarName := "aString" }}
+    {{ $customVarName }}                //to print out
+
+    Define a colour
+    ex. <h1 style="color: {{ .Params.color}} ;">Single Templates</h1><hr><br>
+
