@@ -9,8 +9,8 @@ This is the official repository for the construction of the Website **AUSSICHT.S
 > The search engine and artists list will guide you, should you wish to immediately locate the work of specific contributors.*
 
 ## Dependencies
-1. **[Git LFS](https://github.com/clyptomania/cog-des-mainrepo/wiki/Using-Git-LFS)** - to deal with the large file sizes | [see our Wiki-Entry](https://github.com/clyptomania/cog-des-mainrepo/wiki/Using-Git-LFS)
-2. **Hugo Framework** - open source static site generator
+1. **Git LFS** - to deal with the large file sizes | [see our Wiki-Entry](https://github.com/suga-data/MAK/wiki/Using-Git-LFS)
+2. **Hugo Framework** - open source static site generator [see our Wiki-Entry](https://github.com/suga-data/MAK/wiki/Using-Hugo-Framework)
 3. **Bootstrap** - front-end open source toolkit for CSS
 
 ## Basic Bash/Shell Commands:
