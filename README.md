@@ -21,3 +21,6 @@ This is the official repository for the construction of the Website **AUSSICHT.S
 <p> Create new directory <br> <code> $ mkdir directoryname </code> </p>
 
 <p> Command to find files larger than x (in current parent and child directory) <br> <code> $ find . -size +100M | xargs du -sh </code> </p>
+
+## Great Platform to learn fundamental Principles of Git
+https://learngitbranching.js.org/
