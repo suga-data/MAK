@@ -10,10 +10,15 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="/css/custom.css">
     </head>
+
     <body>
-        this is the homepage html template
-        <script src="" async defer></script>
+        <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE "HEADER" -->
+        {{ partial "header" . }}
+        
+        <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE OF THE GRID -->
+        {{ partial "lp-grid-gen" . }}
+
     </body>
 </html>

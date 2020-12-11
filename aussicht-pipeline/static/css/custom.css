@@ -1,0 +1,55 @@
+@font-face {
+    font-family: '2070';
+    src: url('2070-Normal_92_web.woff2') format('woff2');
+  }
+
+@font-face {
+    font-family: '2070-Bold';
+    src: url('2070-Bold_156_web.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'happy times';
+    src: url('happy-times-NG_regular_master_web.woff2') format('woff2');
+}
+
+
+/* ------------ TEXT STYLING ------------ */
+
+body {
+    font-family: '2070',;
+}
+
+h1, h2 {
+    font-family: '2070';
+}
+
+p {
+    font-family: 'happy times';
+}
+
+.header-container {
+    font-family: '2070';
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.title {
+    position: center;
+}
+
+
+
+/* ------------ GRID STYLING ------------ */
+
+svg{
+    width:100%;
+    height:100%;
+    overflow: inherit;
+    top: 0px;
+    left: 0px;
+}
