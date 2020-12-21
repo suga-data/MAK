@@ -38,6 +38,7 @@ p {
     font-family: 'happy times';
 }
 
+/* ------------ HEADER STYLING ------------ */
 .header-container {
     overflow: hidden;
     font-family: '2070';
@@ -49,12 +50,10 @@ p {
 }
 .title {
     float: left;
-    /* text-align: center; */
     padding: 5px 0px 0px 10px;
 }
 .menu button{
     float: right;
-    /* text-align: center; */
     padding: 5px 100px 0px 0px;
 }
 
