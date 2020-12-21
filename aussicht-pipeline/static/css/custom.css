@@ -13,6 +13,16 @@
     src: url('happy-times-NG_regular_master_web.woff2') format('woff2');
 }
 
+/* ------------ BUTTON STYLING ------------ */
+button {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
 
 /* ------------ TEXT STYLING ------------ */
 
@@ -29,19 +39,24 @@ p {
 }
 
 .header-container {
+    overflow: hidden;
     font-family: '2070';
     position: fixed;
-    top: 0px;
-    left: 0px;
-    background-color: white;
-    padding-left: 10px;
-    padding-right: 10px;
-}
+    color: white;
+    background-color: black;
+    width: 100%;
 
+}
 .title {
-    position: center;
+    float: left;
+    /* text-align: center; */
+    padding: 5px 0px 0px 10px;
 }
-
+.menu button{
+    float: right;
+    /* text-align: center; */
+    padding: 5px 100px 0px 0px;
+}
 
 
 /* ------------ GRID STYLING ------------ */
