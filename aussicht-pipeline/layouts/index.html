@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
 <html>
     <head>
         <meta charset="utf-8">
@@ -14,11 +14,14 @@
     </head>
 
     <body>
-        <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE "HEADER" -->
+        <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE HEADER -->
         {{ partial "header" . }}
         
         <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE OF THE GRID -->
-        {{ partial "lp-grid-gen" . }}
+        <!-- {{ partial "lp-grid-gen" . }} -->
+
+        <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE OF THE QUESTION -->
+        {{ partial "question" . }}
 
     </body>
 </html>
