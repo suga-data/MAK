@@ -17,7 +17,8 @@
 /* ------------ TEXT STYLING ------------ */
 
 body {
-    font-family: '2070',;
+    font-family: '2070';
+    background-color: black;
 }
 
 h1, h2 {
