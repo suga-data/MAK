@@ -49,6 +49,21 @@
         width: 50%;
         bottom: 0;
     }
+    .exhibitiontext {
+        /*background-color: grey; // braucht man das?*/
+        color: white;
+        height: 600px;
+        width: 1200px;
+        position: absolute;
+        top: 169px;
+        left: 0;
+        z-index: -1;
+        padding: 20px;
+        font-size: 90pt;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
 </style>
 
 
@@ -70,6 +85,16 @@
         </mark></h1>
     </div>
 
+
+<div class="exhibitiontext">
+    <p>
+    <img id="thumbnail0" src="imgs/image_gpt/arndt_armin/generated/128x128/128_arndt_armin_0.png" style="width:128px; height: 128px; display: none">
+    <img id="thumbnail1" src="imgs/image_gpt/arndt_armin/generated/128x128/128_arndt_armin_1.png" style="width:128px; height: 128px; display: none">
+    <img id="thumbnail2" src="imgs/image_gpt/arndt_armin/generated/128x128/128_arndt_armin_2.png" style="width:128px; height: 128px; display: none">
+    Aus heutiger Sicht. Diskurse über Zukunft.
+    12.03.-16.03
+    </p>
+</div>
 
 
 <!-- ------------ create type effect and project it to the mark tag above  ------------  -->
@@ -114,7 +139,20 @@
                     });
                 }
             }
+
+            function EnableThumbnail(i) {
+                console.log(i);
+                console.log('thumbnail'+i);
+                if (i>3) {
+                    return;
+                }
+                document.getElementById('thumbnail'+i).style.display='inline';
+                window.setTimeout(function() {EnableThumbnail(i+1);}, 3000);
+            }
+
+
             StartTextAnimation(0);
+            window.setTimeout(function() {EnableThumbnail(0);}, 3000);
         });
     </script>
 {{end}}
