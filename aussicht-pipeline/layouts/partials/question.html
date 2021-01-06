@@ -1,3 +1,6 @@
+
+<!-- ------------ Style only for the question ------------  -->
+
 <style>
     div.question {
         position:fixed;
@@ -6,7 +9,6 @@
         background-color: none;
         top: 30%;
         right: 0px;
-        
     }
     div.above_question {
         background-color: white;
@@ -17,17 +19,15 @@
         top: 0;
         z-index: -1;
     }
-
     mark#question{
         background-color: white;
         font-family: '2070';
-        font-size: 50pt;
+        font-size: 40pt;
         font-weight: 600; 
-        height: 1em;
-        line-height: 1em; 
-        padding: 0 0.15em;
-    }
-
+        height: 0.95em;
+        line-height: 0.95em; 
+        padding: 0 0.15em;  
+    } 
     div.white_div_0 {
         position: fixed;
         top: 0;
@@ -49,18 +49,20 @@
         width: 50%;
         bottom: 0;
     }
-
-
-
 </style>
 
 
+<!-- ------------ 2 white divs for layout ------------  -->
 
 <div class="white_div_0">
     <div class="white_div_1"></div>
     <div class="white_div_2"></div>
 </div>
-{{ range $i, $content := $.Site.Data.question | shuffle | first 1 }}
+ 
+
+<!-- ------------ Load question database and choose 1 random question ------------  -->
+
+{{ range $i, $content := $.Site.Data.question_german | shuffle | first 1 }}
     <div class="question">
         <div class="above_question"></div>
         <h1><mark id="question">
@@ -69,10 +71,8 @@
     </div>
 
 
-<!-- 
-<div class="typewriter-container">
-    <h5 class="typewriter">hello world</h5>
-</div> -->
+
+<!-- ------------ create type effect and project it to the mark tag above  ------------  -->
 
 <script class="typewriter">
         document.addEventListener('DOMContentLoaded',function(event){
@@ -117,5 +117,4 @@
             StartTextAnimation(0);
         });
     </script>
-
 {{end}}
