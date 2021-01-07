@@ -1,0 +1,176 @@
+@font-face {
+    font-family: '2070';
+    src: url('2070-Normal_92_web.woff2') format('woff2');
+  }
+
+@font-face {
+    font-family: '2070-Bold';
+    src: url('2070-Bold_156_web.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'happy times';
+    src: url('happy-times-NG_regular_master_web.woff2') format('woff2');
+}
+
+/* ------------ BUTTON STYLING ------------ */
+button {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+/* ------------ TEXT STYLING ------------ */
+
+body {
+    font-family: '2070';
+    background-color: black;
+}
+
+h1, h2 {
+    font-family: '2070';
+}
+
+p {
+    font-family: 'happy times';
+}
+
+/* ------------ HEADER STYLING ------------ */
+.header-container {
+    overflow: hidden;
+    font-family: '2070';
+    position: fixed;
+    color: white;
+    background-color: black;
+    width: 100%;
+    z-index: 100;
+}
+.title {
+    float: left;
+    padding: 5px 0px 0px 10px;
+}
+.menu button{
+    float: right;
+    padding: 5px 100px 0px 0px;
+}
+
+
+/* ------------ GRID STYLING ------------ */
+
+svg{
+    width:100%;
+    height:100%;
+    overflow: inherit;
+    top: 0px;
+    left: 0px;
+}
+
+
+
+
+/* ------------ marquee NAMES ------------ */
+
+.marquee_NAMES_0 {
+    position: fixed;
+    right: 0px;
+    bottom: 45px;
+    background-color: black;
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+}
+.marquee_NAMES_1, .marquee_NAMES_2 {
+    position: fixed;
+    right: 0px;
+    bottom: 30px;
+    width: 100%;
+	color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.marquee_NAMES_1 p {
+    font-size: 18pt;
+    font-style: italic;
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee_NAMES 60s linear infinite;
+}
+.marquee_NAMES_2 p {
+    font-size: 18pt;
+    font-style: italic;
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee_NAMES 60s linear 30s infinite;
+}
+.marquee_NAMES_1 span {
+    font-style: normal;
+    font-family: '2070';
+    font-size: 18pt;
+}
+.marquee_NAMES_2 span {
+    font-style: normal;
+    font-family: '2070';
+    font-size: 18pt;
+}
+@keyframes marquee_NAMES {
+    0%   { transform: translate(-100%, 0); }
+    75%  { transform: translate(0%, 0); }
+    100% { transform: translate(100%, 0); }
+}
+
+
+/* ------------ marquee INFO ------------ */
+
+.marquee_INFO_0 {
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+    background-color: black;
+    width: 70%;
+    height: 50px;
+    overflow: hidden;
+}
+.marquee_INFO_3, .marquee_INFO_4 {
+    position: fixed;
+    right: 0px;
+    bottom: -10px;
+    width: 70%;
+	color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.marquee_INFO_3 p {
+    font-size: 18pt;
+    font-style: italic;
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee_INFO 60s linear infinite;
+}
+.marquee_INFO_4 p {
+    font-size: 18pt;
+    font-style: italic;
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee_INFO 60s linear 30s infinite;
+}
+.marquee_INFO_3 span {
+    font-style: normal;
+    font-family: '2070';
+    font-size: 18pt;
+}
+.marquee_INFO_4 span {
+    font-style: normal;
+    font-family: '2070';
+    font-size: 18pt;
+}
+@keyframes marquee_INFO {
+    0%   { transform: translate(0, 0); }
+    75% { transform: translate(-100%,0); }
+    100% { transform: translate(-100%, 0); }
+}

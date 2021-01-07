@@ -21,7 +21,10 @@
         <!-- {{ partial "lp-grid-gen" . }} -->
 
         <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE OF THE QUESTION -->
-        {{ partial "question" . }}
+        <!-- { partial "question" . }} -->
+
+        <!-- THIS REFERS TO THE MARKDOWN ON WHICH THE SERVER IS BEING COMMUNICATED -->
+        {{ .Content | markdownify }}
 
         <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE OF THE iGPT IMAGES -->
         {{ partial "lp-animated-pictures" . }}
