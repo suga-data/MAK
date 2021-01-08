@@ -7,7 +7,7 @@ $strJsonFileContents = file_get_contents("/Users/arminarndt/Documents/1_EgoZen/g
 // Convert to array 
 $array = json_decode($strJsonFileContents, true);
 
-// amount of the artist - How long is the list
+// count of the artist on top level (group members are not counted)- How long is the list
 $amount_of_artist = count($array) - 1;
 print_r ("amount of artist:" . $amount_of_artist . "\n");
 
@@ -25,7 +25,7 @@ $folder = $array[$object]["folder"];
 print_r ($folder . "\n");
 //print_r ($array[$object]["members"]);
 
-// count the elements of an array 
+// count the elements of the MEMBERS array 
 $amount_of_members = count($array[$object]["members"]);
 print_r($amount_of_members . "\n");
 
@@ -37,5 +37,7 @@ for ($i = 0; $i < $amount_of_members; $i++) {
     $member_folder = $array[$object]["members"][$i]["memberfolder"];
     print_r ($member_folder . "\n");
 } 
+
+
 
 ?> 
