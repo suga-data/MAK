@@ -14,8 +14,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="/css/custom.css">
-    </head>
+    
+    <!-- ------------ Style only for the main index page ------------  -->
+    
+        <style>
 
+
+        </style>
+    
+    <!-- ------------------------------------------------------------  -->
+    
+    </head>
 
     <body>
         <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE HEADER -->
@@ -33,8 +42,21 @@
         <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE OF THE iGPT IMAGES -->
         {{ partial "lp-animated-pictures" . }}
 
+        <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE ABOUT -->
+        {{ partial "lp-about" . }}
+
+        <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE ABOUT -->
+        {{ partial "lp-artists" . }}
+
+        <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE ABOUT -->
+        {{ partial "lp-programme" . }}
+
+        <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE ABOUT -->
+        {{ partial "lp-team" . }}
+
         <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE "HEADER" -->
         <!-- {{ partial "marquee" . }} -->
 
     </body>
+    
 </html>

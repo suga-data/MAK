@@ -1,16 +1,22 @@
 @font-face {
     font-family: '2070';
     src: url('2070-Normal_92_web.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
   }
 
 @font-face {
-    font-family: '2070-Bold';
+    font-family: '2070';
     src: url('2070-Bold_156_web.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
 }
 
 @font-face {
     font-family: 'happy times';
     src: url('happy-times-NG_regular_master_web.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
 }
 
 /* ------------ BUTTON STYLING ------------ */
@@ -26,21 +32,17 @@ button {
 
 /* ------------ TEXT STYLING ------------ */
 
+body, h1, h2 , p {
+    font-family: '2070';
+}
+
 body {
-    font-family: '2070';
     background-color: black;
-}
-
-h1, h2 {
-    font-family: '2070';
-}
-
-p {
-    font-family: 'happy times';
+    z-index: 0;
 }
 
 /* ------------ HEADER STYLING ------------ */
-.header-container {
+/* .container-header {
     overflow: hidden;
     font-family: '2070';
     position: fixed;
@@ -48,7 +50,8 @@ p {
     background-color: black;
     width: 100%;
     z-index: 100;
-}
+} */
+
 .title {
     float: left;
     padding: 5px 0px 0px 10px;

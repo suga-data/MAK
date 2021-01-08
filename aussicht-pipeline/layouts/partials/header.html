@@ -1,8 +1,69 @@
-<header class="header-container"> 
-    <div class="title"> <h2> aussicht.space </h2> </div>
-    <div class="menu">
-        <div id="about"> <h3> <button type="button" onclick="alert('Oh you want to know what this website is about? We still have to figure out by ourself. Please be patient. We will tell you soon!')"> about </button> </h3> </div>
-        <div id="programm"> <h3> <button type="button" onclick="alert('We are still working on the program. Its going to be lit. So stay tuned!')"> programm </button> </h3> </div>
+<!-- ------------ Style only for the header ------------  -->
+
+<style>
+
+    .container-header {
+        position: sticky;
+        top: 0;
+        display: grid;
+        grid-template-columns: 250px auto 150px 150px 200px;
+        grid-template-rows: 50px;
+        grid-template-areas:
+            "logo . about artists programme";
+        margin: 20px;
+        z-index: 100;
+    }
+
+    .container-header h2 {
+        color: white;
+        font-weight: 600;
+    }
+
+
+    .item-logo h2 {
+        grid-area: logo;
+        justify-self: center;
+        font-size: 28px;
+        line-height: 0.8;
+    }
+
+    .item-about {
+        grid-area: about;
+        justify-self: center;
+    }
+
+    .item-artists {
+        grid-area: artists;
+        justify-self: center;
+    }    
+
+    .item-programme {
+        grid-area: programme;
+        justify-self: end;
+    } 
+
+</style>
+
+
+
+<header class="container-header"> 
+
+    <div class="item-logo"> 
+        <h2> aussicht.<br> space </h2> 
     </div>
+
+    <div class="item-about"> 
+        <h2> about </h2> 
+    </div>
+
+    <div class="item-artists"> 
+        <h2> artists </h2>
+    </div>
+
+    <div class="item-programme">
+        <h2> programme </h2>
+    </div>
+
 </header>
-<script src="" async defer></script>
+
+<!-- <script src="" async defer></script> -->
