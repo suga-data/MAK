@@ -1,0 +1,400 @@
+[
+    {
+        "name": "Kathrin Baumgartner, Milena Bassen",
+        "folder": "baumgartner_bassen"
+    },
+    {
+        "name": "Anna Sukhova",
+        "folder": "sukhova_anna"
+    },
+    {
+        "name": "Tatiana Tverdokhlebova",
+        "folder": "tverdokhlebova_tatiana"
+    },
+    {
+        "name": "Ella Pechechian (und weiteren beteiligten Illustrator_innen und Künstler_innen)",
+        "folder": "pechechian_ella"
+    },
+    {
+        "name": "Beatrice Bianchini",
+        "folder": "bianchini_beatrice"
+    },
+    {
+        "name": "Erika G Sacco",
+        "folder": "sacco_erika"
+    },
+    {
+        "name": "Valeria Castano Moreno",
+        "folder": "castano_moreno_valeria"
+    },
+    {
+        "name": "Johannes Bietz",
+        "folder": "bietz_johannes"
+    },
+    {
+        "name": "Lehrgebiet Bildhauerei (Mike Bouchet)",
+        "folder": "bildhauerei",
+        "members": [
+            {
+                "membername": "Malte Möller",
+                "memberfolder": "moeller_malte"
+            },
+            {
+                "membername": "Lea Klemisch",
+                "memberfolder": "klemisch_lea"
+            },
+            {
+                "membername": "Joëlle Pidoux",
+                "memberfolder": "pidoux_joelle"
+            },
+            {
+                "membername": "Isabell Ratzinger",
+                "memberfolder": "ratzinger_isabell"
+            },
+            {
+                "membername": "Tobias Krämer",
+                "memberfolder": "kraemer_tobias"
+            },
+            {
+                "membername": "Diane Häfner",
+                "memberfolder": "haefner_diane"
+            },
+            {
+                "membername": "Rosa Brenner",
+                "memberfolder": "brenner_rosa"
+            },
+            {
+                "membername": "Marina Kostel",
+                "memberfolder": "kostel_marina"
+            }
+        ]
+    },
+    {
+        "name": "Jana Bleckman",
+        "folder": "bleckman_jana"
+    },
+    {
+        "name": "Felix Bröcker",
+        "folder": "broecker_felix"
+    },
+    {
+        "name": "EgoZen",
+        "folder": "egozen",
+        "members": [
+            {
+                "membername": "Armin Arndt",
+                "memberfolder": "arndt_armin"
+            },
+            {
+                "membername": "Ken Rodenwaldt",
+                "memberfolder": "rodenwaldt_ken"
+            },
+            {
+                "membername": "Beatrice Bianchini",
+                "memberfolder": "bianchini_beatrice"
+            },
+            {
+                "membername": "Erika G. Sacco",
+                "memberfolder": "sacco_erika"
+            },
+            {
+                "membername": "Roberto Lorenzon",
+                "memberfolder": "lorenzon_roberto"
+            },
+            {
+                "membername": "Valeria Castaño Moreno",
+                "memberfolder": "castano_moreno_valeria"
+            }
+        ]
+    },
+    {
+        "name": "Tania Felske",
+        "folder": "felske_tania"
+    },
+    {
+        "name": "Pia Graf",
+        "folder": "graf_pia"
+    },
+    {
+        "name": "Marie-Hélène Gutberlet",
+        "folder": "gutberlet_marie_helene"
+    },
+    {
+        "name": "Diane Häfner",
+        "folder": "haefner_diane"
+    },
+    {
+        "name": "Julian Heuser",
+        "folder": "heuser_julian"
+    },
+    {
+        "name": "Kristina Huber",
+        "folder": "huber_kristina"
+    },
+    {
+        "name": "Bastian  Kämmer",
+        "folder": "kraemer_bastian"
+    },
+    {
+        "name": "Klaus Klemp (Seminar Designtheorie II SoSe 2020: alle 15 Teilnehmer am Seminar)",
+        "folder": "klemp_klaus"
+    },
+    {
+        "name": "Natalja Kreiter",
+        "folder": "kreiter_natalja"
+    },
+    {
+        "name": "Christian Leicher",
+        "folder": "leicher_christian"
+    },
+    {
+        "name": "Verena Mack",
+        "folder": "mack_verena"
+    },
+    {
+        "name": "Svetlana Mijic",
+        "folder": "mijic_svetlana"
+    },
+    {
+        "name": "Sebastian Oschatz",
+        "folder": "oschatz_sebastian",
+        "members": [
+            {
+                "membername": "Jasmin Bedersdorfer",
+                "memberfolder": "bedersdorfer_jasmin"
+            },
+            {
+                "membername": "Malú Coors",
+                "memberfolder": "coors_malu"
+            },
+            {
+                "membername": "Nele Coors",
+                "memberfolder": "coors_nele"
+            },
+            {
+                "membername": "Edith Strecker",
+                "memberfolder": "strecker_edith"
+            },
+            {
+                "membername": "Huy Nguyen",
+                "memberfolder": "nguyen_huy"
+            },
+            {
+                "membername": "Burhan Özbayram",
+                "memberfolder": "oezbayram_burhan"
+            },
+            {
+                "membername": "Yuqin Wu",
+                "memberfolder": "wu_yuqin"
+            },
+            {
+                "membername": "Si Han Ho",
+                "memberfolder": "han_ho_si"
+            },
+            {
+                "membername": "Morgana Hohenstein",
+                "memberfolder": "hohenstein_morgana"
+            },
+            {
+                "membername": "Jie Xiao",
+                "memberfolder": "xiao_jie"
+            },
+            {
+                "membername": "Stella Jazenko",
+                "memberfolder": "jazenko_stella"
+            },
+            {
+                "membername": "Jiaojiao Zha",
+                "memberfolder": "zha_jiaojiao"
+            }
+        ]
+    },
+    {
+        "name": "Lehrgebiete Performance und Elektronische Medien (mit Kerstin Cmelka und Alexander Oppermann)",
+        "folder": "performance"
+    },
+    {
+        "name": "Alla Poppersoni",
+        "folder": "poppersoni_alla"
+    },
+    {
+        "name": "Paul Pape",
+        "folder": "pape_paul"
+    },
+    {
+        "name": "Gunter Reski",
+        "folder": "reski_gunter",
+        "members": [
+            {
+                "membername": "Nola Fischer",
+                "memberfolder": "fischer_nola"
+            },
+            {
+                "membername": "Leonard Stephan",
+                "memberfolder": "stephan_leonard"
+            },
+            {
+                "membername": "Charlotte Berg",
+                "memberfolder": "berg_charlotte"
+            },
+            {
+                "membername": "Clara Sipf",
+                "memberfolder": "sipf_clara"
+            },
+            {
+                "membername": "Stefan Thürck",
+                "memberfolder": "thuerck_stefan"
+            },
+            {
+                "membername": "Timon Sioulvegas",
+                "memberfolder": "sioulvegas_timon"
+            },
+            {
+                "membername": "Eunyoung Kim",
+                "memberfolder": "kim_eunyoung"
+            },
+            {
+                "membername": "Lena Grewenig",
+                "memberfolder": "grewenig_lena"
+            },
+            {
+                "membername": "Deniz Kilicarslan",
+                "memberfolder": "kilicarslan_deniz"
+            }
+        ]
+    },
+    {
+        "name": "Ken Rodenwaldt",
+        "folder": "rodenwaldt_ken"
+    },
+    {
+        "name": "Alexander Sahm",
+        "folder": "sahm_alexander"
+    },
+    {
+        "name": "Heike Schuppelius",
+        "folder": "schuppelius_heike",
+        "members": [
+            {
+                "membername": "Helene Brenner",
+                "memberfolder": "brenner_helene"
+            },
+            {
+                "membername": "Jones Falkenberg",
+                "memberfolder": "falkenberg_jonas"
+            },
+            {
+                "membername": "Katharina Olt",
+                "memberfolder": "olt_katharina"
+            },
+            {
+                "membername": "Michelle Harder",
+                "memberfolder": "harder_michelle"
+            },
+            {
+                "membername": "Isabell Ratzinger",
+                "memberfolder": "ratzinger_isabell"
+            }
+        ]
+    },
+    {
+        "name": "Annika Storch",
+        "folder": "storch_annika"
+    },
+    {
+        "name": "Kai Vöckler & Marc Ries (Teilnehmende ergänzen)",
+        "folder": "voeckler_ries"
+    },
+    {
+        "name": "Knut Völzke",
+        "folder": "voelzke_knut",
+        "members": [
+            {
+                "membername": "Luzi Gehrisch",
+                "memberfolder": "gehrisch_luzi"
+            },
+            {
+                "membername": "Christoph Gries",
+                "memberfolder": "gries_christoph"
+            },
+            {
+                "membername": "Luke Handon & Tobias Rivera",
+                "memberfolder": "handon_rivera"
+            },
+            {
+                "membername": "Teresa Herzog",
+                "memberfolder": "herzog_teresa"
+            },
+            {
+                "membername": "Leonie Morbach",
+                "memberfolder": "morbach_leonie"
+            },
+            {
+                "membername": "Suska Schäffler & Valeria Castaño Moreno",
+                "memberfolder": "schaeffler_moreno"
+            },
+            {
+                "membername": "Franca Tasch",
+                "memberfolder": "tasch_franca"
+            }
+        ]
+    },
+    {
+        "name": "Nina Wood",
+        "folder": "wood_nina"
+    },
+    {
+        "name": "Hannah Weirich",
+        "folder": "weirich_hannah"
+    },
+    {
+        "name": "Frank Zebner",
+        "folder": "zebner_frank",
+        "members": [
+            {
+                "membername": "Jan Armbruster",
+                "memberfolder": "armbruster_jan"
+            },
+            {
+                "membername": "Daniel Becker",
+                "memberfolder": "becker_daniel"
+            },
+            {
+                "membername": "Yudan Chen",
+                "memberfolder": "chen_yudan"
+            },
+            {
+                "membername": "Patrizia Czegeny",
+                "memberfolder": "czegeny_patrizia"
+            },
+            {
+                "membername": "Teresa Herzog",
+                "memberfolder": "herzog_teresa"
+            },
+            {
+                "membername": "Yeqi Jia",
+                "memberfolder": "jia_yeqi"
+            },
+            {
+                "membername": "Jun Jin",
+                "memberfolder": "jin_jun"
+            },
+            {
+                "membername": "Sophia Kirwald",
+                "memberfolder": "kirwald_sophia"
+            },
+            {
+                "membername": "Lorenz Modler",
+                "memberfolder": "modler_lorenz"
+            },
+            {
+                "membername": "Christian Struwe",
+                "memberfolder": "struwe_christian"
+            },
+            {
+                "membername": "Christina Timmann",
+                "memberfolder": "timmann_christina"
+            }
+        ]
+    }
+]
