@@ -7,11 +7,15 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        {{ $title := print .Site.Title " | " .Title }}
+        {{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
+        <title>{{ $title }}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/css/custom.css">
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/custom.css">
     </head>
+
 
     <body>
         <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE HEADER -->
@@ -22,7 +26,21 @@
 
 
         <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE OF THE QUESTION -->
-        {{ partial "question" . }}
+        <!-- { partial "question" . }} -->
 
+        <!-- THIS REFERS TO THE MARKDOWN ON WHICH THE SERVER IS BEING COMMUNICATED -->
+        <!-- {{ .Content }} -->
+
+        <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE OF THE iGPT IMAGES -->
+        {{ partial "lp-animated-pictures" . }}
+
+<<<<<<< HEAD
+=======
+        <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE "HEADER" -->
+        <!-- {{ partial "marquee" . }} -->
+
+
+
+>>>>>>> lp-generated-questions
     </body>
 </html>

@@ -1,5 +1,28 @@
+<?php 
 
-<!-- ------------ Style only for the question ------------  -->
+// Get the contents of the JSON file 
+$strJsonFileContents = file_get_contents("json/question_german.json");
+
+// Convert to array 
+$array = json_decode($strJsonFileContents, true);
+
+// Then, pick a random index:
+$one_item = $array[rand(0, count($array) - 1)];
+
+// and finally convert back to JSON:
+$one_item_string = json_encode($one_item);
+
+// echo $one_item["question"];
+
+
+?> 
+
+
+
+
+
+
+ <!-- ------------ Style only for the question ------------ -->
 
 <style>
     div.question {
@@ -52,7 +75,7 @@
 </style>
 
 
-<!-- ------------ 2 white divs for layout ------------  -->
+ <!-- ------------ 2 white divs for layout ------------  -->
 
 <div class="white_div_0">
     <div class="white_div_1"></div>
@@ -60,25 +83,25 @@
 </div>
  
 
-<!-- ------------ Load question database and choose 1 random question ------------  -->
+ <!-- ------------ Load question database and choose 1 random question ------------  -->
 
-{{ range $i, $content := $.Site.Data.question_german | shuffle | first 1 }}
     <div class="question">
         <div class="above_question"></div>
         <h1><mark id="question">
-            <!-- {{ $content.question }} -->
+
+        
         </mark></h1>
     </div>
 
 
 
-<!-- ------------ create type effect and project it to the mark tag above  ------------  -->
+ <!-- ------------ create type effect and project it to the mark tag above  ------------  -->
 
 <script class="typewriter">
         document.addEventListener('DOMContentLoaded',function(event){
             
             var dataText = [
-                "{{ $content.question }}"
+                "<?php echo $one_item["question"]; ?>"
             ];
 
             function typeWriter(text, i, fnCallback) {
@@ -117,4 +140,3 @@
             StartTextAnimation(0);
         });
     </script>
-{{end}}
