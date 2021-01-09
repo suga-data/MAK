@@ -1,27 +1,248 @@
-
 <style>
-#artist_list{
-color: white;
-z-index: 300;
-
-}
-
-#zebner_frank {
-    height: 40px;
-    width: 100px;
-}
+    #artist_list {
+        color: white;
+        position: fixed;
+        top: 100px;
+    }
 
 
+    #parent-zebner_frank {
+        height: 32px;
+        background-color: brown;
+        display: inline-block;
+        position: relative;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    #child-hover-zebner_frank {
+        background-color: green;
+        opacity: 0.0;
+
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 3;
+    }
+
+    #child-artist_list_images-zebner_frank {
+        position: absolute;
+        z-index: 2;
+    }
+
+    #child-artist_list_name-zebner_frank {
+        visibility: hidden;
 
 
+    }
 </style>
 
-<div class="artist_list">
+<div id="artist_list">
 
-<div id="zebner_frank">
+    <div id="parent-zebner_frank">
+
+        <div id="child-artist_list_images-zebner_frank" class="artist_list_images">
+            <img id="zebner_frank_img_0" class="artist_list_images"
+                src="imgs/image_gpt/arndt_armin/generated/32x32/32_arndt_armin_0.png"
+                style="width:32px; height: 32px; display: none">
+            <img id="zebner_frank_img_1" class="artist_list_images"
+                src="imgs/image_gpt/arndt_armin/generated/32x32/32_arndt_armin_1.png"
+                style="width:32px; height: 32px; display: none">
+            <img id="zebner_frank_img_2" class="artist_list_images"
+                src="imgs/image_gpt/arndt_armin/generated/32x32/32_arndt_armin_2.png"
+                style="width:32px; height: 32px; display: none">
+            Frank Zebner
+        </div>
+
+
+        <div id="child-artist_list_name-zebner_frank" onmouseover="on()" onmouseout="off('false')">
+            Frank Zebner
+        </div>
+
+        <div id="child-hover-zebner_frank">
+        </div>
+    </div>
+
 </div>
-    <div id="zebner_frank_hover"></div>
-    <img id="zebner_frank_img_0" src="imgs/image_gpt/arndt_armin/generated/32x32/32_arndt_armin_0.png" style="display: none">
-    Frank Zebner
 
 
+
+
+
+<!-- ------------ javascript  ------------ onmouseover="ADD_zebner_frank('inline-block','100')" onmouseout="ADD_zebner_frankOFF('none')" -->
+
+
+<script>
+    var id_parent = "div#parent-zebner_frank";
+    var id_child = '#child-artist_list_images-zebner_frank';
+    var loading_speed = 300;
+    var deloading_speed = 100;
+    $(id_parent).mouseenter(function () {
+        console.log('mouse entered');
+        var kids = [].reverse.call($(id_child).children());
+        $.each(kids, function (i, kid) {
+            setTimeout(function () {
+                $(kid).css("display", "inline");
+                console.log(kid);
+            }, i * loading_speed);
+        })
+    }).mouseleave(function () {
+        console.log('mouse left');
+        var kids = [].reverse.call($(id_child).children());
+        $.each(kids, function (i, kid) {
+            setTimeout(function () {
+                $(kid).css("display", "none");
+                console.log(kid);
+            }, i * deloading_speed);
+        })
+    });
+</script>
+<script>
+
+
+
+
+
+
+
+
+    // window.onload = initDivMouseOver;
+    // function initDivMouseOver() {
+    //     var amount_of_children = document.getElementById("child-artist_list_images-zebner_frank").childElementCount;
+    //     var img_array = document.getElementById('child-artist_list_images-zebner_frank').children;
+    //     var hover_div = document.getElementById("child-hover-zebner_frank");
+    //     var time = 100;
+    //     hover_div.mouseIsOver = false;
+
+    //     hover_div.onmouseover = function () {
+    //         // this.mouseIsOver = true;
+    //         // img_array[0].style.display = 'inline';
+    //         // CheckMouseHover(time);
+    //         // img_array[1].style.display = 'inline';
+    //         // CheckMouseHover(time);
+    //         // img_array[2].style.display = 'inline';
+    //         // CheckMouseHover(time);
+    //         // img_array[3].style.display = 'inline';
+    //         // CheckMouseHover(time);
+
+    //         this.mouseIsOver = true;
+
+    //             setTimeout(function () { 
+    //                 img_array[0].style.display = 'inline'; 
+    //                 CheckMouseHover();
+    //             }, 0);
+    //             setTimeout(function () { img_array[1].style.display = 'inline'; CheckMouseHover();}, 1 * time);
+    //             setTimeout(function () { img_array[2].style.display = 'inline'; CheckMouseHover();}, 2 * time);
+    //             setTimeout(function () { img_array[3].style.display = 'inline'; CheckMouseHover();}, 3 * time);
+    //     };
+
+    //     hover_div.onmouseout = function () {
+    //         this.mouseIsOver = false;
+    //         for (i = 0; i < amount_of_children; i++) {
+    //             img_array[i].style.display = 'none';
+    //         }
+    //     }
+
+    //     function CheckMouseHover(){
+    //         if( hover_div.mouseIsOver = true ) {
+    //             console.log("mouseOVER");
+    //             return
+    //         } else {
+    //             console.log("mouseOut");
+    //             for (i = 0; i < amount_of_children; i++) {
+    //                 img_array[i].style.display = 'none';
+    //             }
+    //         }
+    //     }
+
+
+    //     // hover_div.onclick = function () {
+    //     //     if (this.mouseIsOver) {
+
+    //     //     }
+    //     // }
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // function ADD_zebner_frank(modus, time) {
+    //     var amount_of_children = document.getElementById("child-artist_list_images-zebner_frank").childElementCount;
+    //     console.log(amount_of_children - 2);
+    //     var img_array = document.getElementById('child-artist_list_images-zebner_frank').children;
+
+    //     setTimeout(function () { img_array[0].style.display = modus; }, 0);
+    //     setTimeout(function () { img_array[1].style.display = modus; }, 1 * time);
+    //     setTimeout(function () { img_array[2].style.display = modus; }, 2 * time);
+    //     setTimeout(function () { img_array[3].style.display = modus; }, 3 * time);
+
+    //     // for (i = 0; i < amount_of_children - 2; i++) {
+    //     //     img_array[i].style.display = modus;
+    //     // }
+
+    // }
+
+    // function ADD_zebner_frankOFF(modus) {
+    //     var amount_of_children = document.getElementById("child-artist_list_images-zebner_frank").childElementCount;
+    //     console.log("amount:");
+    //     console.log(amount_of_children - 1);
+    //     var img_array = document.getElementById('child-artist_list_images-zebner_frank').children
+
+    //     for (i = 0; i < amount_of_children; i++) {
+    //         img_array[i].style.display = modus;
+    //     }
+
+    // }
+
+
+
+
+// function ADD_zebner_frank(modus, time) {
+//         setTimeout(function(){ document.getElementById('zebner_frank_img_3').style.display = modus; }, 0);
+//         setTimeout(function(){ document.getElementById('zebner_frank_img_2').style.display = modus; }, time);
+//         setTimeout(function(){ document.getElementById('zebner_frank_img_1').style.display = modus; }, 2*time);
+//         setTimeout(function(){ document.getElementById('zebner_frank_img_0').style.display = modus; }, 3*time);
+//     }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- function ClearAll(){
+    for (i = 0; i < amount_of_children; i++) {
+        img_array[i].style.display = 'none';
+    }
+}
+
+function CheckMouseHover(time) { 
+    setTimeout(() => {  
+        console.log("CheckMouseHover!"); 
+        if ( hover == false ){ 
+            console.log("CLEAR ALL"); 
+            ClearAll();
+        } else {
+            console.log("still running"); 
+            this.mouseIsOver = true;
+        }
+    }, time);
+} -->
