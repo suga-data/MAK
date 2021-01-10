@@ -44,6 +44,9 @@
     }
     .child-artist_list_images_divs {
         position: absolute;
+        display: inline;
+        bottom: 0;
+
     }
     .child-artist_list_names {
         visibility: hidden;
@@ -55,7 +58,9 @@
 <div class="lp-artists" >
     <p>
 
-        <div id="parent_artist_names-zebner_frank" class="parent_artist_names" onmouseleave="hover_arist_name('#parent_artist_names-zebner_frank', '#child-artist_list_images_divs-zebner_frank')" onmouseenter="hover_arist_name('#parent_artist_names-zebner_frank', '#child-artist_list_images_divs-zebner_frank')">
+        <div id="parent_artist_names-zebner_frank" class="parent_artist_names" onmouseenter="hover_arist_name('blank_div_simulating_loading-zebner_frank', 'artist_list_empty_div_pushing_the_name-zebner_frank', '#parent_artist_names-zebner_frank', '#child-artist_list_images_divs-zebner_frank')" onmouseleave="hover_arist_name('blank_div_simulating_loading-zebner_frank', 'artist_list_empty_div_pushing_the_name-zebner_frank', '#parent_artist_names-zebner_frank', '#child-artist_list_images_divs-zebner_frank')">
+            
+            <div id="blank_div_simulating_loading-zebner_frank" style="width:32px; height: 32px; display: none; background-color: blue;"></div>
 
             <div id="child-artist_list_images_divs-zebner_frank" class="child-artist_list_images_divs">
                 <img class="artist_list_images_imgs"
@@ -70,9 +75,12 @@
                 <img class="artist_list_images_imgs"
                     src="imgs/image_gpt/arndt_armin/generated/32x32/32_arndt_armin_3.png"
                     style="width:32px; height: 32px; display: none">
-                <div class="empty_image" style="width:10px; height: 32px; display: none"></div>
-                <div class="empty_image" style="width:10px; height: 32px; display: none"></div>
-                
+
+                <div id="artist_list_empty_div_pushing_the_name-zebner_frank" class="artist_list_empty_div" style="width:0px; height: 32px; display: none"></div>
+
+                <div style="width:0px; height: 0px; display: none"></div>
+                <div style="width:0px; height: 0px; display: none"></div>    
+            
                 Frank Zebner
             </div>
 
@@ -86,8 +94,12 @@
 
 
 
-        <div id="parent_artist_names-XXXXXXX_XXXXXXX" class="parent_artist_names" onmouseleave="hover_arist_name('#parent_artist_names-XXXXXXX_XXXXXXX', '#child-artist_list_images_divs-XXXXXXX_XXXXXXX')" onmouseenter="hover_arist_name('#parent_artist_names-XXXXXXX_XXXXXXX', '#child-artist_list_images_divs-XXXXXXX_XXXXXXX')">
 
+
+        <div id="parent_artist_names-XXXXXXX_XXXXXXX" class="parent_artist_names" onmouseenter="hover_arist_name('blank_div_simulating_loading-XXXXXXX_XXXXXXX', 'artist_list_empty_div_pushing_the_name-XXXXXXX_XXXXXXX', '#parent_artist_names-XXXXXXX_XXXXXXX', '#child-artist_list_images_divs-XXXXXXX_XXXXXXX')" onmouseleave="hover_arist_name('blank_div_simulating_loading-XXXXXXX_XXXXXXX', 'artist_list_empty_div_pushing_the_name-XXXXXXX_XXXXXXX', '#parent_artist_names-XXXXXXX_XXXXXXX', '#child-artist_list_images_divs-XXXXXXX_XXXXXXX')">
+
+            <div id="blank_div_simulating_loading-XXXXXXX_XXXXXXX" style="width:32px; height: 32px; display: none; background-color: blue"></div>
+            
             <div id="child-artist_list_images_divs-XXXXXXX_XXXXXXX" class="child-artist_list_images_divs">
                 
 
@@ -100,13 +112,16 @@
                 <img class="artist_list_images_imgs"
                     src="imgs/image_gpt/arndt_armin/generated/32x32/32_arndt_armin_7.png"
                     style="width:32px; height: 32px; display: none">
-                <img class="artist_list_images_imgs"
-                    src="imgs/image_gpt/arndt_armin/generated/32x32/32_arndt_armin_8.png"
-                    style="width:32px; height: 32px; display: none">
+                
+                <div id="artist_list_empty_div_pushing_the_name-XXXXXXX_XXXXXXX" class="artist_list_empty_div" style="width:0px; height: 32px; display: none; background-color: green"></div>
 
-                <div class="empty_image" style="width:10px; height: 32px; display: none"></div>
-                <div class="empty_image" style="width:10px; height: 32px; display: none"></div>
-            
+                <div style="width:0px; height: 0px; display: none"></div>
+                <div style="width:0px; height: 0px; display: none"></div>
+
+
+
+
+
                 Armin Arndt
             </div>
 
@@ -124,59 +139,6 @@
 
 <!-- ------------ javascript  ------------ -->
 
-<!-- <script>
-    function hover(id_parent, id_child){
-        console.log('# 1 line');
-        //var id_parent = 'div#parent_artist_names-zebner_frank';
-        //var id_child = 'div#child-artist_list_images_divs-zebner_frank';
-
-        var loading_speed = 100;
-        var deloading_speed = 100;
-        var kids = [].reverse.call($(id_child).children());
-        console.log('# 2 line');
-        startImages();
-        //setTimeout(startImages, 1000);
-
-        function startImages(){
-            $(id_parent).mouseenter(function () {
-            //$(id_parent).mouseover(function () {
-                setTimeout(function(){
-                    console.log('mouse entered');
-
-                    $.each(kids, function (i, kid) {
-                        setTimeout(function () {
-                            $(kid).css("display", "inline");
-                            console.log(kid);
-                        }, i * loading_speed);
-                    })
-                    exit();
-                }, 300);
-            });
-
-        }
-        exit();
-    }
-
-
-
-function out(id_parent, id_child){
-    var kids = [].reverse.call($(id_child).children());
-    close();
-    function close(){
-    $(id_parent).mouseout(function () {
-                console.log('mouse left');
-                $.each(kids, function (i, kid) {
-                    setTimeout(function () {
-                        $(kid).css("display", "none");
-                        console.log(kid);
-                    }, i * deloading_speed);
-                })
-                //exit();
-            });
-        }
-    }
-</script> -->
-
 
 
 
@@ -185,164 +147,52 @@ function out(id_parent, id_child){
 <!-- THE most most most most advance script  -->
 
 <script>
-    function hover_arist_name(id_parent, id_child){
+    function hover_arist_name(id_blue_div, id_empty_spacing_div, id_parent, id_child){
         var loading_speed = 100;
         var deloading_speed = 100;
         var kids = [].reverse.call($(id_child).children());
+        //$('#' + id_blue_div).css('display', 'block');
+
+        
         startLoadingImages();
+
         function stopLoadingImages(){
             $.each(kids, function (i, kid) {
                 setTimeout(function () {
                     $(kid).css('display', 'none');
+                    //$('#' + id_empty_spacing_div).css('width', '0px');
+                    //$('#' + id_blue_div).css('display', 'none');
+
                 }, i * deloading_speed);
             })
+            
         }
+
         function startLoadingImages(){
                 $.each(kids, function (i, kid) {
                     setTimeout(function () {
                         var isHovered = $(id_parent).is(':hover'); // returns true or false
                         if (isHovered == true) {
+                            console.log('display i:' + i );
                             //console.log('continue mouseenter function');
                             $(kid).css('display', 'inline');
+                            if ( i = kids.length ) {
+                                setTimeout(function () {
+
+                                    console.log('display kids length:' + kids.length );
+                                    
+                                    $('#' + id_empty_spacing_div).css('display', 'inline');
+                                    $('#' + id_empty_spacing_div).css('width', '100%');
+
+                                    console.log('change spacing div ');
+                                }, loading_speed * kids.length);
+                            } else { 
+                            }
                         } else {
                             stopLoadingImages();
-                            exit();
                         }
                     }, i * loading_speed);
                 })
         }
     }
-    
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- moste advance script  -->
-
-<!-- <script>
-    function hover(id_parent, id_child){
-        // //var bool = bool;
-        // if (bool == true) {
-        //     startImages();
-        // } else if (bool == false) {
-        //     console.log('false false false ###################################');
-
-        //     startImages().exit();
-        //     stopImages();
-        // }
-
-        startImages();
-
-        //var id_parent = 'div#parent_artist_names-zebner_frank';
-        //var id_child = 'div#child-artist_list_images_divs-zebner_frank';
-
-        var loading_speed = 100;
-        var deloading_speed = 100;
-        var kids = [].reverse.call($(id_child).children());
-        //startImages();
-        //setTimeout(startImages, 1000);
-
-        function startImages(){
-            $(id_parent).mouseenter(function () {
-                    console.log('mouse entered');
-                    $.each(kids, function (i, kid) {
-                        setTimeout(function () {
-                            
-                            var isHovered = $(id_parent).is(":hover"); // returns true or false
-                            if (isHovered == true) {
-                                console.log('continue mouseenter function');
-                                $(kid).css('display', 'inline');
-                            } else {
-                                console.log('exit mouseenter function ###################################');
-                                stopImages();
-                                exit();
-                            }
-                            console.log(kid);
-                        }, i * loading_speed);
-                })
-                //exit();
-            });
-            function stopImages(){
-                $(id_parent).mouseleave(function () {
-                    console.log('mouse left');
-                    $.each(kids, function (i, kid) {
-                        setTimeout(function () {
-                            $(kid).css("display", "none");
-                            console.log(kid);
-                        }, i * deloading_speed);
-                    })
-                    exit();
-                });
-            }
-        }
-        // function stopImages(){
-        //     $(id_parent).mouseleave(function () {
-        //         console.log('mouse left');
-        //         $.each(kids, function (i, kid) {
-        //             setTimeout(function () {
-        //                 $(kid).css("display", "none");
-        //                 console.log(kid);
-        //             }, i * deloading_speed);
-        //         })
-        //         exit();
-        //     });
-        // }
-    }
-    
-</script> -->
-
-
-<!-- old checkpoint  -->
-
-<!-- <script>
-    function hover(id_parent, id_child){
-        //var id_parent = 'div#parent_artist_names-zebner_frank';
-        //var id_child = 'div#child-artist_list_images_divs-zebner_frank';
-
-        var loading_speed = 100;
-        var deloading_speed = 100;
-        var kids = [].reverse.call($(id_child).children());
-        startImages();
-        //setTimeout(startImages, 1000);
-
-        function startImages(){
-            $(id_parent).mouseenter(function () {
-                    console.log('mouse entered');
-                    // var kids = [].reverse.call($(id_child).children());
-                    $.each(kids, function (i, kid) {
-                        setTimeout(function () {
-                            $(kid).css("display", "inline");
-                            console.log(kid);
-                        }, i * loading_speed);
-                })
-                exit();
-            }).mouseleave(function () {
-                console.log('mouse left');
-                // var kids = [].reverse.call($(id_child).children());
-                $.each(kids, function (i, kid) {
-                    setTimeout(function () {
-                        $(kid).css("display", "none");
-                        console.log(kid);
-                    }, i * deloading_speed);
-                })
-                exit();
-            });
-        }
-    }
-</script> -->
