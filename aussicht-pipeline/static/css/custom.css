@@ -41,6 +41,20 @@ body {
     z-index: 0;
 }
 
+a {
+    color: #ADB09E;
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.item-logo a:hover {
+    text-decoration: none;
+}
+
 /* ------------ HEADER STYLING ------------ */
 /* .container-header {
     overflow: hidden;

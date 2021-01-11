@@ -10,7 +10,7 @@
         grid-template-rows: 50px;
         grid-template-areas:
             "logo . about artists programme";
-        margin: 20px;
+        padding: 20px;
         z-index: 100;
     }
 
@@ -42,36 +42,34 @@
         justify-self: end;
     } 
 
+    html {
+        scroll-behavior: smooth;
+    }
+    
+
 </style>
 
 
 
 <header class="container-header"> 
 
-    <div class="item-logo"> 
-        <a href="#lp-aussicht-logo" >
-            <h2> aussicht.<br> space </h2>
-        </a> 
+    <div class="item-logo white"> 
+        <h2><a href="#jump2top">aussicht.<br> space</a></h2> 
     </div>
 
     <div class="item-about"> 
-        <a href="#lp-about" >
-            <h2> about </h2> 
-        </a>
+        <h2><a href="#jump2about">about</a></h2> 
     </div>
 
     <div class="item-artists"> 
-        <a href="#artist_list" >
-            <h2> artists </h2>
-        </a>
+        <h2><a href="#jump2artists">artists</a></h2> 
     </div>
 
     <div class="item-programme">
-        <a href="#lp-programme" >
-            <h2> programme </h2>
-        </a>
+        <h2><a href="#jump2programme">programme</a></h2> 
     </div>
 
 </header>
 
 <!-- <script src="" async defer></script> -->
+
