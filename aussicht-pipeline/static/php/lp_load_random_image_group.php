@@ -1,9 +1,9 @@
 <?php
-    $amount_of_images = 6;
+    $amount_of_images = 3;
     // create array from artist folder
     $ignoreList = array('cgi-bin', '.', '..', '._');
     $artist_array = array();
-    if ($directory = opendir('/Users/arminarndt/Documents/1_EgoZen/git-websites/mak-website/mak/aussicht-pipeline/static/imgs/image_gpt')) {
+    if ($directory = opendir('imgs/image_gpt')) {
         while (false !== ($arti_names = readdir($directory))) {
             if (!in_array($arti_names, $ignoreList) and substr($arti_names, 0, 1) != '.') {
                 array_push($artist_array, $arti_names);
@@ -15,7 +15,7 @@
 
     // create array from image-gpt files
     $image_array = array();
-    if ($directory = opendir('/Users/arminarndt/Documents/1_EgoZen/git-websites/mak-website/mak/aussicht-pipeline/static/imgs/image_gpt/' . $one_artist . '/generated/128x128')) {
+    if ($directory = opendir('imgs/image_gpt/' . $one_artist . '/generated/128x128')) {
         while (false !== ($filenames = readdir($directory))) {
             if (!in_array($filenames, $ignoreList) and substr($filenames, 0, 1) != '.') {
                 array_push($image_array, $filenames);
