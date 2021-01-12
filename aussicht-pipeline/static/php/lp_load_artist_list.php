@@ -127,7 +127,7 @@ function CreateHTML($object) {
     // replace link if uploading to server: " imgs/image_gpt/ " 
 
     $image_array = array();
-    if ($directory = opendir('/Users/arminarndt/Documents/1_EgoZen/git-websites/mak-website/mak/aussicht-pipeline/static/imgs/image_gpt/' . $folder . '/generated/32x32')) {
+    if ($directory = opendir('/Users/arminarndt/Documents/1_EgoZen/git-websites/mak-website/mak/aussicht-pipeline/static/imgs/image_gpt/' . $folder . '/generated/64x64')) {
         while (false !== ($filenames = readdir($directory))) {
             if (!in_array($filenames, $ignoreList) and substr($filenames, 0, 1) != '.') {
                 array_push($image_array, $filenames);
@@ -186,7 +186,7 @@ function CreateHTML($object) {
     //echo $onmouseevents;
 
     // prepare IMAGE ROOT DIRECTORY
-    $basicROOT ="'imgs/image_gpt/" . $folder . "/generated/32x32/32_" . $folder . "_0.png'";
+    $basicROOT ="'imgs/image_gpt/" . $folder . "/generated/64x64/64_" . $folder . "_0.png'";
     //echo $basicROOT;
 
 
@@ -198,7 +198,7 @@ function CreateHTML($object) {
     echo $onmouseevents;
     echo ')" onmouseleave="hover_arist_name(';
     echo $onmouseevents;
-    echo ')">';
+    echo ')">,';
 
     echo "\n\n";
 
@@ -213,15 +213,15 @@ function CreateHTML($object) {
     for ($i = 0; $i < $amount_of_images_needed; $i++) {
         echo '<img id="' . $folder .'_thumbnail' . $i . '" class= "artist_list_images_imgs" src="imgs/image_gpt/';
         echo $folder;
-        echo '/generated/32x32/';
+        echo '/generated/64x64/';
         echo $image_array[$random_images[$i]];
-        echo '" style="width:32; height: 32; display: none">';
+        echo '" style="width:64; height: 64; display: none">';
         echo "\n";
     } 
 
     // echo "<img class='artist_list_images_imgs' src=";
     // echo $basicROOT;
-    // echo "style='width:32px; height: 32px; display: none'>";
+    // echo "style='width:64px; height: 64px; display: none'>";
 
     echo "\n";
 
@@ -229,7 +229,7 @@ function CreateHTML($object) {
     echo "<span id=";
     echo $blank_span_simulating_loading_QUOTAION;
     echo "class='blank_span_simulating_loading' ";
-    echo "style='left: 0px; width:32px; height: 32px; display: none; background-color: blue";
+    echo "style='left: 0px; width:64px; height: 64px; display: none; background-color: blue";
     echo "'></span>";
 
     echo "\n";
@@ -238,7 +238,7 @@ function CreateHTML($object) {
     echo "<span id=";
     echo $artist_list_empty_span_pushing_the_name_QUOTAION ;
     echo "class='artist_list_empty'";
-    echo "style='width:0px; height: 32px; display: none'";
+    echo "style='width:0px; height: 64px; display: none'";
     echo "></span>";
 
     echo "\n";
