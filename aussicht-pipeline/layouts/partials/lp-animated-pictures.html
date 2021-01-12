@@ -15,6 +15,12 @@
         line-height: 1;
     }
 
+    span {
+        background-color: white;
+        color: black;
+        animation: caret 1s steps(1) infinite;
+    }
+
 </style>
 
 
@@ -22,12 +28,8 @@
 <!-- ------------ html load igpt images ------------  -->
 
 <div class="lp-exhibitiontext" id="jump2top">
-    <p class="php">
-    
-    <!-- <img id="thumbnail0" src="imgs/image_gpt/arndt_armin/generated/128x128/128_arndt_armin_0.png" style="width:128px; height: 128px; display: none">
-    <img id="thumbnail1" src="imgs/image_gpt/arndt_armin/generated/128x128/128_arndt_armin_1.png" style="width:128px; height: 128px; display: none">
-    <img id="thumbnail2" src="imgs/image_gpt/arndt_armin/generated/128x128/128_arndt_armin_2.png" style="width:128px; height: 128px; display: none"> -->
-    Aus heutiger Sicht. Diskurse über Zukunft.
+    <p>
+    <span class="type-questions">hello</span>Aus heutiger Sicht. Diskurse über Zukunft.
     12.03.-16.03
     </p>
 </div>
@@ -35,7 +37,59 @@
 
 <!-- ------------ javascript  ------------  -->
 
-<script class="gpt_images">
+
+<script class="type-questions">
+
+    document.addEventListener('DOMContentLoaded',function(event){
+            
+            var dataText = [
+                "test.",
+                "test2."
+            ];
+
+            
+            
+            function typeWriter(text, i, fnCallback) {
+                
+                if (i < (text.length)) {
+                    
+                    document.querySelector("span").innerHTML = text.substring(0, i+1) +'<span aria-hidden="true"></span>';
+
+                    
+                    setTimeout(function() {
+                        typeWriter(text, i + 1, fnCallback)
+                    }, 100);
+                }
+                
+                else if (typeof fnCallback == 'function') {
+                    
+                    setTimeout(fnCallback, 700);
+                }
+            }
+            
+            function StartTextAnimation(i) {
+                if (typeof dataText[i] == 'undefined'){
+                    setTimeout(function() {
+                        StartTextAnimation(0);
+                    }, 20000);
+                }
+                
+                if (i < dataText[i].length) {
+                    
+                    typeWriter(dataText[i], 0, function(){
+                        
+                        StartTextAnimation(i + 1);
+                    });
+                }
+            }
+            
+            StartTextAnimation(0);
+        });
+
+
+</script>
+
+<!-- <script class="gpt_images">
             function EnableThumbnail(i) {
                 console.log(i);
                 console.log('thumbnail'+i);
@@ -47,4 +101,4 @@
             }
 
             window.setTimeout(function() {EnableThumbnail(0);}, 3000);
-</script>
+</script> -->
