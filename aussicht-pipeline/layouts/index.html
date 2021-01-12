@@ -41,10 +41,9 @@
         <!-- { partial "question" . }} -->
 
         <!-- THIS REFERS TO THE MARKDOWN ON WHICH THE SERVER IS BEING COMMUNICATED -->
-        <!-- {{ .Content }} -->
+        <!-- {{ .Content }} -->´
 
-        <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE OF THE iGPT IMAGES -->
-        {{ partial "lp-animated-pictures" . }}
+        <?php include "php/load_random_question.php"; ?>
 
         <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE ABOUT -->
         {{ partial "lp-about" . }}
