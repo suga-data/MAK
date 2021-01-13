@@ -50,6 +50,7 @@ function CreateHTML($object) {
 
     // Convert to array 
     $array = json_decode($strJsonFileContents, true);
+    $amount_of_artist = count($array) - 1;
     // Sort by alphabet
     sort($array);
     
@@ -198,7 +199,7 @@ function CreateHTML($object) {
     echo $onmouseevents;
     echo ')" onmouseleave="hover_arist_name(';
     echo $onmouseevents;
-    echo ')">,';
+    echo ')">';
 
     echo "\n\n";
 
@@ -275,8 +276,18 @@ function CreateHTML($object) {
     // 10. CLOSING span
     echo "</div>";
 
+    // 11. add KOMMA
+    if ($object < $amount_of_artist){
+        echo "<div class='artist_list_komma'>,</div>";
+    }else{
+    }
+    
+
     echo "\n\n";
     echo "\n\n";
     echo "\n\n";
 }
 ?> 
+
+
+
