@@ -17,6 +17,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
+        <link rel="preload" as="font" href="/fonts/2070-Normal_92_web.woff2" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" as="font" href="/fonts/2070-Normal_92_web.woff" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" as="font" href="/fonts/2070mono-Light_web.woff2" type="font/woff2" crossorigin="anonymous">
+
     
     <!-- ------------ Style only for the main index page ------------  -->
     
@@ -31,36 +35,24 @@
 
     <body>
 
-        <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE HEADER -->
+<!-- ------------------------- LP FIXED ELEMENTS ---------------------------  -->
+
         {{ partial "header" . }}
         
-        <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE OF THE GRID -->
-        <!-- {{ partial "lp-grid-gen" . }} -->
+        {{ partial "lp-player-podcast" . }}
 
-        <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE OF THE QUESTION -->
-        <!-- { partial "question" . }} -->
+<!-- ---------------------------- LP CONTENT -------------------------------  -->
+        
+        {{ partial "load_random_question" . }}
 
-        <!-- THIS REFERS TO THE MARKDOWN ON WHICH THE SERVER IS BEING COMMUNICATED -->
-        <!-- {{ .Content }} -->´
+        {{ partial "lp-programme" . }}
+        
+        {{ partial "list-artist" . }}
 
-        <?php include "php/load_random_question.php"; ?>
-
-        <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE ABOUT -->
         {{ partial "lp-about" . }}
 
-        <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE "list-artist" -->
-        {{ partial "list-artist" . }}
-        <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE ABOUT -->
-        <!-- {{ partial "lp-artists" . }} -->
-
-        <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE ABOUT -->
-        {{ partial "lp-programme" . }}
-
-        <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE ABOUT -->
         {{ partial "lp-team" . }}
 
-        <!-- THIS REFERS TO THE PARTIAL HTML TEMPLATE "HEADER" -->
-        <!-- {{ partial "marquee" . }} -->
 
     </body>
     
