@@ -27,7 +27,7 @@ $one_item_string = json_encode($one_item);
 
 <style>
     
-    .lp-exhibitiontext {
+    .lp-title {
         color: white;
         position: static;
         font-family: '2070';
@@ -40,13 +40,17 @@ $one_item_string = json_encode($one_item);
         line-height: 1;
     }
 
-    span {
+    .typewriter {
         background-color: white;
         color: black;
         padding-right: 20px;
         border-style: solid;
         border-color: white;
-        border-width: 8px;
+        font-family:'Courier New', Courier, monospace;
+    }
+
+    .lp-title p {
+        font-family: '2070';
     }
 
 </style>
@@ -55,11 +59,13 @@ $one_item_string = json_encode($one_item);
 
 <!-- ------------ html load igpt images ------------  -->
 
-<div class="lp-exhibitiontext" id="jump2top">
+<div class="lp-title" id="top">
+
     <p>
-    <span id="type-questions" ></span> Aus heutiger Sicht. Diskurse <br> über Zukunft.
+    <span class="typewriter" id="type-questions" ></span> Aus heutiger Sicht. Diskurse <br> über Zukunft. <br>
     12.03.-16.03
     </p>
+
 </div>
 
 

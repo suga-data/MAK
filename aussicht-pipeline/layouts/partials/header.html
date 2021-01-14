@@ -4,14 +4,16 @@
 
     .container-header {
         position: sticky;
+        position: -webkit-sticky;
         top: 0;
         display: grid;
-        grid-template-columns: 250px auto 150px 150px 200px;
+        grid-template-columns: 250px auto 250px 150px 130px;
         grid-template-rows: 50px;
         grid-template-areas:
-            "logo . about artists programme";
+            "logo . programme artists about";
         padding: 20px;
         z-index: 100;
+        mix-blend-mode: difference;
     }
 
     .container-header h2 {
@@ -19,33 +21,47 @@
         font-weight: 600;
     }
 
+    .container-header a {
+        color: white;
+        text-decoration: none;
+    }
 
-    .item-logo h2 {
+    .container-header a:hover {
+        color: white;
+        text-decoration: underline;
+    }
+
+    h2#item-logo {
         grid-area: logo;
-        justify-self: center;
+        justify-self: start;
         font-size: 28px;
         line-height: 0.8;
     }
 
-    .item-about {
-        grid-area: about;
-        justify-self: center;
+    #item-logo a:hover {
+        text-decoration: none;
     }
 
-    .item-artists {
+    #item-about {
+        grid-area: about;
+        justify-self: end;
+    }
+
+    #item-artists {
         grid-area: artists;
         justify-self: center;
     }    
 
-    .item-programme {
+    #item-programme {
         grid-area: programme;
-        justify-self: end;
+        justify-self: center;
     } 
 
     html {
         scroll-behavior: smooth;
     }
-    
+
+        
 
 </style>
 
@@ -53,23 +69,63 @@
 
 <header class="container-header"> 
 
-    <div class="item-logo white"> 
-        <h2><a href="#jump2top">aussicht.<br> space</a></h2> 
-    </div>
+    <h2 id="item-logo"><a href="#main">aussicht.<br>space</a></h2>
 
-    <div class="item-about"> 
-        <h2><a href="#jump2about">about</a></h2> 
-    </div>
+    <h2 id="item-about">
+        <a href="#about">about</a>
+    </h2> 
 
-    <div class="item-artists"> 
-        <h2><a href="#jump2artists">artists</a></h2> 
-    </div>
+    <h2 id="item-artists"><a href="#artists">artists</a></h2>
 
-    <div class="item-programme">
-        <h2><a href="#jump2programme">programme</a></h2> 
-    </div>
+    <h2 id="item-programme"><a href="#programme">programme</a></h2> 
 
 </header>
 
-<!-- <script src="" async defer></script> -->
+
+<!-- ------------------------- JAVASCRIPT FOR SAFARI SMOOTH SCROLL SUPPORT  ---------------------------  -->
+
+<!-- 
+<script>
+
+    function scrollToSection(event) {
+
+        if (supportsSmoothScrolling()) {
+            return;
+        }
+
+        event.preventDefault();
+        const scrollToElem = document.getElementById("about");
+        SmoothVerticalScrolling(scrollToElem, 300, "top");
+    }
+
+    // Detect if smooth scrolling is supported by the browser. False on Safari, True on Chrome/Firefox
+    function supportsSmoothScrolling() {
+        const body = document.body;
+        const scrollSave = body.style.scrollBehavior;
+        body.style.scrollBehavior = 'smooth';
+        const hasSmooth = getComputedStyle(body).scrollBehavior === 'smooth';
+        body.style.scrollBehavior = scrollSave;
+        return hasSmooth;
+    };
+    
+    function SmoothVerticalScrolling(element, time, position) {
+        var eTop = element.getBoundingClientRect().top;
+        var eAmt = eTop / 100;
+        var curTime = 0;
+        while (curTime <= time) {
+            window.setTimeout(SVS_B, curTime, eAmt, position);
+            curTime += time / 100;
+        }
+    }
+
+    function SVS_B(eAmt, position) {
+        if (position == "center" || position == "")
+        window.scrollBy(0, eAmt / 2);
+        if (position == "top")
+        window.scrollBy(0, eAmt);
+    }
+
+
+</script> 
+-->
 
