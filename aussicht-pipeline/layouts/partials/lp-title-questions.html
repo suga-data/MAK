@@ -1,6 +1,6 @@
  <!-- ------------ READ QUESTIONS VIA PHP ------------ -->
- 
- <!-- <?php 
+<!--  
+ <?php 
 
 // Get the contents of the JSON file 
 $strJsonFileContents = file_get_contents("json/question_german.json");
@@ -30,14 +30,14 @@ $one_item_string = json_encode($one_item);
     .lp-title {
         color: white;
         position: static;
-        font-family: '2070';
-        font-weight: 300;
-        font-size: 100pt;
         display: grid;
         margin: 20px;
+        margin-left: var(--margin);
+        margin-right: var(--margin);
         grid-template-columns: auto;
         grid-template-rows: auto;
         line-height: 1;
+        padding-bottom: 300px;
     }
 
     .typewriter {
@@ -46,11 +46,13 @@ $one_item_string = json_encode($one_item);
         padding-right: 20px;
         border-style: solid;
         border-color: white;
-        font-family:'Courier New', Courier, monospace;
+        font-family: var(--font-family-machine);
     }
 
     .lp-title p {
-        font-family: '2070';
+        font-family: var(--font-family-primary);
+        font-weight: 300;
+        font-size: 100pt;
     }
 
 </style>
@@ -62,7 +64,7 @@ $one_item_string = json_encode($one_item);
 <div class="lp-title" id="top">
 
     <p>
-    <span class="typewriter" id="type-questions" ></span> Aus heutiger Sicht. Diskurse <br> über Zukunft. <br>
+    <span class="typewriter" id="type-questions" ></span> Aus heutiger Sicht. Diskurse <br> über Zukunft.<br>
     12.03.-16.03
     </p>
 
@@ -76,7 +78,7 @@ $one_item_string = json_encode($one_item);
     document.addEventListener('DOMContentLoaded',function(event){
         
         var dataText = [
-            // "<?php echo $one_item["question"]; ?>"
+            // <?php echo $one_item["question"]; ?>
             "Aber was wäre, wenn wir die Uhr zurückdrehen könnten?",
             "Wie sollten Sie ein Produkt und eine darauf basierende Dienstleistung entwerfen?",
             "Wie können wir uns von den Glaubenssystemen der herrschenden Klassen zu denen der Mittelschichten bewegen?",

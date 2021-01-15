@@ -2,7 +2,10 @@
 
 <style>
 
-    .container-header {
+    /* ------------ HEADER NAV CONTAINER ----------- */
+    header {
+        --text: white;
+        
         position: sticky;
         position: -webkit-sticky;
         top: 0;
@@ -12,24 +15,29 @@
         grid-template-areas:
             "logo . programme artists about";
         padding: 20px;
+        padding-left: var(--margin);
+        padding-right: var(--margin);
         z-index: 100;
         mix-blend-mode: difference;
     }
 
-    .container-header h2 {
-        color: white;
+    header h2 {
+        color: var(--text);
         font-weight: 600;
     }
 
-    .container-header a {
-        color: white;
+    header a {
+        color: var(--text);
         text-decoration: none;
     }
 
-    .container-header a:hover {
-        color: white;
-        text-decoration: underline;
+    header a:hover {
+        color: var(--text);
+        text-decoration: none;
     }
+
+
+    /* ------------ SINGLE NAV ITEMS ----------- */
 
     h2#item-logo {
         grid-area: logo;
@@ -42,17 +50,17 @@
         text-decoration: none;
     }
 
-    #item-about {
+    #itemabout {
         grid-area: about;
         justify-self: end;
     }
 
-    #item-artists {
+    #itemartists {
         grid-area: artists;
         justify-self: center;
     }    
 
-    #item-programme {
+    #itemprogramme {
         grid-area: programme;
         justify-self: center;
     } 
@@ -61,25 +69,29 @@
         scroll-behavior: smooth;
     }
 
-        
+    .nav-scrolled {
+        font-family: var(--font-family-secondary);
+    }  
 
 </style>
 
 
 
-<header class="container-header"> 
+<header> 
 
     <h2 id="item-logo"><a href="#main">aussicht.<br>space</a></h2>
 
-    <h2 id="item-about">
-        <a href="#about">about</a>
-    </h2> 
+    <h2 id="itemabout"><a href="#about">about</a></h2> 
 
-    <h2 id="item-artists"><a href="#artists">artists</a></h2>
+    <h2 id="itemartists"><a href="#artists">artists</a></h2>
 
-    <h2 id="item-programme"><a href="#programme">programme</a></h2> 
+    <h2 id="itemprogramme"><a href="#programme">programme</a></h2> 
 
 </header>
+
+<!-- ------------------------ JAVASCRIPT TO ACTIVATE INTERSECTION OBSERVER  ---------------------------  -->
+
+
 
 
 <!-- ------------------------- JAVASCRIPT FOR SAFARI SMOOTH SCROLL SUPPORT  ---------------------------  -->

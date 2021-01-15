@@ -1,82 +1,332 @@
-<!-- ------------ Style only for the artists section of the landing page ------------  -->
-<!-- <style>
-    .lp-artists {
-        background-color: black;
-        position: static;
-        padding-top: 100px;
-        padding-bottom: 100px;
-        margin-bottom: 50px;
-        z-index: 1;
-        color: white;
-        font-family: 'happy times';
-        font-weight: 400;
-        font-size: 30px;
-        line-height: 1.2;
+<!doctype html>
+<html lang="en">
+    <head>
+	<meta name="generator" content="Hugo 0.69.0" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        
+        <title>Aus heutiger Sicht | Museum für Angewandte Kunst</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+        
+        <link rel="preload" as="font" href="/fonts/2070-Normal_92_web.woff2" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" as="font" href="/fonts/2070-Normal_92_web.woff" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" as="font" href="/fonts/2070mono-Light_web.woff2" type="font/woff2" crossorigin="anonymous">
+    </head>
+
+    <style>
+            
+        :root {
+        --color-white: white;
+        --color-black: black;
+        }
+
+        body {
+            overflow-x: hidden;
+            background-color: var(--color-black);
+            color: var(--color-white);
+            z-index: 0;
+         }
+
+    </style>
+    
+    <body id="main">
+
+
+
+        
+
+<style>
+
+     
+    header {
+        --text: white;
+        
+        position: sticky;
+        position: -webkit-sticky;
+        top: 0;
+        display: grid;
+        grid-template-columns: 250px auto 250px 150px 130px;
+        grid-template-rows: 50px;
+        grid-template-areas:
+            "logo . programme artists about";
+        padding: 20px;
+        z-index: 100;
+        mix-blend-mode: difference;
     }
 
-    .lp-artists p {
-        text-align: center;
+    header h2 {
+        color: var(--text);
+        font-weight: 600;
+        font-family: '2070';
+    }
+
+    header a {
+        color: var(--text);
+        text-decoration: none;
+    }
+
+    header a:hover {
+        color: var(--text);
+        text-decoration: underline;
+    }
+
+
+     
+
+    h2#item-logo {
+        grid-area: logo;
+        justify-self: start;
+        font-size: 28px;
+        line-height: 0.8;
+    }
+
+    #item-logo a:hover {
+        text-decoration: none;
+    }
+
+    #itemabout {
+        grid-area: about;
+        justify-self: end;
+    }
+
+    #itemartists {
+        grid-area: artists;
+        justify-self: center;
+    }    
+
+    #itemprogramme {
+        grid-area: programme;
+        justify-self: center;
+    } 
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    .nav-scrolled {
+        --text: blue;
+    }  
+
+</style>
+
+
+
+<header> 
+
+    <h2 id="item-logo"><a href="#main">aussicht.<br>space</a></h2>
+
+    <h2 id="itemabout"><a href="#about">about</a></h2> 
+
+    <h2 id="itemartists"><a href="#artists">artists</a></h2>
+
+    <h2 id="itemprogramme"><a href="#programme">programme</a></h2> 
+
+</header>
+
+
+
+
+
+<?php include "php/load_random_question.php"; ?>
+
+
+
+        
+        <style>
+    .player-podcast {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        z-index: 99;
+    }
+
+</style>
+
+<div class="player-podcast" >
+    <iframe src="https://anchor.fm/off-line/embed/episodes/9-Wie-kmmern-wir-uns-in-Zukunft-eocfv5" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+</div>
+
+
+
+ <?php 
+
+// Get the contents of the JSON file 
+$strJsonFileContents = file_get_contents("json/question_german.json");
+
+// Convert to array 
+$array = json_decode($strJsonFileContents, true);
+
+// Then, pick a random index:
+$one_item = $array[rand(0, count($array) - 1)];
+
+// and finally convert back to JSON:
+$one_item_string = json_encode($one_item);
+
+// echo $one_item["question"];
+
+
+?> 
+
+
+
+
+
+
+
+<style>
+    
+    .lp-title {
+        color: white;
+        position: static;
+        font-family: '2070';
+        font-weight: 300;
+        font-size: 100pt;
         display: grid;
         margin: 20px;
         grid-template-columns: auto;
         grid-template-rows: auto;
-        color: white;
-        font-family: 'happy times';
-        font-weight: 400;
-        font-size: 30px;
-        line-height: 1.2;
+        line-height: 1;
+        margin-bottom: 300px;
     }
+
+    .typewriter {
+        background-color: white;
+        color: black;
+        padding-right: 20px;
+        border-style: solid;
+        border-color: white;
+        font-family:'Courier New', Courier, monospace;
+    }
+
+    .lp-title p {
+        font-family: '2070';
+    }
+
 </style>
 
 
-<style>
-    .parent_artist_names {
-        display: inline-block;
-        position: relative;
-        overflow: hidden;
-        white-space: nowrap;
+
+
+
+<div class="lp-title" id="top">
+
+    <p>
+    <span class="typewriter" id="type-questions" ></span> Aus heutiger Sicht. Diskurse <br> über Zukunft.<br>
+    12.03.-16.03
+    </p>
+
+</div>
+
+
+ 
+
+<script class="typewriter">
+
+    document.addEventListener('DOMContentLoaded',function(event){
         
-        max-width: 100%;
-        height: auto;
-        margin-left: 20px;
-        margin-right: 20px;
-        background-color: brown;
+        var dataText = [
+            <?php echo $one_item["question"]; ?>
+
+        ];
+
+        
+        
+        function typeWriter(text, i, fnCallback) { 
+            
+            
+            if (i < (text.length)) {
+                
+                
+                document.getElementById("type-questions").innerHTML = text.substring(0, i+1) +'<span aria-hidden="true"></span>';
+
+                
+                setTimeout(function() {
+                    typeWriter(text, i + 1, fnCallback)
+                }, 100);
+            }
+            
+            
+            else if (typeof fnCallback == 'function') {    
+                
+                
+                setTimeout(fnCallback, 10000);
+            }
+        }
+        
+        
+        function StartTextAnimation(i) {
+            if (typeof dataText[i] == 'undefined'){
+                setTimeout(function() {
+                    StartTextAnimation(0);
+                }, 2000);
+            }
+            
+            
+            if (i < dataText[i].length) {
+                
+                typeWriter(dataText[i], 0, function(){
+                    
+                    
+                    StartTextAnimation(i + 1);
+                });
+            }
+        }
+        StartTextAnimation(0);
+    });
+        
+</script>
+
+
+        
+
+<style>
+
+    #programme {
+        padding-top: 100px;
+        padding-bottom: 130px;
+        position: static;
+        display: grid;
+        margin: 20px;
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        z-index: 1;
+        color: white;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 1.2;
+        margin-bottom: 300px;
     }
 
-    .child_artist_list_images_spans {
-        /* display: inline; */
-        /* overflow: hidden; */
-    }
-/* child_artist_list_names defines a fixed size for the whole name container */
-    .child_artist_list_names {
-        background-color: blue;
-        opacity: 50%;
-        position: absolute;  
-		top: 0;
-		left: 0;
-        max-width: 100%;
-        height: 100px;
-        /* overflow: hidden; */
-    }
-
-    .blank_span_simulating_loading {
-        visibility: hidden;
-        /* position: fixed;
-        top: 0;
-		left: 0; */
-    }
-
-    .child_artist_list_hovers {
-    }
+</style>
 
 
+<div id="programme">
 
-</style> -->
+    <p class="lp-programme-txt">
+        <strong>11.3.2021, 6–8PM</strong> Eröffnung <strong>12.–14.3.2021, 12–8PM</strong> Eröffnungswochenende, Performances, Recording Room Failure Workshop (Fr.), Programmraum, Werkstatt <strong>17.3.2021, 6–8PM</strong> Performance, Recording Room, Mensa der Zukunft <strong>24.3.2021, 6–7:30PM</strong> Performance, Recording Room, Mittwochsplattform Stream, Recording Room <strong>3.–4.4.2021, 6–8PM</strong> Doktorand_innen Kolloquium <strong>14.4.2021, 6–8PM</strong> ganztägig Performance, Recording Room Luca Ganz <strong>21.4.2021, 6–8PM</strong>
+    </p>
+
+</div>
+        
+        
+
 
 
 <style>
- .lp-artists {
-        background-color: white;
+ #artists {
+        background-color: var(--color-white);
         position: static;
         padding-top: 100px;
         padding-bottom: 100px;
@@ -92,19 +342,10 @@
         display:inline-block;
     }
 
-    .lp-artists p {
-        /* text-align: center;
-        display: grid;
-        margin: 0px;
-        grid-template-columns: auto;
-        grid-template-rows: auto;
-        color: #ADB09E;
-        font-family: 'happy times';
-        font-weight: 400;
-        font-size: 45pt;
-        background-color: coral; */
+     
+         
         
-    }
+     
 </style>
 
 
@@ -116,8 +357,7 @@
         position: relative;
         white-space: nowrap;
         overflow: hidden;
-        /* margin-left: 0px;
-        margin-right: 0px; */
+         
         height: auto;
     }
     .parent_artist_names:hover {
@@ -151,7 +391,7 @@
 
 
 
-<div class="lp-artists" id="jump2artists">
+<div id="artists">
     <p>
 
 
@@ -2434,7 +2674,7 @@
 </div>
 
 
-<!-- ------------ javascript  ------------ -->
+
 
 
 <script>
@@ -2442,7 +2682,7 @@
         var loading_speed = 100;
         var deloading_speed = 100;
         var kids = [].reverse.call($(id_child).children());
-        //$('#' + id_blue_div).css('display', 'block');
+        
 
 
         startLoadingImages();
@@ -2452,8 +2692,8 @@
                 setTimeout(function () {
                     $(kid).css('display', 'none');
                     
-                    //$('#' + id_empty_spacing_div).css('width', '0px');
-                    //$('#' + id_blue_div).css('display', 'none');
+                    
+                    
 
                 }, i * deloading_speed);
             })
@@ -2463,10 +2703,10 @@
         function startLoadingImages(){
                 $.each(kids, function (i, kid) {
                     setTimeout(function () {
-                        var isHovered = $(id_parent).is(':hover'); // returns true or false
+                        var isHovered = $(id_parent).is(':hover'); 
                         if (isHovered == true) {
                             console.log('display i:' + i );
-                            //console.log('continue mouseenter function');
+                            
                             $(kid).css('display', 'inline');
                             if ( i = kids.length ) {
                                 setTimeout(function () {
@@ -2488,3 +2728,182 @@
         }
     }
 </script>
+
+        
+
+<style>
+    .lp-section {
+        margin-top: 70px;
+        margin-bottom: 130px;
+        padding-top: 100px;
+    }
+
+    #about p {
+        position: static;
+        display: grid;
+        margin: 20px;
+        margin-bottom: 50px;
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        z-index: 1;
+        color: white;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 1.2;
+    }
+
+</style>
+
+
+
+
+<div id="about">
+
+    <p id="1">
+    Zwischen den Stühlen der vielen erinnerten Vergangenheiten und der zahlreichen denkbaren Zukünfte stehen wir im Jetzt. Beschäftigt mit den Herausforderungen des Alltags und dem Ankommen in der einen oder anderen »neuen« Normalität, scheint die Vorstellung von Zukunft als einem verheißungsvollen Horizont in Schieflage, zumindest in den Hintergrund geraten. Während die einen an Vergangenem festhalten, Zukunftsvisionen der Vergangenheit stilisieren oder der jüngeren Generation Utopie-Verdrossenheit vorwerfen, plädieren die anderen für mehr Verantwortung in der Gegenwart für die Zukunft.
+    </p>
+
+    <p id="2">
+    Der Glaube an gemeinsamen Fortschritt, etwa in Bezug auf Technologien oder das soziale Miteinander, wird Tag für Tag auf die Probe gestellt. Wenn sich politische und ökologische Ereignisse überschlagen und die Zahl der Haupt- und Nebenschauplätze stetig anzuwachsen scheint, verlagert sich der einzelne Standpunkt auf zunehmend unsicheres Terrain. Sich selbst und andere nach Zukünftigem zu fragen, bleibt umso mehr relevant und zeigt sich, auch bei derzeitigen Future Bewegungen, nicht als Gegenstand, sondern als Prozess von Interaktion und Kommunikation.
+    </p>   
+
+    <p id="3">
+    Wie können Diskurse über Zukunft heute geführt werden, wenn nicht nur die Zukunft, einer jetzigen und kommenden Gesellschaft, sondern auch das Verhandeln von Zukunft ungewiss ist? Ein zu starres, prognostisches Wissen über künftige Realitäten würde den Möglichkeitsraum jedenfalls eher verstellen als öffnen. Zumindest bietet diese Sichtweise die Hoffnung, dass wir noch auf sie einwirken können – im positiven wie im negativen Sinne. Die Auseinandersetzung mit Zukünftigem kann dann in multiple, offene Fragestellungen münden, die eine Gravitation zu Unbestimmtheiten und zum Nichtwissen spürbar werden lassen.
+    </p>
+
+    <p id="4">
+    Dieser Ansatz zeigt sich nicht zuletzt in Design und Kunst mit einer im Ergebnis nie ganz vorhersehbaren Interaktion zwischen Gestaltenden, Materialien und Kontexten, in denen neue Entwürfe entstehen und zur Diskussion gestellt werden. Nicht nur Neuerungen innerhalb dieser Disziplinen selbst, sondern auch soziale Umbrüche und Prozesse des Um- und Andersdenkens auf ganz unterschiedlichen Wissensgebieten wären ohne den Mut, die Spannungen und Mehrdeutigkeiten undenkbar. An diesem Punkt setzt die Ausstellung “Aus heutiger Sicht. Diskurse über Zukunft” an, um verschiedene Sichtweisen auf Gegenwart und Zukunft in einen mehrstimmigen Austausch zu bringen.
+    </p>
+
+</div>
+
+        
+
+<style>
+    
+    .lp-team {
+        background-color: white;
+        position: static;
+        padding-top: 100px;
+        padding-bottom: 100px;
+        margin-bottom: 50px;
+        z-index: 1;
+        color: white;
+        font-family: 'happy times';
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 1.2;
+    }
+
+    .lp-team p {
+        text-align: center;
+        display: grid;
+        margin-left: 150px;
+        margin-right: 150px;
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        color: #ADB09E;
+        font-family: 'happy times';
+        font-weight: 400;
+        font-size: 50px;
+        line-height: 1.3;
+    }
+
+</style>
+
+
+<div class="lp-team">
+
+    <p>
+        Beatrice Bianchini, Irina Denkmann, Jonas Deuter, Ulrike Grünewald, Sebastian Hahn, Felix Kosok, Erika Sacco Responsable for the Digital Space. Maria Sitte, Anna Sukhova, Ellen Wagner, Matthias Wagner K
+    </p>
+
+</div>
+
+
+    </body>
+
+    <script defer>
+
+        
+        const itemprogramme = document.querySelector("#itemprogramme");
+        const itemartists = document.querySelector("#itemartists");
+        const itemabout = document.querySelector("#itemabout");
+        
+        
+        const sectionOne = document.querySelector("#programme");
+        const sectionTwo = document.querySelector("#artists");
+        const sectionThree = document.querySelector("#about");
+    
+        const sectionOneOptions = {
+            rootMargin: "0px 0px 0px 0px",
+            threshold: 1.0
+        };
+
+        const sectionTwoOptions = {
+        };
+
+        const sectionThreeOptions = {
+        };
+
+
+        
+        const sectionOneObserver = new IntersectionObserver(function(
+            entries, 
+            sectionOneObserver
+        ) {
+            entries.forEach(entry => {
+                console.log(entry.target);
+                if(entry.isIntersecting) {
+                    itemprogramme.classList.add("nav-scrolled");
+                } else {
+                    itemprogramme.classList.remove("nav-scrolled");
+                }
+            })
+        }, 
+        sectionOneOptions);
+    
+        sectionOneObserver.observe(sectionOne);
+
+
+        
+        const sectionTwoObserver = new IntersectionObserver(function(
+            entries, 
+            sectionTwoObserver
+        ) {
+            entries.forEach(entry => {
+                console.log(entry.target);
+                if(entry.isIntersecting) {
+                    itemartists.classList.add("nav-scrolled");
+                } else {
+                    itemartists.classList.remove("nav-scrolled");
+                }
+            })
+        }, 
+        sectionTwoOptions);
+    
+        sectionTwoObserver.observe(sectionTwo);
+
+
+        
+        const sectionThreeObserver = new IntersectionObserver(function(
+            entries, 
+            sectionThreeObserver
+        ) {
+            entries.forEach(entry => {
+                console.log(entry.target);
+                if(entry.isIntersecting) {
+                    itemabout.classList.add("nav-scrolled");
+                } else {
+                    itemabout.classList.remove("nav-scrolled");
+                }
+            })
+        }, 
+        sectionThreeOptions);
+    
+        sectionThreeObserver.observe(sectionThree);
+    
+    
+    </script>
+    
+</html>

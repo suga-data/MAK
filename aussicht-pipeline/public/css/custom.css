@@ -1,22 +1,84 @@
-@font-face {
-    font-family: '2070';
-    src: url('2070-Normal_92_web.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-  }
+/* ------------ FONT QUERY ------------ */
+
 
 @font-face {
     font-family: '2070';
-    src: url('2070-Bold_156_web.woff2') format('woff2');
-    font-weight: 700;
+    font-weight: 300;                                               
     font-style: normal;
+    unicode-range: U+000-5FF;
+    src:    local('2070'),
+            url('2070-Light_72_web.woff2')  format('woff2'),        /* Super Modern Browsers iOS */
+            url('2070-Light_72_web.woff')   format('woff'),         /* Pretty Modern Browsers */
+            url('2070-Light72.ttf')         format('truetype');     /* Safari, Android, iOS */
 }
 
 @font-face {
+    font-family: '2070';
+    font-weight: 400;                                               /* 400 = normal */
+    font-style: normal;
+    unicode-range: U+000-5FF;
+    src:    local('2070'),
+            url('2070-Normal_92_web.woff2') format('woff2'),        /* Super Modern Browsers iOS */
+            url('2070-Normal_92_web.woff')  format('woff'),         /* Pretty Modern Browsers */
+            url('2070-Normal92.ttf')        format('truetype');     /* Safari, Android, iOS */
+  }
+
+  @font-face {
+    font-family: '2070';
+    font-weight: 500;                                               
+    font-style: normal;
+    unicode-range: U+000-5FF;
+    src:    local('2070'),
+            url('2070-Medium_116_web.woff2')  format('woff2'),      /* Super Modern Browsers iOS */
+            url('2070-Medium_116_web.woff')   format('woff'),       /* Pretty Modern Browsers */
+            url('2070-Medium116.ttf')         format('truetype');   /* Safari, Android, iOS */
+}
+
+@font-face {
+    font-family: '2070';
+    font-weight: 700;                                               /* 700 = bold */
+    font-style: normal;
+    unicode-range: U+000-5FF;
+    src:    local('2070'),
+            url('2070-Bold156.eot'),
+            url('2070-Bold_156_web.woff2')  format('woff2'),        /* Super Modern Browsers iOS */
+            url('2070-Bold_156_web.woff')   format('woff'),         /* Pretty Modern Browsers */
+            url('2070-Bold156.svg')         format('svg'),          /* Legacy iOS */
+            url('2070-Bold156.ttf')         format('truetype');     /* Safari, Android, iOS */
+}
+
+@font-face {
+    font-family: '2070';
+    font-weight: 900;                                               /* 900 = black */
+    font-style: normal;
+    unicode-range: U+000-5FF;
+    src:    local('2070'),
+            url('2070-Black_176_web.woff2') format('woff2'),        /* Super Modern Browsers iOS */
+            url('2070-Black_176_web.woff')  format('woff'),         /* Pretty Modern Browsers */
+            url('2070-Black176.ttf')        format('truetype');     /* Safari, Android, iOS */
+}
+
+
+@font-face {
     font-family: 'happy times';
-    src: url('happy-times-NG_regular_master_web.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
+    unicode-range: U+000-5FF;
+    src:    local('happy times'),
+            url('happy-times-NG_regular_master_web.woff2')  format('woff2'),
+            url('happy-times-NG_regular_master.ttf')        format('truetype');
+}
+
+@font-face {
+    font-family: '2070mono';
+    font-weight: 300;                                                   /* 300 = light */
+    font-style: normal;
+    unicode-range: U+000-5FF;
+    src:    local('2070mono'),
+            url('2070mono-Light_web.woff2')    format('woff2'),        /* Super Modern Browsers iOS */
+            url('2070mono-Light_72_web.woff')  format('woff'),         /* Pretty Modern Browsers */
+            url('2070mono-Light72.svg')        format('svg'),          /* Legacy iOS */
+            url('2070mono-Light72.ttf')        format('truetype');     /* Safari, Android, iOS */
 }
 
 /* ------------ BUTTON STYLING ------------ */
@@ -32,162 +94,16 @@ button {
 
 /* ------------ TEXT STYLING ------------ */
 
-body, h1, h2 , p {
+/* h1, h2 {
     font-family: '2070';
-}
+} */
 
-body {
-    background-color: black;
-    z-index: 0;
-}
-
-a {
-    color: #ADB09E;
-    text-decoration: none;
-}
-
-a:hover {
-    color: white;
-    text-decoration: underline;
-}
-
-.item-logo a:hover {
-    text-decoration: none;
+h3 {
+    font-family: '2070 mono';
 }
 
 /* ------------ HEADER STYLING ------------ */
-/* .container-header {
-    overflow: hidden;
-    font-family: '2070';
-    position: fixed;
-    color: white;
-    background-color: black;
-    width: 100%;
-    z-index: 100;
-} */
-
-.title {
-    float: left;
-    padding: 5px 0px 0px 10px;
-}
-.menu button{
-    float: right;
-    padding: 5px 100px 0px 0px;
-}
 
 
 /* ------------ GRID STYLING ------------ */
 
-svg{
-    width:100%;
-    height:100%;
-    overflow: inherit;
-    top: 0px;
-    left: 0px;
-}
-
-
-
-
-/* ------------ marquee NAMES ------------ */
-
-.marquee_NAMES_0 {
-    position: fixed;
-    right: 0px;
-    bottom: 45px;
-    background-color: black;
-    width: 100%;
-    height: 40px;
-    overflow: hidden;
-}
-.marquee_NAMES_1, .marquee_NAMES_2 {
-    position: fixed;
-    right: 0px;
-    bottom: 30px;
-    width: 100%;
-	color: white;
-    white-space: nowrap;
-    overflow: hidden;
-    box-sizing: border-box;
-}
-.marquee_NAMES_1 p {
-    font-size: 18pt;
-    font-style: italic;
-    display: inline-block;
-    padding-left: 100%;
-    animation: marquee_NAMES 60s linear infinite;
-}
-.marquee_NAMES_2 p {
-    font-size: 18pt;
-    font-style: italic;
-    display: inline-block;
-    padding-left: 100%;
-    animation: marquee_NAMES 60s linear 30s infinite;
-}
-.marquee_NAMES_1 span {
-    font-style: normal;
-    font-family: '2070';
-    font-size: 18pt;
-}
-.marquee_NAMES_2 span {
-    font-style: normal;
-    font-family: '2070';
-    font-size: 18pt;
-}
-@keyframes marquee_NAMES {
-    0%   { transform: translate(-100%, 0); }
-    75%  { transform: translate(0%, 0); }
-    100% { transform: translate(100%, 0); }
-}
-
-
-/* ------------ marquee INFO ------------ */
-
-.marquee_INFO_0 {
-    position: fixed;
-    right: 0px;
-    bottom: 0px;
-    background-color: black;
-    width: 70%;
-    height: 50px;
-    overflow: hidden;
-}
-.marquee_INFO_3, .marquee_INFO_4 {
-    position: fixed;
-    right: 0px;
-    bottom: -10px;
-    width: 70%;
-	color: white;
-    white-space: nowrap;
-    overflow: hidden;
-    box-sizing: border-box;
-}
-.marquee_INFO_3 p {
-    font-size: 18pt;
-    font-style: italic;
-    display: inline-block;
-    padding-left: 100%;
-    animation: marquee_INFO 60s linear infinite;
-}
-.marquee_INFO_4 p {
-    font-size: 18pt;
-    font-style: italic;
-    display: inline-block;
-    padding-left: 100%;
-    animation: marquee_INFO 60s linear 30s infinite;
-}
-.marquee_INFO_3 span {
-    font-style: normal;
-    font-family: '2070';
-    font-size: 18pt;
-}
-.marquee_INFO_4 span {
-    font-style: normal;
-    font-family: '2070';
-    font-size: 18pt;
-}
-@keyframes marquee_INFO {
-    0%   { transform: translate(0, 0); }
-    75% { transform: translate(-100%,0); }
-    100% { transform: translate(-100%, 0); }
-}
