@@ -4,8 +4,6 @@
 
     /* ------------ HEADER NAV CONTAINER ----------- */
     header {
-        --text: white;
-        
         position: sticky;
         position: -webkit-sticky;
         top: 0;
@@ -24,6 +22,7 @@
     header h2 {
         color: var(--text);
         font-weight: 600;
+        font-size: 30px;
     }
 
     header a {
@@ -42,7 +41,7 @@
     h2#item-logo {
         grid-area: logo;
         justify-self: start;
-        font-size: 28px;
+        font-size: 25px;
         line-height: 0.8;
     }
 
@@ -72,6 +71,65 @@
     .nav-scrolled {
         font-family: var(--font-family-secondary);
     }  
+    
+    @media only screen and (max-width: 1050px) {
+        :root {
+        --font-size-title: 80px;
+        }
+    }
+
+
+    @media only screen and (max-width: 800px) {
+        header {
+            grid-template-columns: 200px auto 190px 110px 90px;
+            grid-template-rows: 50px;
+            padding: 20px;
+            padding-left: var(--margin);
+            padding-right: var(--margin);
+        }
+
+        header h2 {
+            color: var(--text);
+            font-weight: 600;
+            font-size: 25px;
+        }
+
+        .lp-title p {
+            font-weight: 300;
+        }
+
+        :root {
+                --margin: 25px;
+                --font-size-primary: 35px;
+                --font-size-secondary: 35px;
+                --font-size-title: 50px;
+                --font-size-date: 17px;
+            }
+    }
+
+    @media only screen and (max-width: 600px) {
+        #itemabout, #itemartists, #itemprogramme {
+            display: none;
+        }
+
+        .player-podcast {
+            left: 50%;
+        }
+
+        :root {
+                --margin: 15px;
+                --font-size-primary: 20px;
+                --font-size-secondary: 20px;
+                --font-size-title: 40px;
+                --font-size-date: 13px;
+            }
+
+        html {
+            width: 100%;
+        }
+
+    }
+
 
 </style>
 

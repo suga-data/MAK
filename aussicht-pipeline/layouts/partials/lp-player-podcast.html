@@ -1,13 +1,81 @@
 <style>
-    .player-podcast {
+    .container {
+        width:450px;
+        border:1px solid #d3d3d3;
+        bottom: 1px;
+        left: 1px;
         position: fixed;
-        bottom: 0px;
-        left: 0px;
         z-index: 99;
+        background-color: black;
+        overflow: scroll;
     }
 
+    .container div {
+        width:100%;
+    }
+
+    .container .header {
+        /* background-color: white; */
+        padding: 2px;
+        cursor: pointer;
+        font-weight: bold;
+        color: var(--text);
+        font-family: var(--font-family-machine);
+    }
+
+    .container .content {
+        display: none;
+        padding : 5px;
+    }
+
+    .content {
+        height: 200px;
+        overflow: scroll;
+    }
+
+    iframe {
+        display: block;
+    }
+    
 </style>
 
-<div class="player-podcast" >
-    <iframe src="https://anchor.fm/off-line/embed/episodes/9-Wie-kmmern-wir-uns-in-Zukunft-eocfv5" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+<div class="container">
+    <div class="header"><span>aussicht.listen</span>
+
+    </div>
+    <div class="content">
+        <iframe src="https://anchor.fm/off-line/embed/episodes/10-Ist-die-Zukunft-der-Kultur-digital-eote0e/a-a4bao9f" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+        <iframe src="https://anchor.fm/off-line/embed/episodes/9-Wie-kmmern-wir-uns-in-Zukunft-eocfv5" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+        <iframe src="https://anchor.fm/off-line/embed/episodes/8-Wie-bewegen-wir-uns-in-Zukunft-fort-eob5u8/a-a47s3mb" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+        <iframe src="https://anchor.fm/off-line/embed/episodes/7-Drfen-wir-an-der-Zukunft-scheitern-enr3e3/a-a44ngu2" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+        <iframe src="https://anchor.fm/off-line/embed/episodes/6-Welche-Utopien-hlt-die-Kunst-bereit-enhh6v/a-a42m1vb" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+        <iframe src="https://anchor.fm/off-line/embed/episodes/5-Wie-stellen-wir-uns-die-Zukunft-vor-en080i/a-a3v097b" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+        <iframe src="https://anchor.fm/off-line/embed/episodes/4-Wie-verndert-uns-die-Technik-empq9v/a-a3uk0aq" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+        <iframe src="https://anchor.fm/off-line/embed/episodes/3-Braucht-die-Zukunft-die-Vergangenheit-emd6os/a-a3qv5em" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+        <iframe src="https://anchor.fm/off-line/embed/episodes/2-Hat-die-Demokratie-eine-Zukunft-elsq8u/a-a3njm6p" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+        <iframe src="https://anchor.fm/off-line/embed/episodes/1-Aus-heutiger-Sicht-ellabo/a-a3od3lg" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+    </div>
 </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+
+$(".header").click(function () {
+
+$header = $(this);
+//getting the next element
+$content = $header.next();
+//open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+$content.slideToggle(500, function () {
+    //execute this after slideToggle is done
+    //change text of header based on visibility of content div
+    $header.text(function () {
+        //change text based on condition
+        return $content.is(":visible") ? "aussicht-listen" : "aussicht+listen";
+    });
+});
+
+});
+</script>

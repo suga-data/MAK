@@ -94,13 +94,10 @@ button {
 
 /* ------------ TEXT STYLING ------------ */
 
-h1, h2 {
+h1, h2, h3 {
     font-family: var(--font-family-primary);
 } */
 
-h3 {
-    font-family: '2070 mono';
-}
 
 /* ------------ HEADER STYLING ------------ */
 
