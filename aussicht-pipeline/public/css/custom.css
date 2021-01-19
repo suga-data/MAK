@@ -7,9 +7,9 @@
     font-style: normal;
     unicode-range: U+000-5FF;
     src:    local('2070'),
-            url('2070-Light_72_web.woff2')  format('woff2'),        /* Super Modern Browsers iOS */
-            url('2070-Light_72_web.woff')   format('woff'),         /* Pretty Modern Browsers */
-            url('2070-Light72.ttf')         format('truetype');     /* Safari, Android, iOS */
+            url('../fonts/2070-Light_72_web.woff2')  format('woff2'),        /* Super Modern Browsers iOS */
+            url('../fonts/2070-Light_72_web.woff')   format('woff'),         /* Pretty Modern Browsers */
+            url('../fonts/2070-Light72.ttf')         format('truetype');     /* Safari, Android, iOS */
 }
 
 @font-face {
@@ -18,9 +18,9 @@
     font-style: normal;
     unicode-range: U+000-5FF;
     src:    local('2070'),
-            url('2070-Normal_92_web.woff2') format('woff2'),        /* Super Modern Browsers iOS */
-            url('2070-Normal_92_web.woff')  format('woff'),         /* Pretty Modern Browsers */
-            url('2070-Normal92.ttf')        format('truetype');     /* Safari, Android, iOS */
+            url('../fonts/2070-Normal_92_web.woff2') format('woff2'),        /* Super Modern Browsers iOS */
+            url('../fonts/2070-Normal_92_web.woff')  format('woff'),         /* Pretty Modern Browsers */
+            url('../fonts/2070-Normal92.ttf')        format('truetype');     /* Safari, Android, iOS */
   }
 
   @font-face {
@@ -29,9 +29,9 @@
     font-style: normal;
     unicode-range: U+000-5FF;
     src:    local('2070'),
-            url('2070-Medium_116_web.woff2')  format('woff2'),      /* Super Modern Browsers iOS */
-            url('2070-Medium_116_web.woff')   format('woff'),       /* Pretty Modern Browsers */
-            url('2070-Medium116.ttf')         format('truetype');   /* Safari, Android, iOS */
+            url('../fonts/2070-Medium_116_web.woff2')  format('woff2'),      /* Super Modern Browsers iOS */
+            url('../fonts/2070-Medium_116_web.woff')   format('woff'),       /* Pretty Modern Browsers */
+            url('../fonts/2070-Medium116.ttf')         format('truetype');   /* Safari, Android, iOS */
 }
 
 @font-face {
@@ -40,11 +40,11 @@
     font-style: normal;
     unicode-range: U+000-5FF;
     src:    local('2070'),
-            url('2070-Bold156.eot'),
-            url('2070-Bold_156_web.woff2')  format('woff2'),        /* Super Modern Browsers iOS */
-            url('2070-Bold_156_web.woff')   format('woff'),         /* Pretty Modern Browsers */
-            url('2070-Bold156.svg')         format('svg'),          /* Legacy iOS */
-            url('2070-Bold156.ttf')         format('truetype');     /* Safari, Android, iOS */
+            url('../fonts/2070-Bold156.eot'),
+            url('../fonts/2070-Bold_156_web.woff2')  format('woff2'),        /* Super Modern Browsers iOS */
+            url('../fonts/2070-Bold_156_web.woff')   format('woff'),         /* Pretty Modern Browsers */
+            url('../fonts/2070-Bold156.svg')         format('svg'),          /* Legacy iOS */
+            url('../fonts/2070-Bold156.ttf')         format('truetype');     /* Safari, Android, iOS */
 }
 
 @font-face {
@@ -53,9 +53,9 @@
     font-style: normal;
     unicode-range: U+000-5FF;
     src:    local('2070'),
-            url('2070-Black_176_web.woff2') format('woff2'),        /* Super Modern Browsers iOS */
-            url('2070-Black_176_web.woff')  format('woff'),         /* Pretty Modern Browsers */
-            url('2070-Black176.ttf')        format('truetype');     /* Safari, Android, iOS */
+            url('../fonts/2070-Black_176_web.woff2') format('woff2'),        /* Super Modern Browsers iOS */
+            url('../fonts/2070-Black_176_web.woff')  format('woff'),         /* Pretty Modern Browsers */
+            url('../fonts/2070-Black176.ttf')        format('truetype');     /* Safari, Android, iOS */
 }
 
 
@@ -65,8 +65,8 @@
     font-style: normal;
     unicode-range: U+000-5FF;
     src:    local('happy times'),
-            url('happy-times-NG_regular_master_web.woff2')  format('woff2'),
-            url('happy-times-NG_regular_master.ttf')        format('truetype');
+            url('../fonts/happy-times-NG_regular_master_web.woff2')  format('woff2'),
+            url('../fonts/happy-times-NG_regular_master.ttf')        format('truetype');
 }
 
 @font-face {
@@ -75,10 +75,10 @@
     font-style: normal;
     unicode-range: U+000-5FF;
     src:    local('2070mono'),
-            url('2070mono-Light_web.woff2')    format('woff2'),        /* Super Modern Browsers iOS */
-            url('2070mono-Light_72_web.woff')  format('woff'),         /* Pretty Modern Browsers */
-            url('2070mono-Light72.svg')        format('svg'),          /* Legacy iOS */
-            url('2070mono-Light72.ttf')        format('truetype');     /* Safari, Android, iOS */
+            url('../fonts/2070mono-Light_web.woff2')    format('woff2'),        /* Super Modern Browsers iOS */
+            url('../fonts/2070mono-Light_72_web.woff')  format('woff'),         /* Pretty Modern Browsers */
+            url('../fonts/2070mono-Light72.svg')        format('svg'),          /* Legacy iOS */
+            url('../fonts/2070mono-Light72.ttf')        format('truetype');     /* Safari, Android, iOS */
 }
 
 /* ------------ BUTTON STYLING ------------ */
@@ -94,13 +94,10 @@ button {
 
 /* ------------ TEXT STYLING ------------ */
 
-/* h1, h2 {
-    font-family: '2070';
+h1, h2, h3 {
+    font-family: var(--font-family-primary);
 } */
 
-h3 {
-    font-family: '2070 mono';
-}
 
 /* ------------ HEADER STYLING ------------ */
 

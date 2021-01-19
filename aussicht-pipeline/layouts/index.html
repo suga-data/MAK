@@ -17,11 +17,12 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <!-- <script src="../js/mousetrail.js"></script> -->
 
 <!-- --------------------- PRELOAD IMPORTED FONTS FIRST --------------------  -->
-        <link rel="preload" as="font" href="/fonts/2070-Normal_92_web.woff2" type="font/woff2" crossorigin="anonymous">
-        <link rel="preload" as="font" href="/fonts/2070-Normal_92_web.woff" type="font/woff2" crossorigin="anonymous">
-        <link rel="preload" as="font" href="/fonts/2070mono-Light_web.woff2" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" as="font" href="../fonts/2070-Normal_92_web.woff2" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" as="font" href="../fonts/2070-Normal_92_web.woff" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" as="font" href="../fonts/2070mono-Light_web.woff2" type="font/woff2" crossorigin="anonymous">
     </head>
 
     <style>
@@ -31,6 +32,8 @@
         --text: white;
         --color-white: white;
         --color-black: black;
+        --color-rosa: #E59BA8;
+        --color-indigo: #1D2273;
         --margin: 50px;
         --padding-between-sections: 100px;
 
@@ -40,7 +43,7 @@
 
         --font-size-primary: 40px;
         --font-size-secondary: 40px;
-        --font-size-title: 100px;
+        --font-size-title: 120px;
         --font-size-date: 20px;
         }
 
@@ -51,7 +54,16 @@
             background-color: var(--color-black);
             color: var(--color-white);
             z-index: 0;
+            cursor: url('../imgs/2070_cursor.png'), auto;
          }
+
+        #circle{
+            width: 80px;
+            height: 80px;
+            border: 1px solid #3c2946;
+            position: fixed;
+            border-radius:50%;
+        }
 
     </style>
 
@@ -71,9 +83,9 @@
 
         {{ partial "lp-programme" . }}
         
-        {{ partial "lp-list-artist" . }}
-
         {{ partial "lp-about" . }}
+
+        {{ partial "lp-list-artist" . }}
 
         {{ partial "lp-team" . }}
 
@@ -84,87 +96,89 @@
 
 
 <!-- ----------------------- SECTION OBSERVER ------------------------------  -->
-    <script defer>
 
-        // these are the elements (class or ID) that will be changed
-        const itemprogramme = document.querySelector("#itemprogramme");
-        const itemartists = document.querySelector("#itemartists");
-        const itemabout = document.querySelector("#itemabout");
-        
-        // this is being watched by the observer
-        const sectionOne = document.querySelector("#programme");
-        const sectionTwo = document.querySelector("#artists");
-        const sectionThree = document.querySelector("#about");
+<script defer>
+
+    // these are the elements (class or ID) that will be changed
+    const itemprogramme = document.querySelector("#itemprogramme");
+    const itemartists = document.querySelector("#itemartists");
+    const itemabout = document.querySelector("#itemabout");
     
-        const sectionOneOptions = {
-            rootMargin: "0px 0px 0px 0px",
-            threshold: 1.0
-        };
+    // this is being watched by the observer
+    const sectionOne = document.querySelector("#programme");
+    const sectionTwo = document.querySelector("#artists");
+    const sectionThree = document.querySelector("#about");
 
-        const sectionTwoOptions = {
-        };
+    const sectionOneOptions = {
+        rootMargin: "0px 0px 0px 0px",
+        threshold: 1.0
+    };
 
-        const sectionThreeOptions = {
-        };
+    const sectionTwoOptions = {
+    };
 
-
-        // OBSERVE SECTION 3 doing a function and looking at entries and itself + bring in options
-        const sectionOneObserver = new IntersectionObserver(function(
-            entries, 
-            sectionOneObserver
-        ) {
-            entries.forEach(entry => {
-                console.log(entry.target);
-                if(entry.isIntersecting) {
-                    itemprogramme.classList.add("nav-scrolled");
-                } else {
-                    itemprogramme.classList.remove("nav-scrolled");
-                }
-            })
-        }, 
-        sectionOneOptions);
-    
-        sectionOneObserver.observe(sectionOne);
+    const sectionThreeOptions = {
+    };
 
 
-        // OBSERVE SECTION 2
-        const sectionTwoObserver = new IntersectionObserver(function(
-            entries, 
-            sectionTwoObserver
-        ) {
-            entries.forEach(entry => {
-                console.log(entry.target);
-                if(entry.isIntersecting) {
-                    itemartists.classList.add("nav-scrolled");
-                } else {
-                    itemartists.classList.remove("nav-scrolled");
-                }
-            })
-        }, 
-        sectionTwoOptions);
-    
-        sectionTwoObserver.observe(sectionTwo);
+    // OBSERVE SECTION 3 doing a function and looking at entries and itself + bring in options
+    const sectionOneObserver = new IntersectionObserver(function(
+        entries, 
+        sectionOneObserver
+    ) {
+        entries.forEach(entry => {
+            console.log(entry.target);
+            if(entry.isIntersecting) {
+                itemprogramme.classList.add("nav-scrolled");
+            } else {
+                itemprogramme.classList.remove("nav-scrolled");
+            }
+        })
+    }, 
+    sectionOneOptions);
+
+    sectionOneObserver.observe(sectionOne);
 
 
-        // OBSERVE SECTION 3
-        const sectionThreeObserver = new IntersectionObserver(function(
-            entries, 
-            sectionThreeObserver
-        ) {
-            entries.forEach(entry => {
-                console.log(entry.target);
-                if(entry.isIntersecting) {
-                    itemabout.classList.add("nav-scrolled");
-                } else {
-                    itemabout.classList.remove("nav-scrolled");
-                }
-            })
-        }, 
-        sectionThreeOptions);
-    
-        sectionThreeObserver.observe(sectionThree);
-    
-    
-    </script>
+    // OBSERVE SECTION 2
+    const sectionTwoObserver = new IntersectionObserver(function(
+        entries, 
+        sectionTwoObserver
+    ) {
+        entries.forEach(entry => {
+            console.log(entry.target);
+            if(entry.isIntersecting) {
+                itemartists.classList.add("nav-scrolled");
+            } else {
+                itemartists.classList.remove("nav-scrolled");
+            }
+        })
+    }, 
+    sectionTwoOptions);
+
+    sectionTwoObserver.observe(sectionTwo);
+
+
+    // OBSERVE SECTION 3
+    const sectionThreeObserver = new IntersectionObserver(function(
+        entries, 
+        sectionThreeObserver
+    ) {
+        entries.forEach(entry => {
+            console.log(entry.target);
+            if(entry.isIntersecting) {
+                itemabout.classList.add("nav-scrolled");
+            } else {
+                itemabout.classList.remove("nav-scrolled");
+            }
+        })
+    }, 
+    sectionThreeOptions);
+
+    sectionThreeObserver.observe(sectionThree);
+
+
+</script>
+
     
 </html>

@@ -8,19 +8,18 @@
         position: -webkit-sticky;
         top: 0;
         display: grid;
-        grid-template-columns: 250px auto 250px 150px 130px;
+        grid-template-columns: 250px auto 250px 130px 150px;
         grid-template-rows: 50px;
         grid-template-areas:
-            "logo . programme artists about";
+            "logo . programme about artists";
         padding: 20px;
         padding-left: var(--margin);
         padding-right: var(--margin);
         z-index: 100;
-        mix-blend-mode: difference;
+        mix-blend-mode: difference; */
     }
 
     header h2 {
-        color: var(--text);
         font-weight: 600;
         font-size: 30px;
     }
@@ -28,11 +27,14 @@
     header a {
         color: var(--text);
         text-decoration: none;
+        /* -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: black; */
     }
 
     header a:hover {
-        color: var(--text);
+        color: var(--color-rosa);
         text-decoration: none;
+        cursor: inherit;
     }
 
 
@@ -51,12 +53,12 @@
 
     #itemabout {
         grid-area: about;
-        justify-self: end;
+        justify-self: center;
     }
 
     #itemartists {
         grid-area: artists;
-        justify-self: center;
+        justify-self: end;
     }    
 
     #itemprogramme {
@@ -72,6 +74,12 @@
         font-family: var(--font-family-secondary);
     }  
     
+    @media only screen and (max-width: 1390px) {
+        :root {
+        --font-size-title: 100px;
+        }
+    }
+
     @media only screen and (max-width: 1050px) {
         :root {
         --font-size-title: 80px;
@@ -139,11 +147,11 @@
 
     <h2 id="item-logo"><a href="#main">aussicht.<br>space</a></h2>
 
-    <h2 id="itemabout"><a href="#about">about</a></h2> 
+    <h2 id="itemabout"><a href="#about">About</a></h2> 
 
-    <h2 id="itemartists"><a href="#artists">artists</a></h2>
+    <h2 id="itemartists"><a href="#artists">Artists</a></h2>
 
-    <h2 id="itemprogramme"><a href="#programme">programme</a></h2> 
+    <h2 id="itemprogramme"><a href="#programme">Programme</a></h2> 
 
 </header>
 

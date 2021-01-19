@@ -12,14 +12,14 @@
         <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="/css/custom.css">
 
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-        
+
         <link rel="preload" as="font" href="/fonts/2070-Normal_92_web.woff2" type="font/woff2" crossorigin="anonymous">
         <link rel="preload" as="font" href="/fonts/2070-Normal_92_web.woff" type="font/woff2" crossorigin="anonymous">
         <link rel="preload" as="font" href="/fonts/2070mono-Light_web.woff2" type="font/woff2" crossorigin="anonymous">
@@ -27,10 +27,25 @@
 
     <style>
             
+ 
         :root {
+        --text: white;
         --color-white: white;
         --color-black: black;
+        --margin: 50px;
+        --padding-between-sections: 100px;
+
+        --font-family-primary: '2070';
+        --font-family-secondary: 'happy times';
+        --font-family-machine: '2070mono';
+
+        --font-size-primary: 40px;
+        --font-size-secondary: 40px;
+        --font-size-title: 100px;
+        --font-size-date: 20px;
         }
+
+ 
 
         body {
             overflow-x: hidden;
@@ -40,6 +55,8 @@
          }
 
     </style>
+
+
     
     <body id="main">
 
@@ -51,8 +68,6 @@
 
      
     header {
-        --text: white;
-        
         position: sticky;
         position: -webkit-sticky;
         top: 0;
@@ -62,6 +77,8 @@
         grid-template-areas:
             "logo . programme artists about";
         padding: 20px;
+        padding-left: var(--margin);
+        padding-right: var(--margin);
         z-index: 100;
         mix-blend-mode: difference;
     }
@@ -69,7 +86,7 @@
     header h2 {
         color: var(--text);
         font-weight: 600;
-        font-family: '2070';
+        font-size: 30px;
     }
 
     header a {
@@ -79,7 +96,7 @@
 
     header a:hover {
         color: var(--text);
-        text-decoration: underline;
+        text-decoration: none;
     }
 
 
@@ -88,7 +105,7 @@
     h2#item-logo {
         grid-area: logo;
         justify-self: start;
-        font-size: 28px;
+        font-size: 25px;
         line-height: 0.8;
     }
 
@@ -116,8 +133,67 @@
     }
 
     .nav-scrolled {
-        --text: blue;
+        font-family: var(--font-family-secondary);
     }  
+    
+    @media only screen and (max-width: 1050px) {
+        :root {
+        --font-size-title: 80px;
+        }
+    }
+
+
+    @media only screen and (max-width: 800px) {
+        header {
+            grid-template-columns: 200px auto 190px 110px 90px;
+            grid-template-rows: 50px;
+            padding: 20px;
+            padding-left: var(--margin);
+            padding-right: var(--margin);
+        }
+
+        header h2 {
+            color: var(--text);
+            font-weight: 600;
+            font-size: 25px;
+        }
+
+        .lp-title p {
+            font-weight: 300;
+        }
+
+        :root {
+                --margin: 25px;
+                --font-size-primary: 35px;
+                --font-size-secondary: 35px;
+                --font-size-title: 50px;
+                --font-size-date: 17px;
+            }
+    }
+
+    @media only screen and (max-width: 600px) {
+        #itemabout, #itemartists, #itemprogramme {
+            display: none;
+        }
+
+        .player-podcast {
+            left: 50%;
+        }
+
+        :root {
+                --margin: 15px;
+                --font-size-primary: 20px;
+                --font-size-secondary: 20px;
+                --font-size-title: 40px;
+                --font-size-date: 13px;
+            }
+
+        html {
+            width: 100%;
+        }
+
+    }
+
 
 </style>
 
@@ -147,19 +223,86 @@
 
         
         <style>
-    .player-podcast {
+    .container {
+        width:450px;
+        border:1px solid #d3d3d3;
+        bottom: 1px;
+        left: 1px;
         position: fixed;
-        bottom: 0px;
-        left: 0px;
         z-index: 99;
+        background-color: black;
+        overflow: scroll;
     }
 
+    .container div {
+        width:100%;
+    }
+
+    .container .header {
+         
+        padding: 2px;
+        cursor: pointer;
+        font-weight: bold;
+        color: var(--text);
+        font-family: var(--font-family-machine);
+    }
+
+    .container .content {
+        display: none;
+        padding : 5px;
+    }
+
+    .content {
+        height: 200px;
+        overflow: scroll;
+    }
+
+    iframe {
+        display: block;
+    }
+    
 </style>
 
-<div class="player-podcast" >
-    <iframe src="https://anchor.fm/off-line/embed/episodes/9-Wie-kmmern-wir-uns-in-Zukunft-eocfv5" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+<div class="container">
+    <div class="header"><span>aussicht.listen</span>
+
+    </div>
+    <div class="content">
+        <iframe src="https://anchor.fm/off-line/embed/episodes/10-Ist-die-Zukunft-der-Kultur-digital-eote0e/a-a4bao9f" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+        <iframe src="https://anchor.fm/off-line/embed/episodes/9-Wie-kmmern-wir-uns-in-Zukunft-eocfv5" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+        <iframe src="https://anchor.fm/off-line/embed/episodes/8-Wie-bewegen-wir-uns-in-Zukunft-fort-eob5u8/a-a47s3mb" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+        <iframe src="https://anchor.fm/off-line/embed/episodes/7-Drfen-wir-an-der-Zukunft-scheitern-enr3e3/a-a44ngu2" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+        <iframe src="https://anchor.fm/off-line/embed/episodes/6-Welche-Utopien-hlt-die-Kunst-bereit-enhh6v/a-a42m1vb" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+        <iframe src="https://anchor.fm/off-line/embed/episodes/5-Wie-stellen-wir-uns-die-Zukunft-vor-en080i/a-a3v097b" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+        <iframe src="https://anchor.fm/off-line/embed/episodes/4-Wie-verndert-uns-die-Technik-empq9v/a-a3uk0aq" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+        <iframe src="https://anchor.fm/off-line/embed/episodes/3-Braucht-die-Zukunft-die-Vergangenheit-emd6os/a-a3qv5em" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+        <iframe src="https://anchor.fm/off-line/embed/episodes/2-Hat-die-Demokratie-eine-Zukunft-elsq8u/a-a3njm6p" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+        <iframe src="https://anchor.fm/off-line/embed/episodes/1-Aus-heutiger-Sicht-ellabo/a-a3od3lg" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+    </div>
 </div>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+
+$(".header").click(function () {
+
+$header = $(this);
+
+$content = $header.next();
+
+$content.slideToggle(500, function () {
+    
+    
+    $header.text(function () {
+        
+        return $content.is(":visible") ? "aussicht-listen" : "aussicht+listen";
+    });
+});
+
+});
+</script>
 
 
         
@@ -177,15 +320,14 @@
     .lp-title {
         color: white;
         position: static;
-        font-family: '2070';
-        font-weight: 300;
-        font-size: 100pt;
         display: grid;
         margin: 20px;
+        margin-left: var(--margin);
+        margin-right: var(--margin);
         grid-template-columns: auto;
         grid-template-rows: auto;
         line-height: 1;
-        margin-bottom: 300px;
+        padding-bottom: 300px;
     }
 
     .typewriter {
@@ -194,12 +336,17 @@
         padding-right: 20px;
         border-style: solid;
         border-color: white;
-        font-family:'Courier New', Courier, monospace;
+        font-family: var(--font-family-machine);
+        hyphens: auto;
     }
 
     .lp-title p {
-        font-family: '2070';
+        font-family: var(--font-family-primary);
+        font-weight: 300;
+        font-size: var(--font-size-title);
     }
+
+     
 
 </style>
 
@@ -289,19 +436,28 @@
 <style>
 
     #programme {
-        padding-top: 100px;
+        padding-top: var(--padding-between-sections);
         padding-bottom: 130px;
         position: static;
         display: grid;
         margin: 20px;
+        margin-right: var(--margin);
+        margin-left: var(--margin);
         grid-template-columns: auto;
         grid-template-rows: auto;
         z-index: 1;
         color: white;
         font-weight: 400;
-        font-size: 40px;
+        font-size: var(--font-size-primary);
+        font-family: var(--font-family-primary);
         line-height: 1.2;
         margin-bottom: 300px;
+    }
+
+    .programme-date {
+        font-size: var(--font-size-date);
+        font-family: var(--font-family-machine);
+        font-weight: 400;
     }
 
 </style>
@@ -309,8 +465,8 @@
 
 <div id="programme">
 
-    <p class="lp-programme-txt">
-        <strong>11.3.2021, 6–8PM</strong> Eröffnung <strong>12.–14.3.2021, 12–8PM</strong> Eröffnungswochenende, Performances, Recording Room Failure Workshop (Fr.), Programmraum, Werkstatt <strong>17.3.2021, 6–8PM</strong> Performance, Recording Room, Mensa der Zukunft <strong>24.3.2021, 6–7:30PM</strong> Performance, Recording Room, Mittwochsplattform Stream, Recording Room <strong>3.–4.4.2021, 6–8PM</strong> Doktorand_innen Kolloquium <strong>14.4.2021, 6–8PM</strong> ganztägig Performance, Recording Room Luca Ganz <strong>21.4.2021, 6–8PM</strong>
+    <p>
+        <span class="programme-date">11.3.2021, 6–8PM</span> Eröffnung <span class="programme-date">12.–14.3.2021, 12–8PM</span> Eröffnungswochenende, Performances, Recording Room Failure Workshop (Fr.), Programmraum, Werkstatt <span class="programme-date">17.3.2021, 6–8PM</span> Performance, Recording Room, Mensa der Zukunft <span class="programme-date">24.3.2021, 6–7:30PM</span> Performance, Recording Room, Mittwochsplattform Stream, Recording Room <span class="programme-date">3.–4.4.2021, 6–8PM</span> Doktorand_innen Kolloquium <span class="programme-date">14.4.2021, 6–8PM</span> ganztägig Performance, Recording Room Luca Ganz <span class="programme-date">21.4.2021, 6–8PM</span>
     </p>
 
 </div>
@@ -318,29 +474,25 @@
         
 
 
-
 <style>
  #artists {
         background-color: var(--color-white);
         position: static;
-        padding-top: 100px;
-        padding-bottom: 100px;
+        padding-top: var(--padding-between-sections);
+        padding-bottom: var(--padding-between-sections);
+        padding-right: var(--margin);
+        padding-left: var(--margin);
         margin-bottom: 50px;
         z-index: 1;
         color: black;
-        font-family: 'happy times';
+        font-family: var(--font-family-secondary);
         font-weight: 400;
-        font-size: 45pt;
+        font-size: var(--font-size-secondary);
         line-height: 1.2;
-        padding: 50px;
         text-align:center;
         display:inline-block;
     }
 
-     
-         
-        
-     
 </style>
 
 
@@ -354,9 +506,6 @@
         overflow: hidden;
          
         height: auto;
-    }
-    .parent_artist_names:hover {
-
     }
 
     .child_artist_list_images_spans {
@@ -387,8 +536,8 @@
 
 
 <div id="artists">
-    <p>
 
+    <p>
 
         <div id='parent_artist_names_armbruster_jan'class='parent_artist_names'onmouseenter="hover_arist_name('#blank_span_simulating_loading_armbruster_jan', '#artist_list_empty_span_pushing_the_name_armbruster_jan', '#parent_artist_names_armbruster_jan', '#child_artist_list_images_spans_armbruster_jan')" onmouseleave="hover_arist_name('#blank_span_simulating_loading_armbruster_jan', '#artist_list_empty_span_pushing_the_name_armbruster_jan', '#parent_artist_names_armbruster_jan', '#child_artist_list_images_spans_armbruster_jan')">
         
@@ -2727,23 +2876,21 @@
         
 
 <style>
-    .lp-section {
-        margin-top: 70px;
-        margin-bottom: 130px;
-        padding-top: 100px;
-    }
+    #about {
+        padding-top: var(--padding-between-sections);
+        padding-bottom: var(--padding-between-sections);
+        margin-left: var(--margin);
+        margin-right: var(--margin);
 
-    #about p {
         position: static;
         display: grid;
-        margin: 20px;
-        margin-bottom: 50px;
         grid-template-columns: auto;
         grid-template-rows: auto;
         z-index: 1;
         color: white;
+        font-family: var(--font-family-primary);
         font-weight: 400;
-        font-size: 40px;
+        font-size: var(--font-size-primary);
         line-height: 1.2;
     }
 
@@ -2754,19 +2901,16 @@
 
 <div id="about">
 
-    <p id="1">
+    <p>
     Zwischen den Stühlen der vielen erinnerten Vergangenheiten und der zahlreichen denkbaren Zukünfte stehen wir im Jetzt. Beschäftigt mit den Herausforderungen des Alltags und dem Ankommen in der einen oder anderen »neuen« Normalität, scheint die Vorstellung von Zukunft als einem verheißungsvollen Horizont in Schieflage, zumindest in den Hintergrund geraten. Während die einen an Vergangenem festhalten, Zukunftsvisionen der Vergangenheit stilisieren oder der jüngeren Generation Utopie-Verdrossenheit vorwerfen, plädieren die anderen für mehr Verantwortung in der Gegenwart für die Zukunft.
-    </p>
-
-    <p id="2">
+    <br>
+    <br>
     Der Glaube an gemeinsamen Fortschritt, etwa in Bezug auf Technologien oder das soziale Miteinander, wird Tag für Tag auf die Probe gestellt. Wenn sich politische und ökologische Ereignisse überschlagen und die Zahl der Haupt- und Nebenschauplätze stetig anzuwachsen scheint, verlagert sich der einzelne Standpunkt auf zunehmend unsicheres Terrain. Sich selbst und andere nach Zukünftigem zu fragen, bleibt umso mehr relevant und zeigt sich, auch bei derzeitigen Future Bewegungen, nicht als Gegenstand, sondern als Prozess von Interaktion und Kommunikation.
-    </p>   
-
-    <p id="3">
+    <br>
+    <br>
     Wie können Diskurse über Zukunft heute geführt werden, wenn nicht nur die Zukunft, einer jetzigen und kommenden Gesellschaft, sondern auch das Verhandeln von Zukunft ungewiss ist? Ein zu starres, prognostisches Wissen über künftige Realitäten würde den Möglichkeitsraum jedenfalls eher verstellen als öffnen. Zumindest bietet diese Sichtweise die Hoffnung, dass wir noch auf sie einwirken können – im positiven wie im negativen Sinne. Die Auseinandersetzung mit Zukünftigem kann dann in multiple, offene Fragestellungen münden, die eine Gravitation zu Unbestimmtheiten und zum Nichtwissen spürbar werden lassen.
-    </p>
-
-    <p id="4">
+    <br>
+    <br>
     Dieser Ansatz zeigt sich nicht zuletzt in Design und Kunst mit einer im Ergebnis nie ganz vorhersehbaren Interaktion zwischen Gestaltenden, Materialien und Kontexten, in denen neue Entwürfe entstehen und zur Diskussion gestellt werden. Nicht nur Neuerungen innerhalb dieser Disziplinen selbst, sondern auch soziale Umbrüche und Prozesse des Um- und Andersdenkens auf ganz unterschiedlichen Wissensgebieten wären ohne den Mut, die Spannungen und Mehrdeutigkeiten undenkbar. An diesem Punkt setzt die Ausstellung “Aus heutiger Sicht. Diskurse über Zukunft” an, um verschiedene Sichtweisen auf Gegenwart und Zukunft in einen mehrstimmigen Austausch zu bringen.
     </p>
 
@@ -2782,25 +2926,19 @@
         padding-top: 100px;
         padding-bottom: 100px;
         margin-bottom: 50px;
-        z-index: 1;
-        color: white;
-        font-family: 'happy times';
-        font-weight: 400;
-        font-size: 40px;
-        line-height: 1.2;
-    }
+        z-index: 1;    }
 
     .lp-team p {
         text-align: center;
         display: grid;
-        margin-left: 150px;
-        margin-right: 150px;
+        margin-left: var(--margin);
+        margin-right: var(--margin);
         grid-template-columns: auto;
         grid-template-rows: auto;
-        color: #ADB09E;
-        font-family: 'happy times';
+        color: black;
+        font-family: var(--font-family-secondary);
         font-weight: 400;
-        font-size: 50px;
+        font-size: var(--font-size-secondary);
         line-height: 1.3;
     }
 
@@ -2810,13 +2948,17 @@
 <div class="lp-team">
 
     <p>
-        Beatrice Bianchini, Irina Denkmann, Jonas Deuter, Ulrike Grünewald, Sebastian Hahn, Felix Kosok, Erika Sacco Responsable for the Digital Space. Maria Sitte, Anna Sukhova, Ellen Wagner, Matthias Wagner K
+        Kuratiert wird die Gruppenaus­stellung unter der Leitung von Matthias Wagner K, dem Direktor des Museum Angewandte Kunst, von einem neunköpfigen Projektteam mit Beatrice Bianchini, Irina Denkmann, Jonas Deuter, Ulrike Grünewald, Felix Kosok, Erika Sacco, Maria Sitte, Anna Sukhova und Ellen Wagner (Studierende und Mitarbeiter*innen der HfG Offenbach).
     </p>
 
 </div>
 
 
     </body>
+
+
+
+
 
     <script defer>
 
