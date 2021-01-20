@@ -103,81 +103,76 @@
     const itemprogramme = document.querySelector("#itemprogramme");
     const itemartists = document.querySelector("#itemartists");
     const itemabout = document.querySelector("#itemabout");
-    
+
     // this is being watched by the observer
     const sectionOne = document.querySelector("#programme");
     const sectionTwo = document.querySelector("#artists");
     const sectionThree = document.querySelector("#about");
 
-    const sectionOneOptions = {
-        rootMargin: "0px 0px 0px 0px",
-        threshold: 1.0
-    };
+    availableSections = [
+        {
+            id: "programme",
+            menuId: "itemprogramme"
+        },
+        {
+            id: "about",
+            menuId: "itemabout"
+        },
+        {
+            id: "artists",
+            menuId: "itemartists"
+        }
+    ];
+    const elementsOffsets = {};
 
-    const sectionTwoOptions = {
-    };
+    activeSectionId = null;
 
-    const sectionThreeOptions = {
-    };
+    window.addEventListener("scroll", () => {
+        availableSections.forEach((s) => {
+        elementsOffsets[s.id] = document.querySelector(`#${s.id}`).offsetTop;
+        });
 
-
-    // OBSERVE SECTION 3 doing a function and looking at entries and itself + bring in options
-    const sectionOneObserver = new IntersectionObserver(function(
-        entries, 
-        sectionOneObserver
-    ) {
-        entries.forEach(entry => {
-            console.log(entry.target);
-            if(entry.isIntersecting) {
-                itemprogramme.classList.add("nav-scrolled");
-            } else {
-                itemprogramme.classList.remove("nav-scrolled");
-            }
-        })
-    }, 
-    sectionOneOptions);
-
-    sectionOneObserver.observe(sectionOne);
-
-
-    // OBSERVE SECTION 2
-    const sectionTwoObserver = new IntersectionObserver(function(
-        entries, 
-        sectionTwoObserver
-    ) {
-        entries.forEach(entry => {
-            console.log(entry.target);
-            if(entry.isIntersecting) {
-                itemartists.classList.add("nav-scrolled");
-            } else {
-                itemartists.classList.remove("nav-scrolled");
-            }
-        })
-    }, 
-    sectionTwoOptions);
-
-    sectionTwoObserver.observe(sectionTwo);
-
-
-    // OBSERVE SECTION 3
-    const sectionThreeObserver = new IntersectionObserver(function(
-        entries, 
-        sectionThreeObserver
-    ) {
-        entries.forEach(entry => {
-            console.log(entry.target);
-            if(entry.isIntersecting) {
-                itemabout.classList.add("nav-scrolled");
-            } else {
-                itemabout.classList.remove("nav-scrolled");
-            }
-        })
-    }, 
-    sectionThreeOptions);
-
-    sectionThreeObserver.observe(sectionThree);
-
-
+        var sectionHit = availableSections
+      .slice()
+      .reverse()
+      .some((section) => {
+        if (window.pageYOffset + 10 >= elementsOffsets[section.id]) {
+          if (activeSectionId === section.id) {
+            return true;
+          }
+          console.log(section);
+          activeSectionId = section.id;
+          // Setzt in der URL den Section-Eintrag hinter dem Hashtag
+          window.history.pushState("", "", `#${section.id}`);
+          if (section.id === "programme") {
+            itemprogramme.classList.add("nav-scrolled");
+            itemartists.classList.remove("nav-scrolled");
+            itemabout.classList.remove("nav-scrolled");
+            return true;
+          }
+          if (section.id === "about") {
+            itemprogramme.classList.remove("nav-scrolled");
+            itemartists.classList.remove("nav-scrolled");
+            itemabout.classList.add("nav-scrolled");
+            return true;
+          }
+          if (section.id === "artists") {
+            itemprogramme.classList.remove("nav-scrolled");
+            itemartists.classList.add("nav-scrolled");
+            itemabout.classList.remove("nav-scrolled");
+            return true;
+          }
+        }
+        return false;
+      });
+      if (!sectionHit) {
+        itemprogramme.classList.remove("nav-scrolled");
+        itemartists.classList.remove("nav-scrolled");
+        itemabout.classList.remove("nav-scrolled");
+        activeSectionId = null;
+    }
+    });
+    
 </script>
 
     

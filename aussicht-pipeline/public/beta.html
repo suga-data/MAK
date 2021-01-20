@@ -18,11 +18,12 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        
 
 
-        <link rel="preload" as="font" href="/fonts/2070-Normal_92_web.woff2" type="font/woff2" crossorigin="anonymous">
-        <link rel="preload" as="font" href="/fonts/2070-Normal_92_web.woff" type="font/woff2" crossorigin="anonymous">
-        <link rel="preload" as="font" href="/fonts/2070mono-Light_web.woff2" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" as="font" href="../fonts/2070-Normal_92_web.woff2" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" as="font" href="../fonts/2070-Normal_92_web.woff" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" as="font" href="../fonts/2070mono-Light_web.woff2" type="font/woff2" crossorigin="anonymous">
     </head>
 
     <style>
@@ -32,6 +33,8 @@
         --text: white;
         --color-white: white;
         --color-black: black;
+        --color-rosa: #E59BA8;
+        --color-indigo: #1D2273;
         --margin: 50px;
         --padding-between-sections: 100px;
 
@@ -41,7 +44,7 @@
 
         --font-size-primary: 40px;
         --font-size-secondary: 40px;
-        --font-size-title: 100px;
+        --font-size-title: 120px;
         --font-size-date: 20px;
         }
 
@@ -52,7 +55,16 @@
             background-color: var(--color-black);
             color: var(--color-white);
             z-index: 0;
+            cursor: url('../imgs/2070_cursor.png'), auto;
          }
+
+        #circle{
+            width: 80px;
+            height: 80px;
+            border: 1px solid #3c2946;
+            position: fixed;
+            border-radius:50%;
+        }
 
     </style>
 
@@ -72,31 +84,32 @@
         position: -webkit-sticky;
         top: 0;
         display: grid;
-        grid-template-columns: 250px auto 250px 150px 130px;
+        grid-template-columns: 250px auto 250px 130px 150px;
         grid-template-rows: 50px;
         grid-template-areas:
-            "logo . programme artists about";
+            "logo . programme about artists";
         padding: 20px;
         padding-left: var(--margin);
         padding-right: var(--margin);
         z-index: 100;
-        mix-blend-mode: difference;
+        mix-blend-mode: difference; */
     }
 
     header h2 {
-        color: var(--text);
         font-weight: 600;
-        font-size: 30px;
+        font-size: 23px;
     }
 
     header a {
         color: var(--text);
         text-decoration: none;
+         
     }
 
     header a:hover {
-        color: var(--text);
+        color: var(--color-rosa);
         text-decoration: none;
+        cursor: inherit;
     }
 
 
@@ -105,7 +118,7 @@
     h2#item-logo {
         grid-area: logo;
         justify-self: start;
-        font-size: 25px;
+        font-size: 20px;
         line-height: 0.8;
     }
 
@@ -115,12 +128,12 @@
 
     #itemabout {
         grid-area: about;
-        justify-self: end;
+        justify-self: center;
     }
 
     #itemartists {
         grid-area: artists;
-        justify-self: center;
+        justify-self: end;
     }    
 
     #itemprogramme {
@@ -136,6 +149,12 @@
         font-family: var(--font-family-secondary);
     }  
     
+    @media only screen and (max-width: 1390px) {
+        :root {
+        --font-size-title: 100px;
+        }
+    }
+
     @media only screen and (max-width: 1050px) {
         :root {
         --font-size-title: 80px;
@@ -155,7 +174,7 @@
         header h2 {
             color: var(--text);
             font-weight: 600;
-            font-size: 25px;
+            font-size: 18px;
         }
 
         .lp-title p {
@@ -203,11 +222,11 @@
 
     <h2 id="item-logo"><a href="#main">aussicht.<br>space</a></h2>
 
-    <h2 id="itemabout"><a href="#about">about</a></h2> 
+    <h2 id="itemabout"><a href="#about">About</a></h2> 
 
-    <h2 id="itemartists"><a href="#artists">artists</a></h2>
+    <h2 id="itemartists"><a href="#artists">Artists</a></h2>
 
-    <h2 id="itemprogramme"><a href="#programme">programme</a></h2> 
+    <h2 id="itemprogramme"><a href="#programme">Programme</a></h2> 
 
 </header>
 
@@ -222,7 +241,10 @@
 
 
         
-        <style>
+        <script src="../js/xmlparser.js"></script>
+
+
+<style>
     .container {
         width:450px;
         border:1px solid #d3d3d3;
@@ -247,12 +269,12 @@
         font-family: var(--font-family-machine);
     }
 
-    .container .content {
+    .container .player-content {
         display: none;
         padding : 5px;
     }
 
-    .content {
+    .player-content {
         height: 200px;
         overflow: scroll;
     }
@@ -267,17 +289,8 @@
     <div class="header"><span>aussicht.listen</span>
 
     </div>
-    <div class="content">
-        <iframe src="https://anchor.fm/off-line/embed/episodes/10-Ist-die-Zukunft-der-Kultur-digital-eote0e/a-a4bao9f" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
-        <iframe src="https://anchor.fm/off-line/embed/episodes/9-Wie-kmmern-wir-uns-in-Zukunft-eocfv5" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
-        <iframe src="https://anchor.fm/off-line/embed/episodes/8-Wie-bewegen-wir-uns-in-Zukunft-fort-eob5u8/a-a47s3mb" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
-        <iframe src="https://anchor.fm/off-line/embed/episodes/7-Drfen-wir-an-der-Zukunft-scheitern-enr3e3/a-a44ngu2" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
-        <iframe src="https://anchor.fm/off-line/embed/episodes/6-Welche-Utopien-hlt-die-Kunst-bereit-enhh6v/a-a42m1vb" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
-        <iframe src="https://anchor.fm/off-line/embed/episodes/5-Wie-stellen-wir-uns-die-Zukunft-vor-en080i/a-a3v097b" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
-        <iframe src="https://anchor.fm/off-line/embed/episodes/4-Wie-verndert-uns-die-Technik-empq9v/a-a3uk0aq" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
-        <iframe src="https://anchor.fm/off-line/embed/episodes/3-Braucht-die-Zukunft-die-Vergangenheit-emd6os/a-a3qv5em" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
-        <iframe src="https://anchor.fm/off-line/embed/episodes/2-Hat-die-Demokratie-eine-Zukunft-elsq8u/a-a3njm6p" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
-        <iframe src="https://anchor.fm/off-line/embed/episodes/1-Aus-heutiger-Sicht-ellabo/a-a3od3lg" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+    <div class="player-content">
+        
     </div>
 </div>
 
@@ -327,15 +340,14 @@ $content.slideToggle(500, function () {
         grid-template-columns: auto;
         grid-template-rows: auto;
         line-height: 1;
-        padding-bottom: 300px;
+        height: 120vh;
     }
 
     .typewriter {
         background-color: white;
         color: black;
         padding-right: 20px;
-        border-style: solid;
-        border-color: white;
+         
         font-family: var(--font-family-machine);
         hyphens: auto;
     }
@@ -436,41 +448,274 @@ $content.slideToggle(500, function () {
 <style>
 
     #programme {
-        padding-top: var(--padding-between-sections);
-        padding-bottom: 130px;
+        background-color: var(--color-white);
         position: static;
         display: grid;
-        margin: 20px;
-        margin-right: var(--margin);
-        margin-left: var(--margin);
-        grid-template-columns: auto;
-        grid-template-rows: auto;
+        padding-top: var(--padding-between-sections);
+        padding-bottom: var(--padding-between-sections);
+        padding-right: var(--margin);
+        padding-left: var(--margin);
         z-index: 1;
-        color: white;
+        color: black;
         font-weight: 400;
         font-size: var(--font-size-primary);
         font-family: var(--font-family-primary);
         line-height: 1.2;
-        margin-bottom: 300px;
+        min-height: 100vh;
+        max-height: auto;
     }
 
-    .programme-date {
-        font-size: var(--font-size-date);
-        font-family: var(--font-family-machine);
-        font-weight: 400;
+
+     
+        input[type='checkbox'] { 
+        display: none;
+    } 
+
+    .wrap-collabsible { 
+        display: inline-block;
+        padding-bottom: 0px;
+    } 
+
+    .event-toggle { 
+        display: inline-block; 
+        text-align: left; 
+        color: black; 
+        cursor: pointer; 
+        transition: all 0.25s ease-out; 
+        width: 450px;
+        padding-top: 50px;
+    } 
+
+    .event-toggle:hover{ 
+        color: #E59BA8; 
     }
+
+
+    .collapsible-content { 
+        max-height: 0px;  
+        max-width: 0px;
+        overflow: hidden; 
+        transition: max-width .25s ease-in-out, max-height .25s ease-in-out; 
+        display: inline-block;
+        color: #E59BA8;
+        text-align: left;
+        padding-right: 10px;
+        font-size: var(--font-size-date);
+        font-family: var(--font-family-machine); 
+    } 
+
+     
+    .toggle:checked + .event-toggle + #collapsible-01 { 
+        max-height: 100vh;
+        max-width: 100vh;
+    } 
+
+    .toggle:checked + .event-toggle + #collapsible-02 { 
+        max-height: 100vh;
+        max-width: 100vh;
+    } 
+
+    .toggle:checked + .event-toggle + #collapsible-03 { 
+        max-height: 100vh;
+        max-width: 100vh;
+    }
+
+    .toggle:checked + .event-toggle + #collapsible-04 { 
+        max-height: 100vh;
+        max-width: 100vh;
+    }
+
+    .toggle:checked + .event-toggle + #collapsible-05 { 
+        max-height: 100vh;
+        max-width: 100vh;
+    }
+
+    .toggle:checked + .event-toggle + #collapsible-06 { 
+        max-height: 100vh;
+        max-width: 100vh;
+    }
+
+    .toggle:checked + .event-toggle + #collapsible-07 { 
+        max-height: 100vh;
+        max-width: 100vh;
+    }
+
+     
+    .collapsible-content .content-inner { 
+     
+    margin-top: 10px;
+    } 
+
+    .event {
+    display: block;
+    padding-left: 0px;
+    padding-right: 40px;
+    }
+
+    .date {
+    font-size: var(--font-size-date);
+    font-family: var(--font-family-machine);
+    font-weight: 400;
+    }
+
 
 </style>
 
 
 <div id="programme">
 
+
+    <div class="wrap-collabsible"> 
+
+
+          
+        <input id="trigger-01" class="toggle" type="checkbox"> 
+        <label for="trigger-01" class="event-toggle">
+            <div class="event date">11.3.2021, 6–8PM</div>
+            <div class="event name">Eröffnung.</div>
+        </label>
+          
+        <div class="collapsible-content" id="collapsible-01">
+            <div class="content-inner">
+              As part of her ongoing reissue series, PJ Harvey has announced a vinyl reissue of her fifth album, 2000’s Stories From the City, Stories From the Sea. It will be released alongside Stories From the City, Stories From the Sea – Demos, a collection of unreleased demos of every track on the album. Both sets arrive February 26. Listen to a demo of “This Mess We’re In” below. Link to the event on Zoom.
+            </div>       
+        </div>
+        
+          
+          <input id="trigger-02" class="toggle" type="checkbox"> 
+          <label for="trigger-02" class="event-toggle">
+            <div class="event date">12.–14.3.2021, 12–8PM</div>
+            <div class="event name">Eröffnungswochenende, Performances, Recording Room Failure Workshop.</div>
+          </label>
+          
+        <div class="collapsible-content" id="collapsible-02">
+            <div class="content-inner">
+              I am not familiar with the geography of heaven. And speaking of death, on which this country was founded on. We are all in this together with the same conflictions. We are all enslaved. Trapped in a tissue of lies, for every sound utter, for every sound utter, where every sound uttered, contains the longing for crime, the longing for crime, the longing for crime against nature.
+            </div>       
+        </div>
+          
+          
+          <input id="trigger-03" class="toggle" type="checkbox"> 
+          <label for="trigger-03" class="event-toggle">
+            <div class="event date">17.3.2021, 6–8PM</div>
+            <div class="event name">Performance, Recording Room, Mensa der Zukunft.</div>
+          </label>
+          
+            <div class="collapsible-content" id="collapsible-03">
+            <div class="content-inner">
+              You cannot, sir, take from me anything that I will not more willingly part withal - except my life, except my life, except my life. Be not afraid of greatness. Some are born great, some achieve greatness, and some have greatness thrust upon 'em.
+            </div>       
+          </div>
+          
+        
+        
+          
+          
+          <input id="trigger-04" class="toggle" type="checkbox"> 
+          <label for="trigger-04" class="event-toggle">
+            <div class="event date">24.3.2021, 6–7:30PM</div>
+            <div class="event name">Performance, Mittwochsplattform Stream, Recording Room.</div>
+          </label>
+          
+          <div class="collapsible-content" id="collapsible-04">
+            <div class="content-inner">
+              As part of her ongoing reissue series, PJ Harvey has announced a vinyl reissue of her fifth album, 2000’s Stories From the City, Stories From the Sea. It will be released alongside Stories From the City, Stories From the Sea – Demos, a collection of unreleased demos of every track on the album. Both sets arrive February 26. Listen to a demo of “This Mess We’re In” below. Link to the event on Zoom.
+            </div>       
+          </div>
+        
+          
+          <input id="trigger-05" class="toggle" type="checkbox"> 
+          <label for="trigger-05" class="event-toggle">
+            <div class="event date">3.–4.4.2021, 6–8PM</div>
+            <div class="event name">Doktorand_innen Kolloquium.</div>
+          </label>
+          
+            <div class="collapsible-content" id="collapsible-05">
+            <div class="content-inner">
+              I am not familiar with the geography of heaven. And speaking of death, on which this country was founded on. We are all in this together with the same conflictions. We are all enslaved. Trapped in a tissue of lies, for every sound utter, for every sound utter, where every sound uttered, contains the longing for crime, the longing for crime, the longing for crime against nature.
+            </div>       
+          </div>
+          
+          
+          <input id="trigger-06" class="toggle" type="checkbox"> 
+          <label for="trigger-06" class="event-toggle">
+            <div class="event date">14.4.2021, 6–8PM</div>
+            <div class="event name">Ganztägig Performance, Recording Room Luca Ganz.</div>
+          </label>
+          
+            <div class="collapsible-content" id="collapsible-06">
+            <div class="content-inner">
+              You cannot, sir, take from me anything that I will not more willingly part withal - except my life, except my life, except my life. Be not afraid of greatness. Some are born great, some achieve greatness, and some have greatness thrust upon 'em.
+            </div>       
+          </div>
+          
+
+
+        
+          
+          
+      <input id="trigger-07" class="toggle" type="checkbox"> 
+      <label for="trigger-07" class="event-toggle">
+        <div class="event date">21.4.2021, 6–8PM</div>
+        <div class="event name">Elektronische Performance, Recording Room Max Mustermann.</div>
+      </label>
+      
+      <div class="collapsible-content" id="collapsible-07">
+        <div class="content-inner">
+          As part of her ongoing reissue series, PJ Harvey has announced a vinyl reissue of her fifth album, 2000’s Stories From the City, Stories From the Sea. It will be released alongside Stories From the City, Stories From the Sea – Demos, a collection of unreleased demos of every track on the album. Both sets arrive February 26. Listen to a demo of “This Mess We’re In” below. Link to the event on Zoom.
+        </div>       
+      </div>
+
+    </div>
+
+</div>
+
+
+
+        
+        
+
+<style>
+    #about {
+        padding-top: var(--padding-between-sections);
+        padding-bottom: var(--padding-between-sections);
+        margin-left: var(--margin);
+        margin-right: var(--margin);
+
+        position: static;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        z-index: 1;
+        color: white;
+        font-family: var(--font-family-primary);
+        font-weight: 400;
+        font-size: var(--font-size-primary);
+        line-height: 1.2;
+    }
+
+</style>
+
+
+
+
+<div id="about">
+
     <p>
-        <span class="programme-date">11.3.2021, 6–8PM</span> Eröffnung <span class="programme-date">12.–14.3.2021, 12–8PM</span> Eröffnungswochenende, Performances, Recording Room Failure Workshop (Fr.), Programmraum, Werkstatt <span class="programme-date">17.3.2021, 6–8PM</span> Performance, Recording Room, Mensa der Zukunft <span class="programme-date">24.3.2021, 6–7:30PM</span> Performance, Recording Room, Mittwochsplattform Stream, Recording Room <span class="programme-date">3.–4.4.2021, 6–8PM</span> Doktorand_innen Kolloquium <span class="programme-date">14.4.2021, 6–8PM</span> ganztägig Performance, Recording Room Luca Ganz <span class="programme-date">21.4.2021, 6–8PM</span>
+    Zwischen den Stühlen der vielen erinnerten Vergangenheiten und der zahlreichen denkbaren Zukünfte stehen wir im Jetzt. Beschäftigt mit den Herausforderungen des Alltags und dem Ankommen in der einen oder anderen »neuen« Normalität, scheint die Vorstellung von Zukunft als einem verheißungsvollen Horizont in Schieflage, zumindest in den Hintergrund geraten. Während die einen an Vergangenem festhalten, Zukunftsvisionen der Vergangenheit stilisieren oder der jüngeren Generation Utopie-Verdrossenheit vorwerfen, plädieren die anderen für mehr Verantwortung in der Gegenwart für die Zukunft.
+    <br>
+    <br>
+    Der Glaube an gemeinsamen Fortschritt, etwa in Bezug auf Technologien oder das soziale Miteinander, wird Tag für Tag auf die Probe gestellt. Wenn sich politische und ökologische Ereignisse überschlagen und die Zahl der Haupt- und Nebenschauplätze stetig anzuwachsen scheint, verlagert sich der einzelne Standpunkt auf zunehmend unsicheres Terrain. Sich selbst und andere nach Zukünftigem zu fragen, bleibt umso mehr relevant und zeigt sich, auch bei derzeitigen Future Bewegungen, nicht als Gegenstand, sondern als Prozess von Interaktion und Kommunikation.
+    <br>
+    <br>
+    Wie können Diskurse über Zukunft heute geführt werden, wenn nicht nur die Zukunft, einer jetzigen und kommenden Gesellschaft, sondern auch das Verhandeln von Zukunft ungewiss ist? Ein zu starres, prognostisches Wissen über künftige Realitäten würde den Möglichkeitsraum jedenfalls eher verstellen als öffnen. Zumindest bietet diese Sichtweise die Hoffnung, dass wir noch auf sie einwirken können – im positiven wie im negativen Sinne. Die Auseinandersetzung mit Zukünftigem kann dann in multiple, offene Fragestellungen münden, die eine Gravitation zu Unbestimmtheiten und zum Nichtwissen spürbar werden lassen.
+    <br>
+    <br>
+    Dieser Ansatz zeigt sich nicht zuletzt in Design und Kunst mit einer im Ergebnis nie ganz vorhersehbaren Interaktion zwischen Gestaltenden, Materialien und Kontexten, in denen neue Entwürfe entstehen und zur Diskussion gestellt werden. Nicht nur Neuerungen innerhalb dieser Disziplinen selbst, sondern auch soziale Umbrüche und Prozesse des Um- und Andersdenkens auf ganz unterschiedlichen Wissensgebieten wären ohne den Mut, die Spannungen und Mehrdeutigkeiten undenkbar. An diesem Punkt setzt die Ausstellung “Aus heutiger Sicht. Diskurse über Zukunft” an, um verschiedene Sichtweisen auf Gegenwart und Zukunft in einen mehrstimmigen Austausch zu bringen.
     </p>
 
 </div>
-        
+
         
 
 
@@ -482,7 +727,6 @@ $content.slideToggle(500, function () {
         padding-bottom: var(--padding-between-sections);
         padding-right: var(--margin);
         padding-left: var(--margin);
-        margin-bottom: 50px;
         z-index: 1;
         color: black;
         font-family: var(--font-family-secondary);
@@ -2876,49 +3120,6 @@ $content.slideToggle(500, function () {
         
 
 <style>
-    #about {
-        padding-top: var(--padding-between-sections);
-        padding-bottom: var(--padding-between-sections);
-        margin-left: var(--margin);
-        margin-right: var(--margin);
-
-        position: static;
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-rows: auto;
-        z-index: 1;
-        color: white;
-        font-family: var(--font-family-primary);
-        font-weight: 400;
-        font-size: var(--font-size-primary);
-        line-height: 1.2;
-    }
-
-</style>
-
-
-
-
-<div id="about">
-
-    <p>
-    Zwischen den Stühlen der vielen erinnerten Vergangenheiten und der zahlreichen denkbaren Zukünfte stehen wir im Jetzt. Beschäftigt mit den Herausforderungen des Alltags und dem Ankommen in der einen oder anderen »neuen« Normalität, scheint die Vorstellung von Zukunft als einem verheißungsvollen Horizont in Schieflage, zumindest in den Hintergrund geraten. Während die einen an Vergangenem festhalten, Zukunftsvisionen der Vergangenheit stilisieren oder der jüngeren Generation Utopie-Verdrossenheit vorwerfen, plädieren die anderen für mehr Verantwortung in der Gegenwart für die Zukunft.
-    <br>
-    <br>
-    Der Glaube an gemeinsamen Fortschritt, etwa in Bezug auf Technologien oder das soziale Miteinander, wird Tag für Tag auf die Probe gestellt. Wenn sich politische und ökologische Ereignisse überschlagen und die Zahl der Haupt- und Nebenschauplätze stetig anzuwachsen scheint, verlagert sich der einzelne Standpunkt auf zunehmend unsicheres Terrain. Sich selbst und andere nach Zukünftigem zu fragen, bleibt umso mehr relevant und zeigt sich, auch bei derzeitigen Future Bewegungen, nicht als Gegenstand, sondern als Prozess von Interaktion und Kommunikation.
-    <br>
-    <br>
-    Wie können Diskurse über Zukunft heute geführt werden, wenn nicht nur die Zukunft, einer jetzigen und kommenden Gesellschaft, sondern auch das Verhandeln von Zukunft ungewiss ist? Ein zu starres, prognostisches Wissen über künftige Realitäten würde den Möglichkeitsraum jedenfalls eher verstellen als öffnen. Zumindest bietet diese Sichtweise die Hoffnung, dass wir noch auf sie einwirken können – im positiven wie im negativen Sinne. Die Auseinandersetzung mit Zukünftigem kann dann in multiple, offene Fragestellungen münden, die eine Gravitation zu Unbestimmtheiten und zum Nichtwissen spürbar werden lassen.
-    <br>
-    <br>
-    Dieser Ansatz zeigt sich nicht zuletzt in Design und Kunst mit einer im Ergebnis nie ganz vorhersehbaren Interaktion zwischen Gestaltenden, Materialien und Kontexten, in denen neue Entwürfe entstehen und zur Diskussion gestellt werden. Nicht nur Neuerungen innerhalb dieser Disziplinen selbst, sondern auch soziale Umbrüche und Prozesse des Um- und Andersdenkens auf ganz unterschiedlichen Wissensgebieten wären ohne den Mut, die Spannungen und Mehrdeutigkeiten undenkbar. An diesem Punkt setzt die Ausstellung “Aus heutiger Sicht. Diskurse über Zukunft” an, um verschiedene Sichtweisen auf Gegenwart und Zukunft in einen mehrstimmigen Austausch zu bringen.
-    </p>
-
-</div>
-
-        
-
-<style>
     
     .lp-team {
         background-color: white;
@@ -2960,87 +3161,89 @@ $content.slideToggle(500, function () {
 
 
 
-    <script defer>
 
-        
-        const itemprogramme = document.querySelector("#itemprogramme");
-        const itemartists = document.querySelector("#itemartists");
-        const itemabout = document.querySelector("#itemabout");
-        
-        
-        const sectionOne = document.querySelector("#programme");
-        const sectionTwo = document.querySelector("#artists");
-        const sectionThree = document.querySelector("#about");
+<script defer>
+
     
-        const sectionOneOptions = {
-            rootMargin: "0px 0px 0px 0px",
-            threshold: 1.0
-        };
-
-        const sectionTwoOptions = {
-        };
-
-        const sectionThreeOptions = {
-        };
-
-
-        
-        const sectionOneObserver = new IntersectionObserver(function(
-            entries, 
-            sectionOneObserver
-        ) {
-            entries.forEach(entry => {
-                console.log(entry.target);
-                if(entry.isIntersecting) {
-                    itemprogramme.classList.add("nav-scrolled");
-                } else {
-                    itemprogramme.classList.remove("nav-scrolled");
-                }
-            })
-        }, 
-        sectionOneOptions);
-    
-        sectionOneObserver.observe(sectionOne);
-
-
-        
-        const sectionTwoObserver = new IntersectionObserver(function(
-            entries, 
-            sectionTwoObserver
-        ) {
-            entries.forEach(entry => {
-                console.log(entry.target);
-                if(entry.isIntersecting) {
-                    itemartists.classList.add("nav-scrolled");
-                } else {
-                    itemartists.classList.remove("nav-scrolled");
-                }
-            })
-        }, 
-        sectionTwoOptions);
-    
-        sectionTwoObserver.observe(sectionTwo);
-
-
-        
-        const sectionThreeObserver = new IntersectionObserver(function(
-            entries, 
-            sectionThreeObserver
-        ) {
-            entries.forEach(entry => {
-                console.log(entry.target);
-                if(entry.isIntersecting) {
-                    itemabout.classList.add("nav-scrolled");
-                } else {
-                    itemabout.classList.remove("nav-scrolled");
-                }
-            })
-        }, 
-        sectionThreeOptions);
-    
-        sectionThreeObserver.observe(sectionThree);
+    const itemprogramme = document.querySelector("#itemprogramme");
+    const itemartists = document.querySelector("#itemartists");
+    const itemabout = document.querySelector("#itemabout");
     
     
-    </script>
+    const sectionOne = document.querySelector("#programme");
+    const sectionTwo = document.querySelector("#artists");
+    const sectionThree = document.querySelector("#about");
+
+    const sectionOneOptions = {
+        rootMargin: "0px 0px 0px 0px",
+        threshold: 1.0
+    };
+
+    const sectionTwoOptions = {
+    };
+
+    const sectionThreeOptions = {
+    };
+
+
+    
+    const sectionOneObserver = new IntersectionObserver(function(
+        entries, 
+        sectionOneObserver
+    ) {
+        entries.forEach(entry => {
+            console.log(entry.target);
+            if(entry.isIntersecting) {
+                itemprogramme.classList.add("nav-scrolled");
+            } else {
+                itemprogramme.classList.remove("nav-scrolled");
+            }
+        })
+    }, 
+    sectionOneOptions);
+
+    sectionOneObserver.observe(sectionOne);
+
+
+    
+    const sectionTwoObserver = new IntersectionObserver(function(
+        entries, 
+        sectionTwoObserver
+    ) {
+        entries.forEach(entry => {
+            console.log(entry.target);
+            if(entry.isIntersecting) {
+                itemartists.classList.add("nav-scrolled");
+            } else {
+                itemartists.classList.remove("nav-scrolled");
+            }
+        })
+    }, 
+    sectionTwoOptions);
+
+    sectionTwoObserver.observe(sectionTwo);
+
+
+    
+    const sectionThreeObserver = new IntersectionObserver(function(
+        entries, 
+        sectionThreeObserver
+    ) {
+        entries.forEach(entry => {
+            console.log(entry.target);
+            if(entry.isIntersecting) {
+                itemabout.classList.add("nav-scrolled");
+            } else {
+                itemabout.classList.remove("nav-scrolled");
+            }
+        })
+    }, 
+    sectionThreeOptions);
+
+    sectionThreeObserver.observe(sectionThree);
+
+
+</script>
+
     
 </html>
