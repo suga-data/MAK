@@ -1,8 +1,9 @@
 function hover_arist_name(id_parent, id_child){
     var loading_speed = 100;
-    var deloading_speed = 100;
-    var kids = [].reverse.call($(id_child).children());
-    
+    var deloading_speed = 90;
+    var kids_reverseds = [].reverse.call($(id_child).children());
+    var kids = $(id_child).children();
+
     var isHovered = $(id_parent).is(':hover');
     if (isHovered == true) {
         //console.log('load');
@@ -13,6 +14,8 @@ function hover_arist_name(id_parent, id_child){
     }
 
     function stopLoadingImages(){
+        // var kits = kids.reverse();
+        // console.log(kits);
         $.each(kids, function (i, kid) {
             setTimeout(function () {
                 $(kid).css('display', 'none');
@@ -21,12 +24,12 @@ function hover_arist_name(id_parent, id_child){
     }
 
     function startLoadingImages(){
-        $.each(kids, function (i, kid) {
+        $.each(kids_reverseds, function (i, kids_reversed) {
             setTimeout(function () {
                 var isHovered = $(id_parent).is(':hover'); // returns true or false
                 if (isHovered == true) {
                     //console.log('display i:' + i );
-                    $(kid).css('display', 'inline-block');
+                    $(kids_reversed).css('display', 'inline-block');
                 } else {
                     //stopLoadingImages();
                     //console.log('stop loading:' + i );

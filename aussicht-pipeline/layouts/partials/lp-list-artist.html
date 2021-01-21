@@ -14,9 +14,18 @@
         font-family: var(--font-family-secondary);
         font-weight: 400;
         font-size: var(--font-size-secondary);
-        line-height: 1.2;
+        /* line-height: 1.2; */
+
+        line-height:0.9;
         text-align:center;
         display:inline-block;
+    }
+
+    .list_object {
+        width: auto;
+        height: auto;
+        display:inline-block;
+        /* background-color: burlywood; */
     }
 
     .parent_artist_names {
@@ -26,37 +35,52 @@
         overflow: hidden;
         /* margin-left: 0px;
         margin-right: 0px; */
-        height: auto;
+        /* height: auto; */
+        height: 64px;
+        vertical-align: top;
+        margin-bottom: 5px;;
     }
 
     .child_artist_list_images_spans {
+        /* height: 64px; */
         position: absolute;
+        /* background-color: cyan; */
+
     }
+    .child_artist_list_images_spans > * {
+        vertical-align: top;
+        /* vertical-align: text-top; */
+    }
+    /* .child_artist_list_images_spans > img {
+        width:64px;
+        height: 64px;
+    } */
 
     .child_artist_list_names {
         visibility: hidden;
+        /* vertical-align: text-top; */
+        /* vertical-align: bottom; */
+
     }
 
     .blank_span_simulating_loading {
         visibility: hidden;
     }
     #artist_list_images_imgs{
-        width:auto; 
-        height: auto;
+        width: 64px;
+        height: 64px;
+        /* vertical-align: text-top; */
     }
 
     .artist_list_komma{
         display: inline-block;
-        vertical-align: top;
-    }
-    .list_object {
-        width: auto;
-        display:inline-block;
+        /* vertical-align: top; */
     }
 
     .artist_list_colored_div {
         background:  var(--color-rosa); 
-        width:32px; height: 32px;
+        width: 64px; 
+        height: 64px;
     }
 
 
@@ -99,16 +123,17 @@
             <div id='parent_artist_names_arndt_armin'class='parent_artist_names'onmouseenter="hover_arist_name('#parent_artist_names_arndt_armin', '#child_artist_list_images_spans_arndt_armin')" onmouseleave="hover_arist_name('#parent_artist_names_arndt_armin', '#child_artist_list_images_spans_arndt_armin')">
             
             <span id='child_artist_list_images_spans_arndt_armin'class='child_artist_list_images_spans'>
-            <img id="arndt_armin_thumbnail0" class= "artist_list_images_imgs" src="imgs/image_gpt/arndt_armin/generated/64x64/64_arndt_armin_7.png" style="width:64px; height: 64px; display: none">
-            <img id="arndt_armin_thumbnail1" class= "artist_list_images_imgs" src="imgs/image_gpt/arndt_armin/generated/64x64/64_arndt_armin_22.png" style="width:64px; height: 64px; display: none">
-            <img id="arndt_armin_thumbnail2" class= "artist_list_images_imgs" src="imgs/image_gpt/arndt_armin/generated/64x64/64_arndt_armin_36.png" style="width:64px; height: 64px; display: none">
-            <img id="arndt_armin_thumbnail3" class= "artist_list_images_imgs" src="imgs/image_gpt/arndt_armin/generated/64x64/64_arndt_armin_8.png" style="width:64px; height: 64px; display: none">
-            <img id="arndt_armin_thumbnail4" class= "artist_list_images_imgs" src="imgs/image_gpt/arndt_armin/generated/64x64/64_arndt_armin_27.png" style="width:64px; height: 64px; display: none">
-            <img id="arndt_armin_thumbnail5" class= "artist_list_images_imgs" src="imgs/image_gpt/arndt_armin/generated/64x64/64_arndt_armin_32.png" style="width:64px; height: 64px; display: none">
+            <img id="arndt_armin_thumbnail0" class= "artist_list_images_imgs" src="imgs/image_gpt/arndt_armin/generated/64x64/64_arndt_armin_7.png" style="display: none">
+            <img id="arndt_armin_thumbnail1" class= "artist_list_images_imgs" src="imgs/image_gpt/arndt_armin/generated/64x64/64_arndt_armin_22.png" style="display: none">
+            <img id="arndt_armin_thumbnail2" class= "artist_list_images_imgs" src="imgs/image_gpt/arndt_armin/generated/64x64/64_arndt_armin_36.png" style="display: none">
+            <img id="arndt_armin_thumbnail3" class= "artist_list_images_imgs" src="imgs/image_gpt/arndt_armin/generated/64x64/64_arndt_armin_8.png" style="display: none">
+            <img id="arndt_armin_thumbnail4" class= "artist_list_images_imgs" src="imgs/image_gpt/arndt_armin/generated/64x64/64_arndt_armin_27.png" style="display: none">
+            <img id="arndt_armin_thumbnail5" class= "artist_list_images_imgs" src="imgs/image_gpt/arndt_armin/generated/64x64/64_arndt_armin_32.png" style="display: none">
             
-            <span style='width:0px; height: 0px; display: none'></span>
-            <span style='width:0px; height: 0px; display: none'></span>
-            Armin Arndt</span>
+            <div style='margin: 0; padding: 0; width:0px; height: 0px; display: none'></div>
+            <div style='margin: 0; padding: 0; width:0px; height: 0px; display: none'></div>
+            Armin Arndt
+            </span>
             
             <span id='child_artist_list_name_arndt_armin'class='child_artist_list_names'>Armin Arndt</span>
             <span id='child_artist_list_hovers_arndt_armin'class='child_artist_list_hovers'></span>
@@ -2480,7 +2505,7 @@
             <span id='child_artist_list_name_oezbayram_burhan'class='child_artist_list_names'>Burhan Özbayram</span>
             <span id='child_artist_list_hovers_oezbayram_burhan'class='child_artist_list_hovers'></span>
             
-            </div></div>
+            </div><div class='artist_list_komma'>.</div></div>
             
             
             
