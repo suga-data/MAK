@@ -11,8 +11,7 @@
         padding-right: var(--margin);
         padding-left: var(--margin);
         z-index: 1;
-        color: black;
-        font-weight: 400;
+        font-weight: 500;
         font-size: var(--font-size-primary);
         font-family: var(--font-family-primary);
         line-height: 1.2;
@@ -21,97 +20,112 @@
     }
 
 
-    /* The checkbox will be invisible and its label will be used instead to check or uncheck it. */
-        input[type='checkbox'] { 
-        display: none;
-    } 
+  /* The checkbox will be invisible and its label will be used instead to check or uncheck it. */
+  input[type='checkbox'] { 
+    display: none;
+  } 
 
-    .wrap-collabsible { 
-        display: inline-block;
-        padding-bottom: 0px;
-    } 
+  .break {
+    display: none;
+  }
 
-    .event-toggle { 
-        display: inline-block; 
-        text-align: left; 
-        color: black; 
-        cursor: pointer; 
-        transition: all 0.25s ease-out; 
-        width: 450px;
-        padding-top: 50px;
-    } 
+  /* .event:hover { 
+    color: var(--color-rosa); 
+  } */
 
-    .event-toggle:hover{ 
-        color: #E59BA8; 
-    }
+  .collapsible-content { 
+    max-height: 0px;
+    max-width: 0px;
+    overflow: hidden; 
+    transition: color 1s ease-in; 
+    font-family: var(--font-family-secondary);
+    position: absolute;
+    /* display: block; */
+    /* color: var(--color-rosa); */
+    font-size: var(--font-size-primary); 
+    text-align: left;
+    color: white;
+  } 
 
+  /* when checked: set max-height value so that it can grow to display all its internal content*/
+  .toggle:checked + #collapsible-01 { 
+    position: static;
+    /* display: inline; */
+    max-height: 100vh;
+    max-width: 100vh;
+    color: black;
+  } 
 
-    .collapsible-content { 
-        max-height: 0px; /*makes it completely hidden*/
-        max-width: 0px;
-        overflow: hidden; 
-        transition: max-width .25s ease-in-out, max-height .25s ease-in-out; 
-        display: inline-block;
-        color: #E59BA8;
-        text-align: left;
-        padding-right: 10px;
-        font-size: var(--font-size-date);
-        font-family: var(--font-family-machine); 
-    } 
-
-    /* when checked: set max-height value so that it can grow to display all its internal content*/
-    .toggle:checked + .event-toggle + #collapsible-01 { 
-        max-height: 100vh;
-        max-width: 100vh;
-    } 
-
-    .toggle:checked + .event-toggle + #collapsible-02 { 
-        max-height: 100vh;
-        max-width: 100vh;
-    } 
-
-    .toggle:checked + .event-toggle + #collapsible-03 { 
-        max-height: 100vh;
-        max-width: 100vh;
-    }
-
-    .toggle:checked + .event-toggle + #collapsible-04 { 
-        max-height: 100vh;
-        max-width: 100vh;
-    }
-
-    .toggle:checked + .event-toggle + #collapsible-05 { 
-        max-height: 100vh;
-        max-width: 100vh;
-    }
-
-    .toggle:checked + .event-toggle + #collapsible-06 { 
-        max-height: 100vh;
-        max-width: 100vh;
-    }
-
-    .toggle:checked + .event-toggle + #collapsible-07 { 
-        max-height: 100vh;
-        max-width: 100vh;
-    }
-
-    /*basic styles to the inner content*/
-    .collapsible-content .content-inner { 
-    /*  border-style: solid; */
-    margin-top: 10px;
-    } 
-
-    .event {
+  .toggle:checked + #collapsible-01 + #animate-br-01{ 
     display: block;
-    padding-left: 0px;
-    padding-right: 40px;
-    }
+  }
 
-    .date {
+  .toggle:checked + #collapsible-02 { 
+    position: static;
+    /* display: inline; */
+    max-height: 100vh;
+    max-width: 100vh;
+    color: black;
+  } 
+
+  .toggle:checked + #collapsible-02 + #animate-br-02 {
+    display: block;
+  }
+
+  .toggle:checked + #collapsible-03 { 
+    position: static;
+    /* display: inline; */
+    max-height: 100vh;
+    max-width: 100vh;
+    color: black;
+  }
+
+  .toggle:checked + #collapsible-03 + #animate-br-03 {
+    display: block;
+  }
+
+  .toggle:checked + #collapsible-04 { 
+    position: static;
+    /* display: inline; */
+    max-height: 100vh;
+    max-width: 100vh;
+    color: black;
+  }
+
+  .toggle:checked + #collapsible-04 + #animate-br-04 {
+    display: block;
+  }
+
+  .toggle:checked + #collapsible-05 { 
+    position: static;
+    /* display: inline; */
+    max-height: 100vh;
+    max-width: 100vh;
+    color: black;
+  }
+  .toggle:checked + #collapsible-05 + #animate-br-05 {
+    display: block;
+  }
+
+  .toggle:checked + #collapsible-06 { 
+    position: static;
+    /* display: inline; */
+    max-height: 100vh;
+    max-width: 100vh;
+    color: black;
+  }
+
+  .event {
+    text-align: left; 
+    color: black; 
+    cursor: pointer; 
+    display: inline;
+  }
+
+  .date {
     font-size: var(--font-size-date);
     font-family: var(--font-family-machine);
-    font-weight: 400;
-    }
+  }
 
 
 </style>
@@ -119,109 +133,86 @@
 
 <div id="programme">
 
-
-    <div class="wrap-collabsible"> 
-
-
-        <!-- SECTION 1 -->  
-        <input id="trigger-01" class="toggle" type="checkbox"> 
-        <label for="trigger-01" class="event-toggle">
-            <div class="event date">11.3.2021, 6–8PM</div>
-            <div class="event name">Eröffnung.</div>
-        </label>
-          
-        <div class="collapsible-content" id="collapsible-01">
-            <div class="content-inner">
-              As part of her ongoing reissue series, PJ Harvey has announced a vinyl reissue of her fifth album, 2000’s Stories From the City, Stories From the Sea. It will be released alongside Stories From the City, Stories From the Sea – Demos, a collection of unreleased demos of every track on the album. Both sets arrive February 26. Listen to a demo of “This Mess We’re In” below. Link to the event on Zoom.
-            </div>       
-        </div>
-        
-        <!-- SECTION 2 -->  
-          <input id="trigger-02" class="toggle" type="checkbox"> 
-          <label for="trigger-02" class="event-toggle">
-            <div class="event date">12.–14.3.2021, 12–8PM</div>
-            <div class="event name">Eröffnungswochenende, Performances, Recording Room Failure Workshop.</div>
-          </label>
-          
-        <div class="collapsible-content" id="collapsible-02">
-            <div class="content-inner">
-              I am not familiar with the geography of heaven. And speaking of death, on which this country was founded on. We are all in this together with the same conflictions. We are all enslaved. Trapped in a tissue of lies, for every sound utter, for every sound utter, where every sound uttered, contains the longing for crime, the longing for crime, the longing for crime against nature.
-            </div>       
-        </div>
-          
-        <!-- SECTION 3 -->  
-          <input id="trigger-03" class="toggle" type="checkbox"> 
-          <label for="trigger-03" class="event-toggle">
-            <div class="event date">17.3.2021, 6–8PM</div>
-            <div class="event name">Performance, Recording Room, Mensa der Zukunft.</div>
-          </label>
-          
-            <div class="collapsible-content" id="collapsible-03">
-            <div class="content-inner">
-              You cannot, sir, take from me anything that I will not more willingly part withal - except my life, except my life, except my life. Be not afraid of greatness. Some are born great, some achieve greatness, and some have greatness thrust upon 'em.
-            </div>       
-          </div>
-          
-        
-        <!-- START OF ROW 2 -->
-          
-        <!-- SECTION 4 -->  
-          <input id="trigger-04" class="toggle" type="checkbox"> 
-          <label for="trigger-04" class="event-toggle">
-            <div class="event date">24.3.2021, 6–7:30PM</div>
-            <div class="event name">Performance, Mittwochsplattform Stream, Recording Room.</div>
-          </label>
-          
-          <div class="collapsible-content" id="collapsible-04">
-            <div class="content-inner">
-              As part of her ongoing reissue series, PJ Harvey has announced a vinyl reissue of her fifth album, 2000’s Stories From the City, Stories From the Sea. It will be released alongside Stories From the City, Stories From the Sea – Demos, a collection of unreleased demos of every track on the album. Both sets arrive February 26. Listen to a demo of “This Mess We’re In” below. Link to the event on Zoom.
-            </div>       
-          </div>
-        
-        <!-- SECTION 5 -->  
-          <input id="trigger-05" class="toggle" type="checkbox"> 
-          <label for="trigger-05" class="event-toggle">
-            <div class="event date">3.–4.4.2021, 6–8PM</div>
-            <div class="event name">Doktorand_innen Kolloquium.</div>
-          </label>
-          
-            <div class="collapsible-content" id="collapsible-05">
-            <div class="content-inner">
-              I am not familiar with the geography of heaven. And speaking of death, on which this country was founded on. We are all in this together with the same conflictions. We are all enslaved. Trapped in a tissue of lies, for every sound utter, for every sound utter, where every sound uttered, contains the longing for crime, the longing for crime, the longing for crime against nature.
-            </div>       
-          </div>
-          
-        <!-- SECTION 6 -->  
-          <input id="trigger-06" class="toggle" type="checkbox"> 
-          <label for="trigger-06" class="event-toggle">
-            <div class="event date">14.4.2021, 6–8PM</div>
-            <div class="event name">Ganztägig Performance, Recording Room Luca Ganz.</div>
-          </label>
-          
-            <div class="collapsible-content" id="collapsible-06">
-            <div class="content-inner">
-              You cannot, sir, take from me anything that I will not more willingly part withal - except my life, except my life, except my life. Be not afraid of greatness. Some are born great, some achieve greatness, and some have greatness thrust upon 'em.
-            </div>       
-          </div>
-          
-
-
-        <!-- START OF ROW 3 -->
-          
-        <!-- SECTION 7 -->  
-      <input id="trigger-07" class="toggle" type="checkbox"> 
-      <label for="trigger-07" class="event-toggle">
-        <div class="event date">21.4.2021, 6–8PM</div>
-        <div class="event name">Elektronische Performance, Recording Room Max Mustermann.</div>
-      </label>
+  <div class="wrap-collabsible"> 
+    
+    <!-- SECTION 1 -->  
+    <label for="trigger-01" class="event">
+      <span class="date">11.3.2021, 6–8PM</span>
+      <span class="name">Eröffnung.</span>
+    </label>
+    <input id="trigger-01" class="toggle" type="checkbox"> 
       
-      <div class="collapsible-content" id="collapsible-07">
-        <div class="content-inner">
-          As part of her ongoing reissue series, PJ Harvey has announced a vinyl reissue of her fifth album, 2000’s Stories From the City, Stories From the Sea. It will be released alongside Stories From the City, Stories From the Sea – Demos, a collection of unreleased demos of every track on the album. Both sets arrive February 26. Listen to a demo of “This Mess We’re In” below. Link to the event on Zoom.
-        </div>       
-      </div>
+    <span class="collapsible-content" id="collapsible-01">
+          As part of her ongoing reissue series, PJ Harvey has announced a vinyl reissue of her fifth album, 2000’s Stories From the City, Stories From the Sea. It will be released alongside Stories From the City, Stories From the Sea – Demos, a collection of unreleased demos of every track on the album. Both sets arrive February 26. Listen to a demo of “This Mess We’re In” below. Link to the event on Zoom.   
+    </span>
 
-    </div>
+    <div class="break" id="animate-br-01"></div>
+    
+    <!-- SECTION 2 -->  
+    <label for="trigger-02" class="event">
+      <span class="date">12.–14.3.2021, 12–8PM</span> 
+      <span class="name">Eröffnungswochenende, Performances, Recording Room Failure Workshop.</span> 
+    </label>
+    <input id="trigger-02" class="toggle" type="checkbox"> 
+
+    <span class="collapsible-content" id="collapsible-02">
+          I am not familiar with the geography of heaven. And speaking of death, on which this country was founded on. We are all in this together with the same conflictions. We are all enslaved. Trapped in a tissue of lies, for every sound utter, for every sound utter, where every sound uttered, contains the longing for crime, the longing for crime, the longing for crime against nature.       
+    </span>
+    
+    <div class="break" id="animate-br-02"></div>
+
+    <!-- SECTION 3 -->   
+    <label for="trigger-03" class="event">
+      <span class="date">17.3.2021, 6–8PM</span>
+      <span class="name">Performance, Recording Room, Mensa der Zukunft.</span>
+    </label>
+    <input id="trigger-03" class="toggle" type="checkbox">
+     
+      
+    <span class="collapsible-content" id="collapsible-03">
+          You cannot, sir, take from me anything that I will not more willingly part withal - except my life, except my life, except my life. Be not afraid of greatness. Some are born great, some achieve greatness, and some have greatness thrust upon 'em.
+    </span>
+      
+    <div class="break" id="animate-br-03"></div>
+
+    <!-- SECTION 4 -->  
+    <label for="trigger-04" class="event">
+      <span class="date">24.3.2021, 6–7:30PM</span>
+      <span class="name">Performance, Mittwochsplattform Stream, Recording Room.</span>
+    </label>
+    <input id="trigger-04" class="toggle" type="checkbox"> 
+      
+    <span class="collapsible-content" id="collapsible-04">
+          As part of her ongoing reissue series, PJ Harvey has announced a vinyl reissue of her fifth album, 2000’s Stories From the City, Stories From the Sea. It will be released alongside Stories From the City, Stories From the Sea – Demos, a collection of unreleased demos of every track on the album. Both sets arrive February 26. Listen to a demo of “This Mess We’re In” below. Link to the event on Zoom.
+    </span>
+
+    <div class="break" id="animate-br-04"></div>
+    
+    <!-- SECTION 5 -->  
+    <label for="trigger-05" class="event">
+      <span class="date">3.–4.4.2021, 6–8PM</span>
+      <span class="name">Doktorand_innen Kolloquium.</span>
+    </label>
+    <input id="trigger-05" class="toggle" type="checkbox"> 
+      
+    <span class="collapsible-content" id="collapsible-05">
+          I am not familiar with the geography of heaven. And speaking of death, on which this country was founded on. We are all in this together with the same conflictions. We are all enslaved. Trapped in a tissue of lies, for every sound utter, for every sound utter, where every sound uttered, contains the longing for crime, the longing for crime, the longing for crime against nature.
+    </span>
+
+    <div class="break" id="animate-br-05"></div>
+      
+    <!-- SECTION 6 -->   
+    <label for="trigger-06" class="event">
+      <span class="date">14.4.2021, 6–8PM</span>
+      <span class="name">Ganztägig Performance, Recording Room Luca Ganz.</span>
+    </label>
+    <input id="trigger-06" class="toggle" type="checkbox">
+      
+    <span class="collapsible-content" id="collapsible-06">
+          You cannot, sir, take from me anything that I will not more willingly part withal - except my life, except my life, except my life. Be not afraid of greatness. Some are born great, some achieve greatness, and some have greatness thrust upon 'em.
+    </span>
+  
+  </div>
 
 </div>
 
