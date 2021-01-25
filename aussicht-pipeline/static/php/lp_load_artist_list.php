@@ -28,10 +28,16 @@
 // JSON DATABASE CALL
 // JSON DATABASE CALL 
 
+$image_gpt_directory = "/Users/arminarndt/Documents/1_EgoZen/git-websites/mak-website/mak/aussicht-pipeline/static/imgs/image_gpt/";
+$subfolder_generated_directory = "/generated/64x64";
+
 // Get the contents of the JSON file 
-$strJsonFileContents = file_get_contents("/Users/arminarndt/Documents/1_EgoZen/git-websites/mak-website/mak/aussicht-pipeline/static/json/artist_list.json");
+$url = "/Users/arminarndt/Documents/1_EgoZen/git-websites/mak-website/mak/aussicht-pipeline/static/json/artist_list.json";
+$strJsonFileContents = file_get_contents($url);
 // Convert to array 
 $array = json_decode($strJsonFileContents, true);
+// Sort by alphabet
+sort($array);
 // count of the artist on top level (group members are not counted)- How long is the list
 $amount_of_artist = count($array) - 1;
 //print_r ("amount of artist:" . $amount_of_artist . "\n");
@@ -39,20 +45,19 @@ $amount_of_artist = count($array) - 1;
 for ($i = 0; $i <= $amount_of_artist; $i++) {
     $object = $i;
     //TestCall($object);
-    CreateHTML($object);
+    CreateHTML($object, $array, $amount_of_artist);
 }
 
-function TestCall($object) {
-}
-function CreateHTML($object) {
+
+function CreateHTML($object, $array, $amount_of_artist) {
     // Get the contents of the JSON file 
-    $strJsonFileContents = file_get_contents("/Users/arminarndt/Documents/1_EgoZen/git-websites/mak-website/mak/aussicht-pipeline/static/json/artist_list.json");
+        //$strJsonFileContents = file_get_contents("/Users/arminarndt/Documents/1_EgoZen/git-websites/mak-website/mak/aussicht-pipeline/static/json/artist_list.json");
 
     // Convert to array 
-    $array = json_decode($strJsonFileContents, true);
-    $amount_of_artist = count($array) - 1;
+        //$array = json_decode($strJsonFileContents, true);
+        //$amount_of_artist = count($array) - 1;
     // Sort by alphabet
-    sort($array);
+        //sort($array);
     
     // display forename
     $artist_forename = $array[$object]["forename"];
@@ -95,7 +100,7 @@ function CreateHTML($object) {
     // print_r ($name_length . "\n");
 
     // devide length of artist name by 2.5 
-    $amount_of_images_needed = round($name_length/2.5);
+    $amount_of_images_needed = round($name_length/2);
     // print_r ($amount_of_images_needed . "\n");
 
 
@@ -128,7 +133,7 @@ function CreateHTML($object) {
     // replace link if uploading to server: " imgs/image_gpt/ " 
 
     $image_array = array();
-    if ($directory = opendir('/Users/arminarndt/Documents/1_EgoZen/git-websites/mak-website/mak/aussicht-pipeline/static/imgs/image_gpt/' . $folder . '/generated/64x64')) {
+    if ($directory = opendir("/Users/arminarndt/Documents/1_EgoZen/git-websites/mak-website/mak/aussicht-pipeline/static/imgs/image_gpt/" . $folder . "/generated/64x64" )) {
         while (false !== ($filenames = readdir($directory))) {
             if (!in_array($filenames, $ignoreList) and substr($filenames, 0, 1) != '.') {
                 array_push($image_array, $filenames);
@@ -144,20 +149,6 @@ function CreateHTML($object) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // HTML HTML HTML HTML HTML 
     // HTML HTML HTML HTML HTML 
     // HTML HTML HTML HTML HTML 
@@ -168,8 +159,8 @@ function CreateHTML($object) {
     $parent_artist_names = "parent_artist_names_" . $folder; 
     $child_artist_list_images_spans = "child_artist_list_images_spans_" . $folder;
     $artist_list_images_imgs = "artist_list_images_imgs_" . $folder;
-    $blank_span_simulating_loading = "blank_span_simulating_loading_" . $folder;
-    $artist_list_empty_span_pushing_the_name = "artist_list_empty_span_pushing_the_name_" . $folder;
+    //$blank_span_simulating_loading = "blank_span_simulating_loading_" . $folder;
+    //$artist_list_empty_span_pushing_the_name = "artist_list_empty_span_pushing_the_name_" . $folder;
     $child_artist_list_name = "child_artist_list_name_" . $folder;
     $child_artist_list_hovers = "child_artist_list_hovers_" . $folder;
 
@@ -177,19 +168,24 @@ function CreateHTML($object) {
     $parent_artist_names_QUOTAION = "'" . $parent_artist_names . "'"; 
     $child_artist_list_images_spans_QUOTAION = "'" . $child_artist_list_images_spans . "'";
     $artist_list_images_imgs_QUOTAION = "'" . $artist_list_images_imgs . "'";
-    $blank_span_simulating_loading_QUOTAION = "'" . $blank_span_simulating_loading . "'";
-    $artist_list_empty_span_pushing_the_name_QUOTAION = "'" . $artist_list_empty_span_pushing_the_name . "'";
+    //$blank_span_simulating_loading_QUOTAION = "'" . $blank_span_simulating_loading . "'";
+    //$artist_list_empty_span_pushing_the_name_QUOTAION = "'" . $artist_list_empty_span_pushing_the_name . "'";
     $child_artist_list_name_QUOTAION = "'" . $child_artist_list_name . "'";
     $child_artist_list_hovers_QUOTAION = "'" . $child_artist_list_hovers . "'";
 
     // prepare onmouseenter and onmouseleave 
-    $onmouseevents = "'#" . $blank_span_simulating_loading . "', '#" . $artist_list_empty_span_pushing_the_name  . "', '#" . $parent_artist_names  . "', '#" . $child_artist_list_images_spans . "'";
+    //$onmouseevents = "'#" . $blank_span_simulating_loading . "', '#" . $artist_list_empty_span_pushing_the_name  . "', '#" . $parent_artist_names  . "', '#" . $child_artist_list_images_spans . "'";
+    $onmouseevents = "'#" . $parent_artist_names  . "', '#" . $child_artist_list_images_spans . "'";
+
     //echo $onmouseevents;
 
     // prepare IMAGE ROOT DIRECTORY
     $basicROOT ="'imgs/image_gpt/" . $folder . "/generated/64x64/64_" . $folder . "_0.png'";
     //echo $basicROOT;
 
+    // 0. div above each objebt -- list_object --
+    echo "<div class='list_object'>";
+    echo "\n\n";
 
     // 1. span -- parent_artist_names --
     echo "<div id=";
@@ -210,15 +206,26 @@ function CreateHTML($object) {
 
     echo "\n";
 
-    // 3. img -- artist_list_images_imgs --
-    for ($i = 0; $i < $amount_of_images_needed; $i++) {
-        echo '<img id="' . $folder .'_thumbnail' . $i . '" class= "artist_list_images_imgs" src="imgs/image_gpt/';
-        echo $folder;
-        echo '/generated/64x64/';
-        echo $image_array[$random_images[$i]];
-        echo '" style="width:64; height: 64; display: none">';
-        echo "\n";
-    } 
+    $check_existance_of_folder = scandir('/Users/arminarndt/Documents/1_EgoZen/git-websites/mak-website/mak/aussicht-pipeline/static/imgs/image_gpt/' . $folder );
+    // 3. add Images or if no image-folder found retourn a blue div square 
+    if ( empty($check_existance_of_folder) ){
+        // 3.1 add blue divs instead of images -- artist_list_images_imgs --
+        for ($i = 0; $i < $amount_of_images_needed; $i++) {
+            echo '<div id="' . $folder .'_thumbnail' . $i . '" class= "artist_list_colored_div" ';
+            echo 'style="display: none;"></div>';
+            echo "\n";
+        } 
+    } else {
+        // 3.2 add images -- artist_list_images_imgs --
+        for ($i = 0; $i < $amount_of_images_needed; $i++) {
+            echo '<img id="' . $folder .'_thumbnail' . $i . '" class= "artist_list_images_imgs" src="imgs/image_gpt/';
+            echo $folder;
+            echo '/generated/64x64/';
+            echo $image_array[$random_images[$i]];
+            echo '" style="width:64px; height: 64px; display: none">';
+            echo "\n";
+        } 
+    }
 
     // echo "<img class='artist_list_images_imgs' src=";
     // echo $basicROOT;
@@ -227,22 +234,22 @@ function CreateHTML($object) {
     echo "\n";
 
     // 4. span -- blank_span_simulating_loading --
-    echo "<span id=";
-    echo $blank_span_simulating_loading_QUOTAION;
-    echo "class='blank_span_simulating_loading' ";
-    echo "style='left: 0px; width:64px; height: 64px; display: none; background-color: blue";
-    echo "'></span>";
+    // echo "<span id=";
+    // echo $blank_span_simulating_loading_QUOTAION;
+    // echo "class='blank_span_simulating_loading' ";
+    // echo "style='left: 0px; width:64px; height: 64px; display: none; background-color: blue";
+    // echo "'></span>";
 
-    echo "\n";
+    // echo "\n";
 
     // 5. span -- artist_list_empty_span_pushing_the_name --
-    echo "<span id=";
-    echo $artist_list_empty_span_pushing_the_name_QUOTAION ;
-    echo "class='artist_list_empty'";
-    echo "style='width:0px; height: 64px; display: none'";
-    echo "></span>";
+    // echo "<span id=";
+    // echo $artist_list_empty_span_pushing_the_name_QUOTAION ;
+    // echo "class='artist_list_empty'";
+    // echo "style='width:0px; height: 64px; display: none'";
+    // echo "></span>";
 
-    echo "\n";
+    // echo "\n";
 
     // 6. span -- span for better timing --
     echo "<span style='width:0px; height: 0px; display: none'></span>";
@@ -273,7 +280,7 @@ function CreateHTML($object) {
 
     echo "\n\n";
 
-    // 10. CLOSING span
+    // 10. CLOSING div
     echo "</div>";
 
     // 11. add KOMMA
@@ -282,6 +289,8 @@ function CreateHTML($object) {
     }else{
     }
     
+    // 12. CLOSING div above each objebt -- class: list_object --
+    echo "</div>";
 
     echo "\n\n";
     echo "\n\n";
