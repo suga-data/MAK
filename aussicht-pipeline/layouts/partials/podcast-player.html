@@ -4,15 +4,30 @@
         position: fixed;
         bottom: 0px;
         width: 100%;
-        padding: 0;
+        height: auto;
+        /* padding: 0; */
         z-index: 999;
         border-top: white 1px solid;
         background: black;
-        height: auto;
     }
+            .player-container > * {
+                position: relative;
+                height: auto;
+                width: 100%;
+            }
+
+
+    #podcast_track_list {
+        visibility: visible;
+        margin: 0;
+        padding: 0;
+    }
+            .player-controls {
+                border-top: white 1px solid;
+            }
+
 
     .player-header {
-        height: 24px;
         border-bottom: white 1px solid;
         color: white;
         padding-left: 10px;
@@ -23,43 +38,55 @@
         display: flex;
     }
 
-    .audio-timeline {
-        margin: 3px;
-        height: 19px;
-        width: 90%;
+
+    #all_of_timeline{
+        display: inline-block;
+    }
+            #all_of_timeline > *{
+                display: inline-block;
+                margin: 3px;
+                height: 20px;
+
+            }
+            #timeline {
+                width: 90%;
+            }
+                    #playhead {
+                        width: 3px;
+                        background: white;
+                    }
+                    #duration {
+                        padding-left: 5px;
+                        margin-bottom: 5px;
+                    }
+            #timeleft {
+                text-align: right;
+                width: 10%;
+                right: 5px;
+                position: absolute;
+            }
+
+
+    #current_podcast {
+        /* height: auto; */
+        /* position: relative;   */
     }
 
-    #playhead {
-        width: 3px;
-        height: 20px;
-        background: white;
-    }
 
-    #podcast_track_list {
-        height: auto;
-
-    }
-
-    .player-controls {
-        border-top: white 1px solid;
-        height: 50px;
-    }
-
-    #pButton {
-        height: 30px;
-        width: 30px;
-        border: none;
-        position: absolute;
-        left: 8px;
-        bottom: 8px;
-    }
 
     .play {
         background: #E59BA8 no-repeat;
+        height: 30px;
+        width: 30px;
+        border: none;
+        margin-left: 10px;
     }
 
     .pause {
         background: white no-repeat;
+        height: 30px;
+        width: 30px;
+        border: none;
     }
 
     audio {
@@ -71,37 +98,68 @@
         font-size: 16px;
     }
 
-    #duration {
-        padding-left: 5px;
-        margin-bottom: 5px;
-    }
-
-    #timeleft {
-        width: 30px;
-        height: 16px;
-        right: 10px;
-        position: absolute;
-        top: 31px;
-    }
-
-    span.track-name {
+    .track_name {
         color: white;
-        position: absolute;
-        left: 70px;
-        bottom: 8px;
         font-size: 28px;
+        padding-left: 20px;
     }
 </style>
 
 
 <!-- ------------------------- podcast html ---------------------------  -->
 
-<audio id="music" controls="controls">
-    <source src="https://d3ctxlq1ktw2nl.cloudfront.net/staging/2021-0-13/1dca9c04-180e-e696-1552-fb413d22bfdd.mp3"
-        type="audio/mpeg" />
-</audio>
+
+
+
+
 
 <div class="player-container" onmouseleave="CollapsePodcastList()">
+
+    <audio id="podcast_track_1" class="podcast_audio_files" controls="controls">
+        <source src="https://anchor.fm/s/3b4cd0ac/podcast/play/25425570/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2021-0-19%2F4f5d8f84-952b-9552-c189-2bd54b281bf9.mp3"
+            type="audio/mpeg" />
+    </audio>
+    <audio id="podcast_track_2" class="podcast_audio_files" controls="controls">
+        <source src="https://anchor.fm/s/3b4cd0ac/podcast/play/25130446/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2021-0-13%2F1dca9c04-180e-e696-1552-fb413d22bfdd.mp3"
+            type="audio/mpeg" />
+    </audio>
+    
+    <audio id="podcast_track_3" class="podcast_audio_files" controls="controls">
+        <source src="https://anchor.fm/s/3b4cd0ac/podcast/play/24575397/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2020-11-30%2F32f31f43-b0e0-7ad9-3fe3-c416c7c0ee4b.mp3"
+            type="audio/mpeg" />
+    </audio>
+    <audio id="podcast_track_4" class="podcast_audio_files" controls="controls">
+        <source src="https://anchor.fm/s/3b4cd0ac/podcast/play/24532360/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2020-11-29%2F2e017afe-9e56-b5b0-51c7-86588db03dc0.mp3"
+            type="audio/mpeg" />
+    </audio>
+    <audio id="podcast_track_5" class="podcast_audio_files" controls="controls">
+        <source src="https://anchor.fm/s/3b4cd0ac/podcast/play/24005507/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2020-11-15%2F7072a2ec-b02b-9e6a-76ce-a9ad3353ab31.mp3"
+            type="audio/mpeg" />
+    </audio>
+
+    <ul id="podcast_track_list">
+        <div class="player-controls">
+            <button id="play_button_podcast_track_1" class="play" onclick="playAudio('podcast_track_1', 'play_button_podcast_track_1')"></button>
+            <span class="track_name" id="track_name_1">#11 Wie sieht die zukünftige Ernährung aus?</span>
+        </div>
+        <div class="player-controls">
+            <button id="play_button_podcast_track_2" class="play" onclick="playAudio('podcast_track_2', 'play_button_podcast_track_2')"></button>
+            <span class="track_name" id="track_name_2">#10 Ist die Zukunft der Kultur digital?</span>
+        </div>
+        <div class="player-controls">
+            <button id="play_button_podcast_track_3" class="play" onclick="playAudio('podcast_track_3', 'play_button_podcast_track_3')"></button>
+            <span class="track_name" id="track_name_3">#9 Wie kümmern wir uns in Zukunft?</span>
+        </div>
+        <div class="player-controls">
+            <button id="play_button_podcast_track_4" class="play" onclick="playAudio('podcast_track_4', 'play_button_podcast_track_4')"></button>
+            <span class="track_name" id="track_name_4">#8 Wie bewegen wir uns in Zukunft fort?</span>
+        </div>
+        <div class="player-controls">
+            <button id="play_button_podcast_track_5" class="play" onclick="playAudio('podcast_track_5', 'play_button_podcast_track_5')"></button>
+            <span class="track_name" id="track_name_5">#7 Dürfen wir an der Zukunft scheitern?</span>
+        </div>
+    </ul>
+
 
     <div class="player-header" onclick="ShowPodcastList()">
         <span>p</span>
@@ -113,16 +171,22 @@
         <span>t</span>
     </div>
 
-    <div class="audio-timeline" id="timeline">
-        <div class="info" id="playhead"><span id="duration"></span></div>
+
+    <div id="all_of_timeline">
+        <div class="audio-timeline" id="timeline">
+            <div class="info" id="playhead">
+                <span id="duration"></span>
+            </div>
+        </div>
         <div class="info" id="timeleft"></div>
     </div>
 
-    <div id="podcast_track_list">
+
+    <div id="current_podcast">
         <div class="player-controls">
-            <button id="pButton" class="play" onclick="playAudio()"></button>
-            <span class="track-name" id="nr8">#8 Wie bewegen wir uns in Zukunft fort? / Off_line / Dec 30, 2020 </span>
-        </div>
+            <button id="play_button_current_track" class="play" onclick="playAudio('podcast_track_1', 'play_button_current_track')"></button>
+            <span class="track_name" id="track_name_current">#0 Dieser Abschnitt ist noch nicht eingerichtet! / Off_line / Dec 30, 2020 </span>
+        </div>    
     </div>
 
 </div>
