@@ -3,16 +3,45 @@ var podcast_audio_files = document.getElementsByClassName("podcast_audio_files")
 
 var playhead = document.getElementById('playhead'); // playhead
 var timeline = document.getElementById('timeline'); // timeline
-
 var sounds = document.getElementsByTagName('audio');
 
-function playAudio(sourceID, pButton){
+
+
+
+document.getElementById('current_podcast').getElementsByClassName('player-controls')[0].addEventListener("click", function(){
+console.log("hello");
+
+});
+
+var arrayAllAudioFiles = document.getElementById("audio_files").getElementsByTagName("audio");
+var arrayPodcastsList = document.getElementById("podcast_track_list").getElementsByTagName("div");
+for (i = 0; i < arrayAllAudioFiles.length; i++)
+{
+    let AudioFileId = arrayAllAudioFiles[i].id;
+    let PodcastsListElementId = arrayPodcastsList[i].id;
+
+    arrayPodcastsList[i].addEventListener("click", function(){
+        playAudio(AudioFileId, PodcastsListElementId);
+        console.log("you clicked: " + AudioFileId)
+        console.log("you clicked: " + PodcastsListElementId)
+    });
+    console.log(arrayAllAudioFiles[i].id);
+}
+
+
+function playAudio(AudioFileId, PodcastsListElementId){
+    var sourceID = AudioFileId;
+    var pButton = document.getElementById(PodcastsListElementId); // play button
+    console.log(sourceID);
+
+    var current_track_number = document.getElementById(PodcastsListElementId).getElementsByClassName('track_number')[0].innerHTML;
+    var current_track_name = document.getElementById(PodcastsListElementId).getElementsByClassName('track_name_title')[0].innerHTML;
 
     var music = document.getElementById(sourceID); // id for audio element
     // console.log(sourceID);
     var duration = music.duration; // Duration of audio clip, calculated here for embedding purposes
-    console.log(duration);
-    var pButton = document.getElementById(pButton); // play button
+    // console.log(duration);
+    
 
 
     // timeline width adjusted for playhead
@@ -99,7 +128,7 @@ function playAudio(sourceID, pButton){
             var allPauses = document.getElementsByClassName("pause");
             for (var i = 0; i < allPauses.length; i++) {
                 // allPauses.item(i).className = "";
-                allPauses.item(i).className = "play";
+                allPauses.item(i).className = "player-controls play";
             }
 
             //StopAllAudioTags();
@@ -109,12 +138,17 @@ function playAudio(sourceID, pButton){
             music.play();
             // remove play, add pause
             pButton.className = "";
-            pButton.className = "pause";
+            pButton.className = "player-controls pause";
+            document.getElementById("current_podcast_track_name_number").innerHTML = "";
+            document.getElementById("current_podcast_track_name_number").innerHTML = current_track_number;
+            document.getElementById("current_podcast_track_name").innerHTML = "";
+            document.getElementById("current_podcast_track_name").innerHTML = current_track_name;
+
         } else { // pause music
             music.pause();
             // remove pause, add play
             pButton.className = "";
-            pButton.className = "play";
+            pButton.className = "player-controls play";
         }
     }
 
@@ -175,11 +209,64 @@ function playAudio(sourceID, pButton){
 function ShowPodcastList(){
     //alert('Sie sollten doch nicht drücken!');
     document.getElementById('podcast_track_list').style.visibility = 'visible';
-    document.getElementById('podcast_track_list').style.height = 'auto';
+    document.getElementById('podcast_track_list').style.height = '150px';
+    // document.getElementsByClassName('player-controls').style.height = 'auto';
 }
 // colapse  Podcast list
 function CollapsePodcastList(){
     // document.getElementById('podcast_track_list').style.height = '50px';
     document.getElementById('podcast_track_list').style.visibility = 'collapse';
     document.getElementById('podcast_track_list').style.height = '0';
+    // document.getElementsByClassName('player-controls').style.height = '0';
 }
+
+
+
+
+
+
+
+
+
+
+// -------------------------- volume control --------------------------
+
+//var audio_volume_control = document.getElementsByTagName('audio');
+//var audio_volume_control = document.getElementById('podcast_track_1');
+//var audio_volume_control = document.getElementsByClass('podcast_audio_files');
+
+document.getElementById("volume_step_1").addEventListener("click", function() {
+    //audio_volume_control.volume = 0.2;
+    document.getElementById('volume_step_1').style.backgroundColor = 'black';
+    document.getElementById('volume_step_2').style.backgroundColor = 'gray';
+    document.getElementById('volume_step_3').style.backgroundColor = 'gray';
+    document.getElementById('volume_step_4').style.backgroundColor = 'gray';
+    document.getElementById('volume_step_5').style.backgroundColor = 'gray';});
+document.getElementById("volume_step_2").addEventListener("click", function() {
+    // audio_volume_control.volume = 0.4;
+    document.getElementById('volume_step_1').style.backgroundColor = 'black';
+    document.getElementById('volume_step_2').style.backgroundColor = 'black';
+    document.getElementById('volume_step_3').style.backgroundColor = 'gray';
+    document.getElementById('volume_step_4').style.backgroundColor = 'gray';
+    document.getElementById('volume_step_5').style.backgroundColor = 'gray';});
+document.getElementById("volume_step_3").addEventListener("click", function() {
+    // audio_volume_control.volume = 0.6;
+    document.getElementById('volume_step_1').style.backgroundColor = 'black';
+    document.getElementById('volume_step_2').style.backgroundColor = 'black';
+    document.getElementById('volume_step_3').style.backgroundColor = 'black';
+    document.getElementById('volume_step_4').style.backgroundColor = 'gray';
+    document.getElementById('volume_step_5').style.backgroundColor = 'gray';});
+document.getElementById("volume_step_4").addEventListener("click", function() {
+    // audio_volume_control.volume = 0.8;
+    document.getElementById('volume_step_1').style.backgroundColor = 'black';
+    document.getElementById('volume_step_2').style.backgroundColor = 'black';
+    document.getElementById('volume_step_3').style.backgroundColor = 'black';
+    document.getElementById('volume_step_4').style.backgroundColor = 'black';
+    document.getElementById('volume_step_5').style.backgroundColor = 'gray';});
+document.getElementById("volume_step_5").addEventListener("click", function() {
+    // audio_volume_control.volume = 1.0;
+    document.getElementById('volume_step_1').style.backgroundColor = 'black';
+    document.getElementById('volume_step_2').style.backgroundColor = 'black';
+    document.getElementById('volume_step_3').style.backgroundColor = 'black';
+    document.getElementById('volume_step_4').style.backgroundColor = 'black';
+    document.getElementById('volume_step_5').style.backgroundColor = 'black';});
