@@ -23,6 +23,7 @@
 
 
     #podcast_track_list {
+        transition: all 0.5s ease-in-out;
         visibility: collapse;
         height: 0;
         margin: 0;
@@ -46,7 +47,6 @@
 
     .player-controls {
         border-top: black 1px solid;
-        /* display: flex; */
         display: grid;
         grid-template-columns: 50px 70px 100px auto 200px;
         grid-template-rows: 33px;
@@ -54,7 +54,6 @@
 
     .player-controls>* {
         margin-left: 10px;
-        /* height: 30px; */
     }
 
     .player-controls:hover>* {
@@ -64,39 +63,6 @@
     .podcast_date {
         float: right;
     }
-
-    .track_name {
-
-        /* height: 0; */
-        /* padding-left: 20px; */
-    }
-
-    .track_number {
-        /* background-color: lightcoral;
-                color: blue; */
-        /* min-width: 150px; */
-    }
-
-
-    /* .player-header {
-        border-bottom: black 1px solid;
-        color: black;
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-top: 3px;
-        font-size: 18px;
-        justify-content: space-between;
-        display: flex;
-    }
-                .player-header:hover {
-                    background: black;
-                    color: white;
-                }
-                .player-header:active {
-                    background: black;
-                    color: white;
-                } */
-
 
     #all_of_timeline {
         /* display: inline-block; */
@@ -137,19 +103,14 @@
 
 
     #current_podcast {
-
-        height: 30px;
-        /* position: relative;   */
-        /* background: lightcoral; */
+        height: 40px;
     }
-
-    .current_podcast_player_controls {
+    
+    .current_podcast_click_area {
         display: grid;
         grid-template-columns: 50px 50px 70px 100px auto 200px;
-        grid-template-rows: 33px;
-        /* display: flex; */
+        grid-template-rows: auto;
     }
-
     .current_podcast_track_name {
         /* color: black; */
         /* font-size: 28px; */
@@ -158,12 +119,11 @@
     .current_podcast_player_controls>* {
         padding-right: 30px;
         padding-left: 20px;
-        height: 0;
+        /* height: 0; */
     }
 
     .current_podcast_player_controls:hover {
         color: gray;
-
     }
 
     .current_podcast_date {
@@ -206,91 +166,51 @@
         display: grid;
         grid-template-columns: 6px 6px 6px 6px 6px;
     }
-
     .volume_step {
         width: 5px;
         background-color: black;
         align-self: end;
     }
-
-    #volume_step_1 {
-        height: 40%;
-    }
-
-    #volume_step_2 {
-        height: 50%;
-    }
-
-    #volume_step_3 {
-        height: 60%;
-    }
-
-    #volume_step_4 {
-        height: 70%;
-    }
-
-    #volume_step_5 {
-        height: 80%;
-    }
-
-    #volume_step_1:hover {
-        height: 60%;
-        background-color: gray;
-    }
-
-    #volume_step_2:hover {
-        height: 70%;
-        background-color: gray;
-    }
-
-    #volume_step_3:hover {
-        height: 80%;
-        background-color: gray;
-    }
-
-    #volume_step_4:hover {
-        height: 90%;
-        background-color: gray;
-    }
-
-    #volume_step_5:hover {
-        height: 100%;
-        background-color: gray;
-    }
+    #volume_step_0 {height: 40%;}
+    #volume_step_1 {height: 50%;}
+    #volume_step_2 {height: 60%;}
+    #volume_step_3 {height: 70%;}
+    #volume_step_4 {height: 80%;}
+    #volume_step_0:hover {height: 60%; background-color: gray;}
+    #volume_step_1:hover {height: 70%; background-color: gray;}
+    #volume_step_2:hover {height: 80%; background-color: gray;}
+    #volume_step_3:hover {height: 90%; background-color: gray;}
+    #volume_step_4:hover {height: 100%; background-color: gray;}
 </style>
+
 
 
 <!-- ------------------------- podcast html ---------------------------  -->
 
+<div id="podcast_area_all" class="player-container">
 
-
-
-
-
-<div class="player-container" onmouseenter="ShowPodcastList()" onmouseleave="CollapsePodcastList()">
-
-    <div id="audio_files">
-    <audio id="podcast_track_1" class="podcast_audio_files" controls="controls">
+    <div id="audio_files" >
+    <audio id="#11" class="podcast_audio_files" controls="controls">
         <source
             src="https://anchor.fm/s/3b4cd0ac/podcast/play/25425570/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2021-0-19%2F4f5d8f84-952b-9552-c189-2bd54b281bf9.mp3"
             type="audio/mpeg" />
     </audio>
-    <audio id="podcast_track_2" class="podcast_audio_files" controls="controls">
+    <audio id="#10" class="podcast_audio_files" controls="controls">
         <source
             src="https://anchor.fm/s/3b4cd0ac/podcast/play/25130446/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2021-0-13%2F1dca9c04-180e-e696-1552-fb413d22bfdd.mp3"
             type="audio/mpeg" />
     </audio>
-    <audio id="podcast_track_3" class="podcast_audio_files" controls="controls">
+    <audio id="#9" class="podcast_audio_files" controls="controls">
         <source
             src="https://anchor.fm/s/3b4cd0ac/podcast/play/24575397/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2020-11-30%2F32f31f43-b0e0-7ad9-3fe3-c416c7c0ee4b.mp3"
             type="audio/mpeg" />
     </audio>
-    <audio id="podcast_track_4" class="podcast_audio_files" controls="controls">
+    <audio id="#8" class="podcast_audio_files" controls="controls">
         <source
             src="https://anchor.fm/s/3b4cd0ac/podcast/play/24532360/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2020-11-29%2F2e017afe-9e56-b5b0-51c7-86588db03dc0.mp3"
             type="audio/mpeg" />
     </audio>
-    <audio id="podcast_track_5" class="podcast_audio_files" controls="controls">
+    <audio id="#7" class="podcast_audio_files" controls="controls">
         <source
             src="https://anchor.fm/s/3b4cd0ac/podcast/play/24005507/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2020-11-15%2F7072a2ec-b02b-9e6a-76ce-a9ad3353ab31.mp3"
             type="audio/mpeg" />
@@ -298,36 +218,36 @@
     </div>
 
     <ul id="podcast_track_list">
-        <div class="player-controls play" id="play_button_podcast_track_1">
-            <span class="track_name">►</span>
+        <div class="player-controls play" id="podcast_list_object_#11">
+            <span class="track_name podcast_play_pause_icon">►</span>
             <span class="track_name track_number" id="track_name_number_1" >#11</span>
             <span class="track_name">Off_line</span>
             <span class="track_name track_name_title" id="track_name_1">Wie sieht die zukünftige Ernährung aus?</span>
             <span class="track_name podcast_date">20 Jan 2021</span>
         </div>
-        <div class="player-controls play" id="play_button_podcast_track_2">
-            <span class="track_name">►</span>
+        <div class="player-controls play" id="podcast_list_object_#10">
+            <span class="track_name podcast_play_pause_icon" >►</span>
             <span class="track_name track_number" id="track_name_number_2">#10</span>
             <span class="track_name">Off_line</span>
             <span class="track_name track_name_title" id="track_name_2">Ist die Zukunft der Kultur digital?</span>
             <span class="track_name podcast_date">13 Jan 2021</span>
         </div>
-        <div class="player-controls play" id="play_button_podcast_track_3">
-            <span class="track_name">►</span>
+        <div class="player-controls play" id="podcast_list_object_#9">
+            <span class="track_name podcast_play_pause_icon">►</span>
             <span class="track_name track_number" id="track_name_number_3">#9</span>
             <span class="track_name">Off_line</span>
             <span class="track_name track_name_title" id="track_name_3">Wie kümmern wir uns in Zukunft?</span>
             <span class="track_name podcast_date">06 Jan 2021</span>
         </div>
-        <div class="player-controls play" id="play_button_podcast_track_4">
-            <span class="track_name">►</span>
+        <div class="player-controls play" id="podcast_list_object_#8">
+            <span class="track_name podcast_play_pause_icon">►</span>
             <span class="track_name track_number" id="track_name_number_4">#8</span>
             <span class="track_name">Off_line</span>
             <span class="track_name track_name_title" id="track_name_4">Wie bewegen wir uns in Zukunft fort?</span>
             <span class="track_name podcast_date">30 Dec 2020</span>
         </div>
-        <div class="player-controls play" id="play_button_podcast_track_5">
-            <span class="track_name">►</span>
+        <div class="player-controls play" id="podcast_list_object_#7">
+            <span class="track_name podcast_play_pause_icon">►</span>
             <span class="track_name track_number" id="track_name_number_5">#7</span>
             <span class="track_name">Off_line</span>
             <span class="track_name track_name_title" id="track_name_5">Dürfen wir an der Zukunft scheitern?</span>
@@ -350,7 +270,7 @@
     <div id="all_of_timeline">
         <div class="audio-timeline" id="timeline">
             <div class="info" id="playhead">
-                <span id="duration"></span>
+                <span id="duration">0:00</span>
             </div>
         </div>
         <div class="info" id="timeleft"></div>
@@ -359,19 +279,21 @@
 
     <div id="current_podcast">
         <!-- <div class="current_podcast_player_controls"> -->
-        <div class="player-controls play">
-            <span class="current_podcast_track_name">►</span>
-            <span class="current_podcast_track_name" id="current_podcast_track_name_number">#11</span>
+        <div id="current_podcast_click_area" class="player-controls play">
+            <span class="current_podcast_track_name" id="current_podcast_play_pause_icon">►</span>
+            <span class="current_podcast_track_name track_number" id="current_podcast_track_name_number">#11</span>
             <span class="current_podcast_track_name">Off_line</span>
-            <span class="current_podcast_track_name" id="current_podcast_track_name">Wie sieht die zukünftige Ernährung
+            <span class="current_podcast_track_name track_name_title" id="current_podcast_track_name">Wie sieht die zukünftige Ernährung
                 aus?</span>
-            <div id="volume" style="justify-self: end; margin-right: 15px; margin-top: 3px;">
-                <div class="volume_step" id="volume_step_1"></div>
-                <div class="volume_step" id="volume_step_2"></div>
-                <div class="volume_step" id="volume_step_3"></div>
-                <div class="volume_step" id="volume_step_4"></div>
-                <div class="volume_step" id="volume_step_5"></div>
-            </div>
+            <span class="current_podcast_track_name podcast_date"></span>
+        </div>
+
+        <div id="volume" style="position: absolute; right: 15px; top: 8px;">
+            <div class="volume_step" id="volume_step_0"></div>
+            <div class="volume_step" id="volume_step_1"></div>
+            <div class="volume_step" id="volume_step_2"></div>
+            <div class="volume_step" id="volume_step_3"></div>
+            <div class="volume_step" id="volume_step_4"></div>
         </div>
     </div>
 

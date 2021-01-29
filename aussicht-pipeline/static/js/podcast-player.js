@@ -1,38 +1,38 @@
 //credits to Alex Katz, for details visit http://alexkatz.me/posts/building-a-custom-html5-audio-player-with-javascript/
 var podcast_audio_files = document.getElementsByClassName("podcast_audio_files");
-
 var playhead = document.getElementById('playhead'); // playhead
 var timeline = document.getElementById('timeline'); // timeline
 var sounds = document.getElementsByTagName('audio');
 
-
-
-
-document.getElementById('current_podcast').getElementsByClassName('player-controls')[0].addEventListener("click", function(){
-console.log("hello");
-
+//create array of AUDIO FILES
+var arrayAllAudioFiles = document.getElementById("audio_files").getElementsByTagName("audio");
+//create array of PODCAST LIST ELEMENTS
+var arrayPodcastsList = document.getElementById("podcast_track_list").getElementsByTagName("div");
+// create  EVENT LISTENER for CURRENT PODCAST TRACK
+document.getElementById('current_podcast_click_area').addEventListener("click", function(){
+    let current_track_id = document.getElementById('current_podcast_track_name_number').innerHTML;
+    let current_track = 'current_podcast_click_area';
+    playAudio(current_track_id, current_track);
 });
 
-var arrayAllAudioFiles = document.getElementById("audio_files").getElementsByTagName("audio");
-var arrayPodcastsList = document.getElementById("podcast_track_list").getElementsByTagName("div");
-for (i = 0; i < arrayAllAudioFiles.length; i++)
-{
+// create EVENT LISTENERS for each PODCAST LIST ELEMENT
+for (i = 0; i < arrayAllAudioFiles.length; i++){
     let AudioFileId = arrayAllAudioFiles[i].id;
     let PodcastsListElementId = arrayPodcastsList[i].id;
-
     arrayPodcastsList[i].addEventListener("click", function(){
         playAudio(AudioFileId, PodcastsListElementId);
-        console.log("you clicked: " + AudioFileId)
-        console.log("you clicked: " + PodcastsListElementId)
     });
-    console.log(arrayAllAudioFiles[i].id);
 }
 
 
+
+
 function playAudio(AudioFileId, PodcastsListElementId){
-    var sourceID = AudioFileId;
-    var pButton = document.getElementById(PodcastsListElementId); // play button
-    console.log(sourceID);
+    //console.log(PodcastsListElementId);
+    var sourceID = AudioFileId; //ID of AUDIO TRACK
+    //var pButton = document.getElementById(PodcastsListElementId); // play button
+    //console.log("sourceid: "+sourceID);
+    //console.log(pButton);
 
     var current_track_number = document.getElementById(PodcastsListElementId).getElementsByClassName('track_number')[0].innerHTML;
     var current_track_name = document.getElementById(PodcastsListElementId).getElementsByClassName('track_name_title')[0].innerHTML;
@@ -40,7 +40,7 @@ function playAudio(AudioFileId, PodcastsListElementId){
     var music = document.getElementById(sourceID); // id for audio element
     // console.log(sourceID);
     var duration = music.duration; // Duration of audio clip, calculated here for embedding purposes
-    // console.log(duration);
+    //console.log(duration);
     
 
 
@@ -114,8 +114,17 @@ function playAudio(AudioFileId, PodcastsListElementId){
         var playPercent = timelineWidth * (music.currentTime / duration);
         playhead.style.marginLeft = playPercent + "px";
         if (music.currentTime == duration) {
-            pButton.className = "";
-            pButton.className = "play";
+            // pButton.className = "";
+            // pButton.className = "play";
+            document.getElementById("current_podcast_play_pause_icon").innerHTML = "";
+            document.getElementById("current_podcast_play_pause_icon").innerHTML = "►";
+            let resetPlayClass = document.getElementsByClassName("player-controls pause");
+            for (var i = 0; i < resetPlayClass.length; i++) {
+                resetPlayClass.item(i).getElementsByClassName("podcast_play_pause_icon")[0].innerHTML = "►";
+                resetPlayClass.item(i).className = "player-controls play";
+            }
+            document.getElementById("current_podcast_click_area").className = "";
+            document.getElementById("current_podcast_click_area").className = "player-controls play";
         }
     }
 
@@ -124,6 +133,13 @@ function playAudio(AudioFileId, PodcastsListElementId){
     //function playAudio(){
         // start music
         if (music.paused) {
+            
+            let podcast_list_object_number_ID = "podcast_list_object_" + sourceID;
+
+            for (var i = 0; i < arrayPodcastsList.length; i++) {
+                // arrayPodcastsList[i].getElementsByClassName("podcast_play_pause_icon")[0].innerHTML = "";                
+                arrayPodcastsList[i].getElementsByClassName("podcast_play_pause_icon")[0].innerHTML = "►";
+            }
 
             var allPauses = document.getElementsByClassName("pause");
             for (var i = 0; i < allPauses.length; i++) {
@@ -137,8 +153,18 @@ function playAudio(AudioFileId, PodcastsListElementId){
             }
             music.play();
             // remove play, add pause
-            pButton.className = "";
-            pButton.className = "player-controls pause";
+            //pButton.className = "";
+            //pButton.className = "player-controls pause";
+            document.getElementById(podcast_list_object_number_ID).className = "";
+            document.getElementById(podcast_list_object_number_ID).className = "player-controls pause";
+            document.getElementById(podcast_list_object_number_ID).getElementsByClassName("podcast_play_pause_icon")[0].innerHTML = "";
+            document.getElementById(podcast_list_object_number_ID).getElementsByClassName("podcast_play_pause_icon")[0].innerHTML = "||";
+
+            document.getElementById("current_podcast_click_area").className = "";
+            document.getElementById("current_podcast_click_area").className = "player-controls pause";
+
+            document.getElementById("current_podcast_play_pause_icon").innerHTML = "";
+            document.getElementById("current_podcast_play_pause_icon").innerHTML = "||";
             document.getElementById("current_podcast_track_name_number").innerHTML = "";
             document.getElementById("current_podcast_track_name_number").innerHTML = current_track_number;
             document.getElementById("current_podcast_track_name").innerHTML = "";
@@ -147,8 +173,15 @@ function playAudio(AudioFileId, PodcastsListElementId){
         } else { // pause music
             music.pause();
             // remove pause, add play
-            pButton.className = "";
-            pButton.className = "player-controls play";
+            document.getElementById("current_podcast_play_pause_icon").innerHTML = "";
+            document.getElementById("current_podcast_play_pause_icon").innerHTML = "►";
+            let resetPlayClass = document.getElementsByClassName("player-controls pause");
+            for (var i = 0; i < resetPlayClass.length; i++) {
+                resetPlayClass.item(i).getElementsByClassName("podcast_play_pause_icon")[0].innerHTML = "►";
+                resetPlayClass.item(i).className = "player-controls play";
+            }
+            document.getElementById("current_podcast_click_area").className = "";
+            document.getElementById("current_podcast_click_area").className = "player-controls play";
         }
     }
 
@@ -203,9 +236,8 @@ function playAudio(AudioFileId, PodcastsListElementId){
 
 }
 
-
-
 // show  Podcast list
+document.getElementById('podcast_area_all').addEventListener("mouseenter", ShowPodcastList);
 function ShowPodcastList(){
     //alert('Sie sollten doch nicht drücken!');
     document.getElementById('podcast_track_list').style.visibility = 'visible';
@@ -213,6 +245,7 @@ function ShowPodcastList(){
     // document.getElementsByClassName('player-controls').style.height = 'auto';
 }
 // colapse  Podcast list
+document.getElementById('podcast_area_all').addEventListener("mouseleave", CollapsePodcastList);
 function CollapsePodcastList(){
     // document.getElementById('podcast_track_list').style.height = '50px';
     document.getElementById('podcast_track_list').style.visibility = 'collapse';
@@ -235,38 +268,41 @@ function CollapsePodcastList(){
 //var audio_volume_control = document.getElementById('podcast_track_1');
 //var audio_volume_control = document.getElementsByClass('podcast_audio_files');
 
-document.getElementById("volume_step_1").addEventListener("click", function() {
-    //audio_volume_control.volume = 0.2;
-    document.getElementById('volume_step_1').style.backgroundColor = 'black';
+
+
+//create array of AUDIO FILES
+var volume_controll = document.getElementById("volume").getElementsByTagName("div");
+//console.log(volume_controll[0]);
+for (i=0; i < volume_controll.length; i++){
+    let volume_step_appearance = i;
+    volume_controll[i].addEventListener("mouseup", function(){
+        setAudioVolumeAppearance(volume_step_appearance);
+        setAudioVolume(volume_step_appearance)
+    });
+}
+function setAudioVolumeAppearance(volume_step_appearance){
+    document.getElementById('volume_step_1').style.backgroundColor = 'gray';
     document.getElementById('volume_step_2').style.backgroundColor = 'gray';
     document.getElementById('volume_step_3').style.backgroundColor = 'gray';
     document.getElementById('volume_step_4').style.backgroundColor = 'gray';
-    document.getElementById('volume_step_5').style.backgroundColor = 'gray';});
-document.getElementById("volume_step_2").addEventListener("click", function() {
-    // audio_volume_control.volume = 0.4;
-    document.getElementById('volume_step_1').style.backgroundColor = 'black';
-    document.getElementById('volume_step_2').style.backgroundColor = 'black';
-    document.getElementById('volume_step_3').style.backgroundColor = 'gray';
-    document.getElementById('volume_step_4').style.backgroundColor = 'gray';
-    document.getElementById('volume_step_5').style.backgroundColor = 'gray';});
-document.getElementById("volume_step_3").addEventListener("click", function() {
-    // audio_volume_control.volume = 0.6;
-    document.getElementById('volume_step_1').style.backgroundColor = 'black';
-    document.getElementById('volume_step_2').style.backgroundColor = 'black';
-    document.getElementById('volume_step_3').style.backgroundColor = 'black';
-    document.getElementById('volume_step_4').style.backgroundColor = 'gray';
-    document.getElementById('volume_step_5').style.backgroundColor = 'gray';});
-document.getElementById("volume_step_4").addEventListener("click", function() {
-    // audio_volume_control.volume = 0.8;
-    document.getElementById('volume_step_1').style.backgroundColor = 'black';
-    document.getElementById('volume_step_2').style.backgroundColor = 'black';
-    document.getElementById('volume_step_3').style.backgroundColor = 'black';
-    document.getElementById('volume_step_4').style.backgroundColor = 'black';
-    document.getElementById('volume_step_5').style.backgroundColor = 'gray';});
-document.getElementById("volume_step_5").addEventListener("click", function() {
-    // audio_volume_control.volume = 1.0;
-    document.getElementById('volume_step_1').style.backgroundColor = 'black';
-    document.getElementById('volume_step_2').style.backgroundColor = 'black';
-    document.getElementById('volume_step_3').style.backgroundColor = 'black';
-    document.getElementById('volume_step_4').style.backgroundColor = 'black';
-    document.getElementById('volume_step_5').style.backgroundColor = 'black';});
+    for (i=0; i<= volume_step_appearance; i++){
+        document.getElementById('volume_step_'+i).style.backgroundColor = 'black';
+    }
+}
+var new_volume = 1.0;
+function setAudioVolume(volume_step_appearance){
+        if (volume_step_appearance == 0){
+            new_volume = 0.2;
+        } else if (volume_step_appearance == 1){
+            new_volume = 0.4;
+        } else if (volume_step_appearance == 2){
+            new_volume = 0.6;
+        } else if (volume_step_appearance == 3){
+            new_volume = 0.8;
+        } else {
+            new_volume = 1.0;
+        }
+        for (i = 0; i < arrayAllAudioFiles.length; i++){
+            arrayAllAudioFiles[i].volume = new_volume;
+        }
+}

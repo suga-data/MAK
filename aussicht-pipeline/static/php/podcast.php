@@ -4,7 +4,7 @@
 $author = "Off_line";
 $url = "https://anchor.fm/s/3b4cd0ac/podcast/rss";
 $xml_file = simplexml_load_file($url);
-//print_r($xml_file);
+print_r($xml_file);
 
 
 
@@ -33,7 +33,10 @@ for($i = 0; $i <= $length_of_item_array; $i++){
     print_r($date."\n");
 
     $mp3_url = $xml_file->channel->item[$i]->enclosure->attributes()->url;
-    print_r($mp3_url."\n\n\n");
+    print_r($mp3_url."\n");
+
+    $mp3_length = $xml_file->channel->item[$i]->enclosure->attributes()->length;
+    print_r($mp3_length."\n\n\n");
 
 }
 ?>
