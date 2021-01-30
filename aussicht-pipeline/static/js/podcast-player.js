@@ -8,6 +8,12 @@ var sounds = document.getElementsByTagName('audio');
 var arrayAllAudioFiles = document.getElementById("audio_files").getElementsByTagName("audio");
 //create array of PODCAST LIST ELEMENTS
 var arrayPodcastsList = document.getElementById("podcast_track_list").getElementsByTagName("div");
+
+var number_of_first_track = document.getElementById(arrayPodcastsList[0].id).getElementsByClassName('track_number')[0].innerHTML;
+var title_of_first_track = document.getElementById(arrayPodcastsList[0].id).getElementsByClassName('track_name_title')[0].innerHTML;
+document.getElementById("current_podcast_track_name_number").innerHTML = number_of_first_track;
+document.getElementById("current_podcast_track_name").innerHTML = title_of_first_track;
+
 // create  EVENT LISTENER for CURRENT PODCAST TRACK
 document.getElementById('current_podcast_click_area').addEventListener("click", function(){
     let current_track_id = document.getElementById('current_podcast_track_name_number').innerHTML;
