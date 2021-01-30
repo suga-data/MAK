@@ -7,6 +7,24 @@ $xml_file = simplexml_load_file($url);
 //print_r($xml_file);
 
 
+// $json = json_encode($xml_file);
+// $array = json_decode($json,TRUE);
+// print-r($array);
+
+// open json file
+// path needs to be adjusted !
+// $json_data_base = file_get_contents('../json/podcast.json');
+// $temp_json_data_base = json_decode($json_data_base);
+// array_push($temp_json_data_base, $temp_incoming_array[0]);
+// $jsonData = json_encode($temp_json_data_base);
+// // path needs to be adjusted !
+// file_put_contents('../json/podcast.json', $jsonData);
+
+
+
+
+
+
 // address the item array
 $item_array = $xml_file->channel->item;
 
@@ -38,6 +56,14 @@ for($i = 0; $i <= $length_of_item_array; $i++){
 
 
 
+
+
+
+
+
+
+
+
     // create AUDIO FILE LIST
 
     // if ($i == 0){
@@ -53,12 +79,10 @@ for($i = 0; $i <= $length_of_item_array; $i++){
 
 
 
-
-
     // create TRACK LIST
-    if ($i == 0){
-        echo "<ul id='podcast_track_list'>\n";
-    }else{}
+    // if ($i == 0){
+    //     echo "<ul id='podcast_track_list'>\n";
+    // }else{}
 
     // echo "<div class='player-controls play' id='podcast_list_object_" . $podcast_number . "'>\n";
     // echo "<span class='track_name podcast_play_pause_icon'>►</span>\n";
@@ -67,9 +91,9 @@ for($i = 0; $i <= $length_of_item_array; $i++){
     // echo "<span class='track_name track_name_title' id='track_name_" . $i . "'>" . $title . "</span>\n";
     // echo "<span class='track_name podcast_date'>" . $date . "</span>\n</div>";
             
-    if ($i == $length_of_item_array){
-        echo "</ul>\n";
-    }else{}
+    // if ($i == $length_of_item_array){
+    //     echo "</ul>\n";
+    // }else{}
 
 }
 ?>

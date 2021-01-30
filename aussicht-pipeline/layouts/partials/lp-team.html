@@ -2,7 +2,7 @@
 
 <style>
     
-    .lp-team {
+    #lp-team {
         background-color: white;
         position: static;
         padding-top: 100px;
@@ -10,13 +10,13 @@
         margin-bottom: 50px;
         z-index: 1;    }
 
-    .lp-team p {
+    #lp-team div {
         text-align: center;
-        display: grid;
+        /* display: grid; */
         margin-left: var(--margin);
         margin-right: var(--margin);
-        grid-template-columns: auto;
-        grid-template-rows: auto;
+        /* grid-template-columns: auto; */
+        /* grid-template-rows: auto; */
         color: black;
         font-family: var(--font-family-secondary);
         font-weight: 400;
@@ -24,13 +24,80 @@
         line-height: 1.3;
     }
 
+
+#lp-team > div > span {
+}
+#lp-team > div > span:hover {
+    background-color: aqua; 
+    width: auto;
+}
+
+.team_list_details{
+    display: none;
+    color: black;
+}
+
+.team_list_details:hover {
+}
+
+#team_list img{
+}
 </style>
 
 
-<div class="lp-team">
+<div id="lp-team">
 
-    <p>
-        Kuratiert wird die Gruppenaus­stellung unter der Leitung von Matthias Wagner K, dem Direktor des Museum Angewandte Kunst, von einem neunköpfigen Projektteam mit Beatrice Bianchini, Irina Denkmann, Jonas Deuter, Ulrike Grünewald, Felix Kosok, Erika Sacco, Maria Sitte, Anna Sukhova und Ellen Wagner (Studierende und Mitarbeiter*innen der HfG Offenbach).
-    </p>
+    <div id="team_list">
+        Kuratiert wird die Gruppenaus­stellung unter der Leitung von Matthias Wagner K, dem Direktor des Museum Angewandte Kunst, von einem neunköpfigen Projektteam mit 
+        <span>Beatrice Bianchini<span class="team_list_details"><img src="/imgs/team_list/test.jpg"><span class="profession">cool person number one</span></span></span>, 
+        <span>Irina Denkmann<span class="team_list_details"><img src="/imgs/team_list/test.jpg"><span class="profession">cool person number one</span></span></span>, 
+        <span>Jonas Deuter<span class="team_list_details"><img src="/imgs/team_list/test.jpg"><span class="profession">cool person number one</span></span></span>, 
+        <span>Ulrike Grünewald<span class="team_list_details"><img src="/imgs/team_list/test.jpg"><span class="profession">cool person number one</span></span></span>, 
+        <span>Felix Kosok<span class="team_list_details"><img src="/imgs/team_list/test.jpg"><span class="profession">cool person number one</span></span></span>, 
+        <span>Erika Sacco<span class="team_list_details"><img src="/imgs/team_list/test.jpg"><span class="profession">cool person number one</span></span></span>, 
+        <span>Maria Sitte<span class="team_list_details"><img src="/imgs/team_list/test.jpg"><span class="profession">cool person number one</span></span></span>, 
+        <span>Anna Sukhova<span class="team_list_details"><img src="/imgs/team_list/test.jpg"><span class="profession">cool person number one</span></span></span> und 
+        <span>Ellen Wagner<span class="team_list_details"><img src="/imgs/team_list/test.jpg"><span class="profession">cool person number one</span></span></span> 
+        (Studierende und Mitarbeiter*innen der HfG Offenbach).
+    </div>
 
 </div>
+
+<script>
+team_list_array = document.getElementById("team_list").getElementsByTagName("span");
+
+// add EventListener of each MEMBER of the TEAM LIST
+for (i = 0; i < team_list_array.length; i++){
+    console.log("click"+i);
+    let TeamListElement = i;
+    team_list_array[i].addEventListener("click", function(){
+        //hideAllOtherDetails(TeamListElement);
+        displayTeamListDetails(TeamListElement);
+    });
+}
+
+// define function if MEMBER is CLICKED
+function displayTeamListDetails(TeamListElement){
+    let display_status = team_list_array[TeamListElement].getElementsByClassName("team_list_details")[0].style.display;
+    if (display_status == "none" || display_status == ""){
+        team_list_array[TeamListElement].getElementsByClassName("team_list_details")[0].style.display = "inline";
+    }else{
+        team_list_array[TeamListElement].getElementsByClassName("team_list_details")[0].style.display = "none";
+    }
+}
+
+
+
+
+
+
+
+
+function hideAllOtherDetails(TeamListElement){
+    for (i = 0; i < team_list_array.length; i++){
+        console.log("hello"+i)
+        team_list_array[i].getElementsByClassName("team_list_details")[0].style.display = "none";
+    }
+}
+
+</script>
