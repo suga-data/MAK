@@ -70,7 +70,7 @@
           width: 60px;
           height: 60px;
           border-radius: 30px;
-          background: linear-gradient(60deg, rgba(229,166,176,1) 0%, rgba(85,96,169,1) 55%, rgba(45,60,132,1) 90%);
+          background: linear-gradient(60deg, rgba(229,166,176,1) 0%, rgba(85,96,169,0.5) 55%, rgba(45,60,132,0.5) 90%);
           pointer-events: none;
           z-index: 0;
         }
@@ -98,6 +98,8 @@
 
         {{ partial "lp-team" . }}
 
+<!-- ---------------------------- MOUSE TRAIL COMPONENTS N30 -------------------------------  -->
+
         <div class="cursor-follower"></div>
         <div class="cursor-follower"></div>
         <div class="cursor-follower"></div>
@@ -131,7 +133,7 @@
         
 
 
-<!-- ---------------------------- CANVAS FOR MOUSE TRAIL -------------------------------  -->
+<!-- ---------------------------- JS GSAP FOR MOUSE TRAIL -------------------------------  -->
 
         <script type = "text/javascript">
         
@@ -146,14 +148,24 @@
               }
             })
           })
+
+          document.addEventListener("touchmove", e=> {
+            gsap.to(".cursor-follower", {
+              x : e.changedTouches[0].clientX,
+              y : e.changedTouches[0].clientY,
+              duration: 3,
+              stagger : {
+                from: 7,
+                each: 0.05,
+              }
+            })
+          })
+
         </script>
 
     </body>
 
-
-
-
-<!-- ----------------------- EVENT LISTENER ------------------------------  -->
+<!-- ----------------------- EVENT LISTENER FOR HEADER ------------------------------  -->
 
 <script defer>
 

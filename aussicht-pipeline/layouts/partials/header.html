@@ -2,214 +2,308 @@
 
 <style>
 
-    /* ------------ HEADER NAV CONTAINER ----------- */
-    header {
-        position: sticky;
-        position: -webkit-sticky;
-        top: 0;
-        display: grid;
-        grid-template-columns: 250px auto 250px 130px 150px;
-        grid-template-rows: 50px;
-        grid-template-areas:
-            "logo . programme about artists";
-        padding: 20px;
-        padding-left: var(--margin);
-        padding-right: var(--margin);
-        z-index: 100;
-        mix-blend-mode: difference; */
-    }
+/*------------HEADER------------*/
 
-    header h2 {
-        font-weight: 600;
-        font-size: 23px;
-    }
+header {
+  position: fixed;
+  z-index: 99;
+  mix-blend-mode: difference;
+  font-family: '2070';
+  font-weight: 600;
+}
 
-    header a {
-        color: var(--text);
-        text-decoration: none;
-        /* -webkit-text-stroke-width: 1px;
-        -webkit-text-stroke-color: black; */
-    }
+header a {
+    color: var(--text);
+    text-decoration: none;
+}
 
-    header a:hover {
-        color: var(--color-rosa);
-        text-decoration: none;
-        cursor: inherit;
-    }
+header a:hover {
+    color: var(--color-rosa);
+    text-decoration: none;
+    cursor: inherit;
+}
+
+header.logo {
+  font-size: 20px;
+  line-height: 0.8;
+  left: var(--margin);
+  top: 30px;
+  float: left;
+  display: flex;
+  z-index: 999;
+}
+
+header.menu {
+  top: 70px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .1s ease-out;
+}
+
+header.menu li {
+  text-align: left;
+  margin-right: 0px;
+  margin-left: 0px;
+  list-style-type: none;
+}
+
+li.items {
+  border-top: 1px solid white;
+  width: 100vw;
+  padding: 10px 15px;
+  font-size: 27px;
+  font-weight: 500;
+}
+
+div.menu-dropdown-bg {
+  top: 0px;
+  background: black;
+  border-bottom: 1px solid;
+  border-color: rgba(255,255,255, 0);
+  height: 0;
+  transition: height .1s ease-out, border-color .2s ease-in;
+  width: 100vw;
+  position: fixed;
+  z-index: 99;
+}
 
 
-    /* ------------ SINGLE NAV ITEMS ----------- */
+/*------------MENU ICON------------*/
 
-    h2#item-logo {
-        grid-area: logo;
-        justify-self: start;
-        font-size: 20px;
-        line-height: 0.8;
-    }
+.menu-icon {
+  cursor: pointer;
+  right: var(--margin);
+  top: var(--margin);
+  position: fixed;
+  user-select: none;
+  padding: 15px 10px;
+  z-index: 99;
+  mix-blend-mode: difference;
+}
 
-    #item-logo a:hover {
-        text-decoration: none;
-    }
+.menu-icon .navicon {
+  background: white;
+  display: block;
+  height: 3px;
+  position: relative;
+  transition: background .2s ease-out;
+  width: 20px;
+}
 
-    #itemabout {
-        grid-area: about;
-        justify-self: center;
-    }
+/* MENU ICON > copy and paste attributes */
 
-    #itemartists {
-        grid-area: artists;
-        justify-self: end;
-    }    
 
-    #itemprogramme {
-        grid-area: programme;
-        justify-self: center;
-    } 
+.menu-icon .navicon:before, .menu-icon .navicon:after {
+  background: white;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
 
-    html {
-        scroll-behavior: smooth;
-    }
+.menu-icon .navicon:before {
+  top: 7px;
+}
 
-    .nav-scrolled {
-        font-family: var(--font-family-secondary);
-    }  
-    
-    @media only screen and (max-width: 1390px) {
-        :root {
-        --font-size-title: 100px;
-        }
-    }
+.menu-icon .navicon:after {
+  top: -7px;
+}
 
-    @media only screen and (max-width: 1050px) {
-        :root {
+/*----------MENU TOGGLE BUTTON----------*/
+
+.menu-btn {
+  display: none;
+}
+
+.menu-btn:checked ~ .menu-dropdown-bg {
+  height: 260px;
+  border-color: rgba(255,255,255, 1)
+}
+
+.menu-btn:checked ~ .menu {
+  max-height: 400px;
+}
+
+
+/* MENU BUTTON > animation */
+
+.menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+.nav-scrolled {
+    font-family: var(--font-family-secondary);
+}  
+
+
+/* ---------- RESPONSIVE PROPERTIES --------- */
+
+@media (max-width: 1024px) {
+    :root {
+        --margin: 25px;
+        --font-size-primary: 35px;
+        --font-size-secondary: 35px;
         --font-size-title: 80px;
-        }
+        --font-size-date: 17px;
     }
 
-
-    @media only screen and (max-width: 800px) {
-        header {
-            grid-template-columns: 200px auto 190px 110px 90px;
-            grid-template-rows: 50px;
-            padding: 20px;
-            padding-left: var(--margin);
-            padding-right: var(--margin);
-        }
-
-        header h2 {
-            color: var(--text);
-            font-weight: 600;
-            font-size: 18px;
-        }
-
-        .lp-title p {
-            font-weight: 300;
-        }
-
-        :root {
-                --margin: 25px;
-                --font-size-primary: 35px;
-                --font-size-secondary: 35px;
-                --font-size-title: 50px;
-                --font-size-date: 17px;
-            }
+    .lp-title {
+        padding-top: 90px;
     }
 
-    @media only screen and (max-width: 600px) {
-        #itemabout, #itemartists, #itemprogramme {
-            display: none;
-        }
+    header.logo {
+        top: 28px;
+    }
+}
 
-        .player-podcast {
-            left: 50%;
-        }
+/* 48em = 768px */
 
-        :root {
-                --margin: 15px;
-                --font-size-primary: 20px;
-                --font-size-secondary: 20px;
-                --font-size-title: 40px;
-                --font-size-date: 13px;
-            }
-
-        .event-toggle {
-            width: 130px;
-        }
-
+@media (min-width: 48em) {
+        
+    header.menu {
+        max-height: none;
+        display: flex;
+        top: 0px;
+        right: 0px;
     }
 
-    @media only screen and (min-width: 600px) {
-        .event-toggle {
-            width: 420px;
-        }
+    li.items {
+        width: auto;
+        border: none;
+        font-size: 20px;
     }
+
+    header.menu li {
+        margin: 20px;
+    }
+    
+    .menu-icon {
+        display: none;
+    }
+    
+    h2.title {
+        color: white;
+    }
+
+    .lp-title {
+        padding-top: 90px;
+    }
+}
+
+/* 48em = 768px */
+
+@media (max-width: 48em) {
+    header h2 {
+        color: var(--text);
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .lp-title p {
+        font-weight: 300;
+    }
+
+    :root {
+        --margin: 25px;
+        --font-size-primary: 35px;
+        --font-size-secondary: 35px;
+        --font-size-title: 70px;
+        --font-size-date: 17px;
+    }
+
+    .lp-title {
+        padding-top: 90px;
+    }
+
+    header.logo {
+        top: 25px;
+    }
+}
+
+/* 36em = 576px */
+
+@media (max-width: 36em) {
+    :root {
+        --margin: 15px;
+        --font-size-primary: 20px;
+        --font-size-secondary: 20px;
+        --font-size-title: 40px;
+        --font-size-date: 13px;
+        }
+
+    .lp-title {
+        padding-top: 70px;
+    }
+
+    header.logo {
+        top: 15px;
+    }
+}
 
 
 </style>
 
 
-
-<header> 
-
-    <h2 id="item-logo"><a href="#main">aussicht.<br>space</a></h2>
-
-    <h2 id="itemabout"><a href="#about">About</a></h2> 
-
-    <h2 id="itemartists"><a href="#artists">Artists</a></h2>
-
-    <h2 id="itemprogramme"><a href="#programme">Programme</a></h2> 
-
+<header class="logo">
+    <a id="itemlogo" href="#main">ausssicht.<br>space</a>
 </header>
 
-<!-- ------------------------ JAVASCRIPT TO ACTIVATE INTERSECTION OBSERVER  ---------------------------  -->
+<input class="menu-btn" type="checkbox" id="menu-btn" />
+
+<div class="menu-dropdown-bg"></div>
+
+<header class="menu">
+    <li class="items"><a id="itemprogramme" href="#programme">Programme</a></li>
+    <li class="items"><a id="itemabout" href="#about">About</a></li>
+    <li class="items"><a id="itemartists" href="#artists">Artists</a></li>
+</header>
+
+<label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
 
 
 
+<!-- ------------------------- VANILLA JS FOR BROWSER SMOOTH SCROLL SUPPORT  ---------------------------  -->
 
-<!-- ------------------------- JAVASCRIPT FOR SAFARI SMOOTH SCROLL SUPPORT  ---------------------------  -->
 
-<!-- 
-<script>
+<!-- <script>
 
-    function scrollToSection(event) {
+    const links = document.querySelectorAll("header h2 a");
 
-        if (supportsSmoothScrolling()) {
-            return;
-        }
-
-        event.preventDefault();
-        const scrollToElem = document.getElementById("about");
-        SmoothVerticalScrolling(scrollToElem, 300, "top");
+    for (const link of links) {
+        link.addEventListener("click", clickHandler);
     }
 
-    // Detect if smooth scrolling is supported by the browser. False on Safari, True on Chrome/Firefox
-    function supportsSmoothScrolling() {
-        const body = document.body;
-        const scrollSave = body.style.scrollBehavior;
-        body.style.scrollBehavior = 'smooth';
-        const hasSmooth = getComputedStyle(body).scrollBehavior === 'smooth';
-        body.style.scrollBehavior = scrollSave;
-        return hasSmooth;
-    };
-    
-    function SmoothVerticalScrolling(element, time, position) {
-        var eTop = element.getBoundingClientRect().top;
-        var eAmt = eTop / 100;
-        var curTime = 0;
-        while (curTime <= time) {
-            window.setTimeout(SVS_B, curTime, eAmt, position);
-            curTime += time / 100;
-        }
+    function clickHandler(e) {
+        e.preventDefault();
+        const href = this.getAttribute("href");
+        const offsetTop = document.querySelector(href).offsetTop;
+
+        scroll({
+            top: offsetTop,
+            behavior: "smooth"
+        });
     }
 
-    function SVS_B(eAmt, position) {
-        if (position == "center" || position == "")
-        window.scrollBy(0, eAmt / 2);
-        if (position == "top")
-        window.scrollBy(0, eAmt);
-    }
+</script>  -->
 
-
-</script> 
--->
 
