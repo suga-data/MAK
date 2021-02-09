@@ -91,6 +91,8 @@ $one_item_string = json_encode($one_item);
 <script class="typewriter">
 
     document.addEventListener('DOMContentLoaded',function(event){
+
+        var timeToReloadNewText = 10000; // 10 seconds
         
         var dataText = [
             // <?php echo $one_item["question"]; ?>
@@ -108,10 +110,8 @@ $one_item_string = json_encode($one_item);
         // types one text in the typewriter
         // keeps calling itself until the text is finished
         function typeWriter(text, i, fnCallback) { 
-            
             // checks if the text isn't finished yet, and add next character
             if (i < (text.length)) {
-                
                 // document.querySelector("span").innerHTML = text.substring(0, i+1) +'<span aria-hidden="true"></span>';
                 document.getElementById("type-questions").innerHTML = text.substring(0, i+1) +'<span aria-hidden="true"></span>';
 
@@ -122,10 +122,23 @@ $one_item_string = json_encode($one_item);
             }
             
             // when text is finished, call the callback function again
-            else if (typeof fnCallback == 'function') {    
+            else if (typeof fnCallback == 'function') {
+                setTimeout(function() {
+                    deleteText(text, i);
+                }, timeToReloadNewText);
                 
                 // call callback after timeout
-                setTimeout(fnCallback, 10000);
+                setTimeout(fnCallback, 100*(text.length)+timeToReloadNewText+600);    
+            }
+        }
+
+        function deleteText(text, i){
+            if (i <= (text.length) && i > 0) {
+                document.getElementById("type-questions").innerHTML = text.substring(0, i-1) +'<span aria-hidden="true"></span>';
+                // wait for a while and call this function again for the next character
+                setTimeout(function() {
+                    deleteText(text, i - 1)
+                }, 100);
             }
         }
         
@@ -139,11 +152,20 @@ $one_item_string = json_encode($one_item);
             
             // if dataText[i] exists, start animation
             if (i < dataText[i].length) {
-                
                 typeWriter(dataText[i], 0, function(){
-                    
-                    // after callback (and whole text has been animated), start next text
+                    // after callback (and whole text has been animated)
+                    // start new text
                     StartTextAnimation(i + 1);
+                    //setTimeout(function() {
+                        // start deleting old text
+
+                        // let TextToDelete = dataText[i];
+                        // for (i = (TextToDelete[i].length); i > 0; i--){
+                        //     document.getElementById("type-questions").innerHTML = TextToDelete.substring(0, i-1) +'<span aria-hidden="true"></span>';
+                        // }
+                        // start new text
+                    //    StartTextAnimation(i + 1);
+                    //}, 1000);
                 });
             }
         }
