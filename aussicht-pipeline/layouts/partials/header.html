@@ -158,6 +158,17 @@ html {
 
 /* ---------- RESPONSIVE PROPERTIES --------- */
 
+@media (min-width: 1024px) {
+    img.logos {
+        width: 220px;
+        margin: 20px 45px 10px 45px;
+      }
+
+    #artists {
+      font-size: var(--font-size-secondary);
+    }
+}
+
 @media (max-width: 1024px) {
     :root {
         --margin: 25px;
@@ -173,6 +184,15 @@ html {
 
     header.logo {
         top: 28px;
+    }
+
+    img.logos {
+      width: 150px;
+      margin: 20px 45px 10px 45px;
+    }
+
+    #artists {
+      font-size: var(--font-size-secondary);
     }
 }
 
@@ -238,6 +258,15 @@ html {
     header.logo {
         top: 25px;
     }
+
+    img.logos {
+      width: 200px;
+      margin: 20px 75px 10px 75px;
+    }
+
+    footer {
+      height: 100vh;
+    }
 }
 
 /* 36em = 576px */
@@ -258,6 +287,26 @@ html {
     header.logo {
         top: 15px;
     }
+
+    img.logos {
+      width: 150px;
+      margin: 10px;
+    }
+
+    footer {
+      height: 100vh;
+    }
+
+    #artists {
+      display: none;
+    }
+}
+
+@media (max-width: 320px) {
+    img.logos {
+        width: 120px;
+        margin: 10px;
+      }
 }
 
 

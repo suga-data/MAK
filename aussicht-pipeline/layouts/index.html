@@ -70,7 +70,7 @@
           width: 60px;
           height: 60px;
           border-radius: 30px;
-          background: linear-gradient(60deg, rgba(229,166,176,1) 0%, rgba(85,96,169,0.5) 55%, rgba(45,60,132,0.5) 90%);
+          background: linear-gradient(60deg, rgba(229,166,176,1) 0%, rgba(85,96,169,1) 55%, rgba(45,60,132,1) 90%);
           pointer-events: none;
           z-index: 0;
         }
@@ -96,7 +96,11 @@
 
         {{ partial "lp-list-artist" . }}
 
+        {{ partial "lp-list-artist-mobile" . }}
+
         {{ partial "lp-team" . }}
+
+        {{ partial "lp-footer" . }}
 
 <!-- ---------------------------- MOUSE TRAIL COMPONENTS N30 -------------------------------  -->
 
@@ -141,7 +145,7 @@
             gsap.to(".cursor-follower", {
               x : e.clientX,
               y : e.clientY,
-              duration: 8,
+              duration: 1,
               stagger : {
                 from: 7,
                 each: 0.05,
