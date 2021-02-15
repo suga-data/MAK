@@ -4,10 +4,13 @@ var playhead = document.getElementById('playhead'); // playhead
 var timeline = document.getElementById('timeline'); // timeline
 var sounds = document.getElementsByTagName('audio');
 
+var symbol_play = "/imgs/2070_button_play.png"
+var symbol_pause = "/imgs/2070_button_pause.png"
+
 //create array of AUDIO FILES
 var arrayAllAudioFiles = document.getElementById("audio_files").getElementsByTagName("audio");
 //create array of PODCAST LIST ELEMENTS
-var arrayPodcastsList = document.getElementById("podcast_track_list").getElementsByTagName("div");
+var arrayPodcastsList = document.getElementsByClassName('podcast_track_list')[0].getElementsByTagName("div");
 
 var number_of_first_track = document.getElementById(arrayPodcastsList[0].id).getElementsByClassName('track_number')[0].innerHTML;
 var title_of_first_track = document.getElementById(arrayPodcastsList[0].id).getElementsByClassName('track_name_title')[0].innerHTML;
@@ -114,6 +117,9 @@ function playAudio(AudioFileId, PodcastsListElementId){
         }
     }
 
+
+
+    
     // timeUpdate
     // Synchronizes playhead position with current point in audio
     function timeUpdate() {
@@ -122,11 +128,13 @@ function playAudio(AudioFileId, PodcastsListElementId){
         if (music.currentTime == duration) {
             // pButton.className = "";
             // pButton.className = "play";
-            document.getElementById("current_podcast_play_pause_icon").innerHTML = "";
-            document.getElementById("current_podcast_play_pause_icon").innerHTML = "►";
+            //document.getElementById("current_podcast_play_pause_icon").innerHTML = "";
+            // document.getElementById("current_podcast_play_pause_icon").innerHTML = symbol_play;
+            document.getElementById("current_podcast_play_pause_icon").getElementsByTagName("img")[0].src = symbol_pause;
             let resetPlayClass = document.getElementsByClassName("player-controls pause");
             for (var i = 0; i < resetPlayClass.length; i++) {
-                resetPlayClass.item(i).getElementsByClassName("podcast_play_pause_icon")[0].innerHTML = "►";
+                //resetPlayClass.item(i).getElementsByClassName("podcast_play_pause_icon")[0].innerHTML = symbol_play;
+                resetPlayClass.item(i).getElementsByClassName("podcast_play_pause_icon")[0].getElementsByTagName("img")[0].src = symbol_play;
                 resetPlayClass.item(i).className = "player-controls play";
             }
             document.getElementById("current_podcast_click_area").className = "";
@@ -144,7 +152,8 @@ function playAudio(AudioFileId, PodcastsListElementId){
 
             for (var i = 0; i < arrayPodcastsList.length; i++) {
                 // arrayPodcastsList[i].getElementsByClassName("podcast_play_pause_icon")[0].innerHTML = "";                
-                arrayPodcastsList[i].getElementsByClassName("podcast_play_pause_icon")[0].innerHTML = "►";
+                // arrayPodcastsList[i].getElementsByClassName("podcast_play_pause_icon")[0].innerHTML = symbol_play;
+                arrayPodcastsList[i].getElementsByClassName("podcast_play_pause_icon")[0].getElementsByTagName("img")[0].src = symbol_play;
             }
 
             var allPauses = document.getElementsByClassName("pause");
@@ -163,14 +172,17 @@ function playAudio(AudioFileId, PodcastsListElementId){
             //pButton.className = "player-controls pause";
             document.getElementById(podcast_list_object_number_ID).className = "";
             document.getElementById(podcast_list_object_number_ID).className = "player-controls pause";
-            document.getElementById(podcast_list_object_number_ID).getElementsByClassName("podcast_play_pause_icon")[0].innerHTML = "";
-            document.getElementById(podcast_list_object_number_ID).getElementsByClassName("podcast_play_pause_icon")[0].innerHTML = "||";
+            //document.getElementById(podcast_list_object_number_ID).getElementsByClassName("podcast_play_pause_icon")[0].innerHTML = "";
+            //document.getElementById(podcast_list_object_number_ID).getElementsByClassName("podcast_play_pause_icon")[0].innerHTML = symbol_pause;
+            document.getElementById(podcast_list_object_number_ID).getElementsByClassName("podcast_play_pause_icon")[0].getElementsByTagName("img")[0].src = symbol_pause;
 
-            document.getElementById("current_podcast_click_area").className = "";
-            document.getElementById("current_podcast_click_area").className = "player-controls pause";
 
-            document.getElementById("current_podcast_play_pause_icon").innerHTML = "";
-            document.getElementById("current_podcast_play_pause_icon").innerHTML = "||";
+            //document.getElementById("current_podcast_click_area").className = "";
+            //document.getElementById("current_podcast_click_area").className = "player-controls pause";
+
+            // document.getElementById("current_podcast_play_pause_icon").innerHTML = "";
+            // document.getElementById("current_podcast_play_pause_icon").innerHTML = symbol_pause;
+            document.getElementById("current_podcast_play_pause_icon").getElementsByTagName("img")[0].src = symbol_pause;
             document.getElementById("current_podcast_track_name_number").innerHTML = "";
             document.getElementById("current_podcast_track_name_number").innerHTML = current_track_number;
             document.getElementById("current_podcast_track_name").innerHTML = "";
@@ -179,11 +191,13 @@ function playAudio(AudioFileId, PodcastsListElementId){
         } else { // pause music
             music.pause();
             // remove pause, add play
-            document.getElementById("current_podcast_play_pause_icon").innerHTML = "";
-            document.getElementById("current_podcast_play_pause_icon").innerHTML = "►";
+            //document.getElementById("current_podcast_play_pause_icon").innerHTML = "";
+            // document.getElementById("current_podcast_play_pause_icon").innerHTML = symbol_play;
+            document.getElementById("current_podcast_play_pause_icon").getElementsByTagName("img")[0].src = symbol_play;
             let resetPlayClass = document.getElementsByClassName("player-controls pause");
             for (var i = 0; i < resetPlayClass.length; i++) {
-                resetPlayClass.item(i).getElementsByClassName("podcast_play_pause_icon")[0].innerHTML = "►";
+                //resetPlayClass.item(i).getElementsByClassName("podcast_play_pause_icon")[0].innerHTML = symbol_play;
+                resetPlayClass.item(i).getElementsByClassName("podcast_play_pause_icon")[0].getElementsByTagName("img")[0].src = symbol_play;
                 resetPlayClass.item(i).className = "player-controls play";
             }
             document.getElementById("current_podcast_click_area").className = "";
@@ -244,18 +258,24 @@ function playAudio(AudioFileId, PodcastsListElementId){
 
 // show  Podcast list
 document.getElementById('podcast_area_all').addEventListener("mouseenter", ShowPodcastList);
+document.getElementById('podcast_area_all').addEventListener("swipe-up", ShowPodcastList);
+
 function ShowPodcastList(){
     //alert('Sie sollten doch nicht drücken!');
-    document.getElementById('podcast_track_list').style.visibility = 'visible';
-    document.getElementById('podcast_track_list').style.height = '150px';
+    document.getElementsByClassName('podcast_track_list')[0].className = "podcast_track_list podcast_list_expanded";
+
+    //document.getElementsByClassName('podcast_track_list')[0].style.visibility = 'visible';
+    //document.getElementsByClassName('podcast_track_list')[0].style.height = '150px';
     // document.getElementsByClassName('player-controls').style.height = 'auto';
 }
 // colapse  Podcast list
 document.getElementById('podcast_area_all').addEventListener("mouseleave", CollapsePodcastList);
 function CollapsePodcastList(){
     // document.getElementById('podcast_track_list').style.height = '50px';
-    document.getElementById('podcast_track_list').style.visibility = 'collapse';
-    document.getElementById('podcast_track_list').style.height = '0';
+    document.getElementsByClassName('podcast_track_list')[0].className = "podcast_track_list podcast_list_collapsed";
+
+    //document.getElementsByClassName('podcast_track_list')[0].style.visibility = 'collapse';
+    //document.getElementsByClassName('podcast_track_list')[0].style.height = '0';
     // document.getElementsByClassName('player-controls').style.height = '0';
 }
 

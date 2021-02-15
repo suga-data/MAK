@@ -8,41 +8,25 @@
         height: auto;
         /* padding: 0; */
         z-index: 999;
-        border-top: black 1px solid;
-        background: white;
         color: black;
         font-family: var(--font-family-primary);
-
     }
-
     .player-container>* {
         position: relative;
         height: auto;
         width: 100%;
-
+        background: white;
     }
-
-
-    #podcast_track_list {
-        transition: all 0.5s ease-in-out;
-        visibility: collapse;
-        height: 0;
+    .podcast_track_list {
         margin: 0;
         padding: 0;
-
         overflow-y: scroll;
-
-        -ms-overflow-style: none;
-        /* IE and Edge */
-        scrollbar-width: none;
-        /* Firefox */
-
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
         display: grid;
-        /* grid-template-columns: 40px 50px auto 50px 40px;
-        grid-template-rows: 200px 40px 40px; */
     }
 
-    #podcast_track_list::-webkit-scrollbar {
+    .podcast_track_list::-webkit-scrollbar {
         display: none;
     }
 
@@ -52,21 +36,29 @@
         grid-template-columns: 50px 70px 100px auto 200px;
         grid-template-rows: 33px;
     }
-
     .player-controls>* {
         margin-left: 10px;
     }
-
     .player-controls:hover>* {
-        color: gray;
+        /* color: gray; */
+        opacity: 0.5;
     }
+
+
+
+
+
+
+    
+
+
+    
 
     .podcast_date {
         float: right;
     }
 
     #all_of_timeline {
-        /* display: inline-block; */
         border-bottom: black 1px solid;
         border-top: black 1px solid;
         height: 30px;
@@ -75,14 +67,8 @@
     }
 
     #all_of_timeline>* {
-        /* display: inline-block; */
-
         margin: 3px;
         height: 20px;
-    }
-
-    #timeline {
-        /* width: 100%; */
     }
 
     #playhead {
@@ -97,7 +83,6 @@
 
     #timeleft {
         text-align: right;
-        /* width: 100%; */
         right: 5px;
         position: absolute;
     }
@@ -113,11 +98,6 @@
         grid-template-rows: auto;
     }
 
-    .current_podcast_track_name {
-        /* color: black; */
-        /* font-size: 28px; */
-    }
-
     .current_podcast_player_controls>* {
         padding-right: 30px;
         padding-left: 20px;
@@ -125,7 +105,8 @@
     }
 
     .current_podcast_player_controls:hover {
-        color: gray;
+        /* color: gray; */
+        /* opacity: 0.1; */
     }
 
     .current_podcast_date {
@@ -135,28 +116,48 @@
 
 
     .play {
-        color: black;
-        /* color: gray; */
-        /* height: 30px;
-        width: 30px;
-        border: none;
-        margin-left: 10px; */
+        /* color: black; */
+        opacity: 1;
     }
-
     .pause {
-        color: gray;
-        /* height: 30px;
-        width: 30px;
-        border: none; */
+        /* color: gray; */
+        opacity: 0.5;
     }
-
     audio {
         display: none;
     }
-
     .info {
         /* color: black; */
         font-size: 16px;
+    }
+    .play_pause_symbol {
+        height: 20px;
+        width: auto;
+    }
+
+
+
+    @keyframes slideUp {
+        0% { transform: translateY(100%); }
+        100% { transform: translateY(0%); }
+    }
+    /* @keyframes slideDown {
+        100% { transform: translateY(0%); }
+        0% { transform: translateY(100%); }
+    } */
+
+    .podcast_list_collapsed {
+        /* transition: all 0.5s ease-in-out; */
+        /* animation: 0.5s ease-in 1s 1 slideup; */
+        visibility: visible;
+        height: 0px;
+    }
+    .podcast_list_expanded {
+        /* transition: all 0.5s ease-in-out; */
+        animation: 0.5s ease-out 0s 1 slideUp;
+        border-top: black 1px solid;
+        visibility: visible;
+        height: 150px;
     }
 
 
@@ -167,6 +168,7 @@
         width: 30px;
         display: grid;
         grid-template-columns: 6px 6px 6px 6px 6px;
+        background: white;
     }
 
     .volume_step {
@@ -174,7 +176,6 @@
         background-color: black;
         align-self: end;
     }
-<<<<<<< HEAD
     #volume_step_0 {height: 40%;}
     #volume_step_1 {height: 50%;}
     #volume_step_2 {height: 60%;}
@@ -186,55 +187,66 @@
     #volume_step_3:hover {height: 90%; background-color: gray;}
     #volume_step_4:hover {height: 100%; background-color: gray;}
 
+
+
+
     
+    @media (max-width: 1024px) {
+        .player-controls { grid-template-columns: 50px 70px 100px auto 200px; }
+    }
+    @media (max-width: 850px) {
+        .player-controls { grid-template-columns: 30px 50px auto; }
+        .player-controls > span:nth-child(3) { display: none; }
+        .player-controls > span:nth-child(5) { display: none; }
+    }
+    @media (max-width: 600px) {
+        .player-controls { grid-template-columns: 30px 50px auto ; }
+        .player-controls > span:nth-child(3) { display: none; }
+        .player-controls > span:nth-child(5) { display: none; }
 
-=======
+        .track_name_title{
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+        }
+        .track_name_title > p{
+            display: block;
+            position: absolute;
+            overflow: hidden;
+            width: auto;
+            animation: marquee 10s linear infinite;
+            animation-direction: alternate;
+        }
+        /* .track_name_title > span {
+            float: left;
+            width: 50%;
+        } */
+        @keyframes marquee {
+            /* 0% { 
+                padding-right: -10px; 
+                padding-left: 10px; 
+            }
+            100% { 
+                padding-right: 10px; 
+                padding-left: -10px; 
+            } */
+            0% { transform: translateX(5%); }
+        100% { transform: translateX(-30%); }
+        }
 
-    #volume_step_0 {
-        height: 40%;
+    @media (max-height: 815px) {
+        .podcast_list_expanded { 
+            height: 80vh;
+            }
     }
 
-    #volume_step_1 {
-        height: 50%;
+
+
     }
 
-    #volume_step_2 {
-        height: 60%;
-    }
 
-    #volume_step_3 {
-        height: 70%;
-    }
 
-    #volume_step_4 {
-        height: 80%;
-    }
 
-    #volume_step_0:hover {
-        height: 60%;
-        background-color: gray;
-    }
-
-    #volume_step_1:hover {
-        height: 70%;
-        background-color: gray;
-    }
-
-    #volume_step_2:hover {
-        height: 80%;
-        background-color: gray;
-    }
-
-    #volume_step_3:hover {
-        height: 90%;
-        background-color: gray;
-    }
-
-    #volume_step_4:hover {
-        height: 100%;
-        background-color: gray;
-    }
->>>>>>> ae8a0a2931d8e653fe41c17fdbb64499833e7cb8
 </style>
 
 
@@ -312,96 +324,103 @@
     </div>
 
 
-    <ul id="podcast_track_list">
+    <ul class="podcast_track_list podcast_list_collapsed">
+        <!-- <span class='player-controls play' >
+            <span class='track_name podcast_play_pause_icon'></span>
+            <span class='track_name track_number' ></span>
+            <span class='track_name'>Off_line</span>
+            <span class='track_name track_name_title' ></span>
+            <span class='track_name podcast_date'>X</span>
+        </span> -->
         <div class='player-controls play' id='podcast_list_object_#12'>
-            <span class='track_name podcast_play_pause_icon'>►</span>
+            <span class='track_name podcast_play_pause_icon'><img src="/imgs/2070_button_play.png" class="play_pause_symbol"></span>
             <span class='track_name track_number' id='track_name_number_0'>#12</span>
             <span class='track_name'>Off_line</span>
-            <span class='track_name track_name_title' id='track_name_0'>Ist die Zukunft weiblich? </span>
+            <span class='track_name track_name_title' id='track_name_0'><p> <span> Ist die Zukunft weiblich? </span></p></span>
             <span class='track_name podcast_date'>27 Jan 2021</span>
         </div>
         <div class='player-controls play' id='podcast_list_object_#11'>
-            <span class='track_name podcast_play_pause_icon'>►</span>
+            <span class='track_name podcast_play_pause_icon'><img src="/imgs/2070_button_play.png" class="play_pause_symbol"></span>
             <span class='track_name track_number' id='track_name_number_1'>#11</span>
             <span class='track_name'>Off_line</span>
-            <span class='track_name track_name_title' id='track_name_1'>Wie sieht die zukünftige Ernährung aus?</span>
+            <span class='track_name track_name_title' id='track_name_1'><p> <span> Wie sieht die zukünftige Ernährung aus? </span></p></span>
             <span class='track_name podcast_date'>20 Jan 2021</span>
         </div>
         <div class='player-controls play' id='podcast_list_object_#10'>
-            <span class='track_name podcast_play_pause_icon'>►</span>
+            <span class='track_name podcast_play_pause_icon'><img src="/imgs/2070_button_play.png" class="play_pause_symbol"></span>
             <span class='track_name track_number' id='track_name_number_2'>#10</span>
             <span class='track_name'>Off_line</span>
-            <span class='track_name track_name_title' id='track_name_2'>Ist die Zukunft der Kultur digital?</span>
+            <span class='track_name track_name_title' id='track_name_2'><p> <span> Ist die Zukunft der Kultur digital? </span></p></span>
             <span class='track_name podcast_date'>13 Jan 2021</span>
         </div>
         <div class='player-controls play' id='podcast_list_object_#9'>
-            <span class='track_name podcast_play_pause_icon'>►</span>
+            <span class='track_name podcast_play_pause_icon'><img src="/imgs/2070_button_play.png" class="play_pause_symbol"></span>
             <span class='track_name track_number' id='track_name_number_3'>#9</span>
             <span class='track_name'>Off_line</span>
-            <span class='track_name track_name_title' id='track_name_3'>Wie kümmern wir uns in Zukunft?</span>
+            <span class='track_name track_name_title' id='track_name_3'><p>Wie kümmern wir uns in Zukunft?</p></span>
             <span class='track_name podcast_date'>06 Jan 2021</span>
         </div>
         <div class='player-controls play' id='podcast_list_object_#8'>
-            <span class='track_name podcast_play_pause_icon'>►</span>
+            <span class='track_name podcast_play_pause_icon'><img src="/imgs/2070_button_play.png" class="play_pause_symbol"></span>
             <span class='track_name track_number' id='track_name_number_4'>#8</span>
             <span class='track_name'>Off_line</span>
-            <span class='track_name track_name_title' id='track_name_4'>Wie bewegen wir uns in Zukunft fort?</span>
+            <span class='track_name track_name_title' id='track_name_4'><p>Wie bewegen wir uns in Zukunft fort?</p></span>
             <span class='track_name podcast_date'>30 Dec 2020</span>
         </div>
         <div class='player-controls play' id='podcast_list_object_#7'>
-            <span class='track_name podcast_play_pause_icon'>►</span>
+            <span class='track_name podcast_play_pause_icon'><img src="/imgs/2070_button_play.png" class="play_pause_symbol"></span>
             <span class='track_name track_number' id='track_name_number_5'>#7</span>
             <span class='track_name'>Off_line</span>
-            <span class='track_name track_name_title' id='track_name_5'>Dürfen wir an der Zukunft scheitern?</span>
+            <span class='track_name track_name_title' id='track_name_5'><p>Dürfen wir an der Zukunft scheitern?</p></span>
             <span class='track_name podcast_date'>16 Dec 2020</span>
         </div>
         <div class='player-controls play' id='podcast_list_object_#6'>
-            <span class='track_name podcast_play_pause_icon'>►</span>
+            <span class='track_name podcast_play_pause_icon'><img src="/imgs/2070_button_play.png" class="play_pause_symbol"></span>
             <span class='track_name track_number' id='track_name_number_6'>#6</span>
             <span class='track_name'>Off_line</span>
-            <span class='track_name track_name_title' id='track_name_6'>Welche Utopien hält die Kunst bereit?</span>
+            <span class='track_name track_name_title' id='track_name_6'><p>Welche Utopien hält die Kunst bereit?</p></span>
             <span class='track_name podcast_date'>09 Dec 2020</span>
         </div>
-        <div class='player-controls play' id='podcast_list_object_#'>
-            <span class='track_name podcast_play_pause_icon'>►</span>
-            <span class='track_name track_number' id='track_name_number_7'>#</span>
+        <div class='player-controls play' id='podcast_list_object_#5'>
+            <span class='track_name podcast_play_pause_icon'><img src="/imgs/2070_button_play.png" class="play_pause_symbol"></span>
+            <span class='track_name track_number' id='track_name_number_7'>#5</span>
             <span class='track_name'>Off_line</span>
-            <span class='track_name track_name_title' id='track_name_7'>5 Wie stellen wir uns die Zukunft vor?</span>
+            <span class='track_name track_name_title' id='track_name_7'><p>Wie stellen wir uns die Zukunft vor?</p></span>
             <span class='track_name podcast_date'>02 Dec 2020</span>
         </div>
         <div class='player-controls play' id='podcast_list_object_#4'>
-            <span class='track_name podcast_play_pause_icon'>►</span>
+            <span class='track_name podcast_play_pause_icon'><img src="/imgs/2070_button_play.png" class="play_pause_symbol"></span>
             <span class='track_name track_number' id='track_name_number_8'>#4</span>
             <span class='track_name'>Off_line</span>
-            <span class='track_name track_name_title' id='track_name_8'>Wie verändert uns die Technik?</span>
+            <span class='track_name track_name_title' id='track_name_8'><p>Wie verändert uns die Technik?</p></span>
             <span class='track_name podcast_date'>25 Nov 2020</span>
         </div>
         <div class='player-controls play' id='podcast_list_object_#3'>
-            <span class='track_name podcast_play_pause_icon'>►</span>
+            <span class='track_name podcast_play_pause_icon'><img src="/imgs/2070_button_play.png" class="play_pause_symbol"></span>
             <span class='track_name track_number' id='track_name_number_9'>#3</span>
             <span class='track_name'>Off_line</span>
-            <span class='track_name track_name_title' id='track_name_9'>Braucht die Zukunft die Vergangenheit?</span>
+            <span class='track_name track_name_title' id='track_name_9'><p>Braucht die Zukunft die Vergangenheit?</p></span>
             <span class='track_name podcast_date'>18 Nov 2020</span>
         </div>
         <div class='player-controls play' id='podcast_list_object_#2'>
-            <span class='track_name podcast_play_pause_icon'>►</span>
+            <span class='track_name podcast_play_pause_icon'><img src="/imgs/2070_button_play.png" class="play_pause_symbol"></span>
             <span class='track_name track_number' id='track_name_number_10'>#2</span>
             <span class='track_name'>Off_line</span>
-            <span class='track_name track_name_title' id='track_name_10'>Hat die Demokratie eine Zukunft? </span>
+            <span class='track_name track_name_title' id='track_name_10'><p>Hat die Demokratie eine Zukunft?</p></span>
             <span class='track_name podcast_date'>11 Nov 2020</span>
         </div>
         <div class='player-controls play' id='podcast_list_object_#1'>
-            <span class='track_name podcast_play_pause_icon'>►</span>
+            <span class='track_name podcast_play_pause_icon'><img src="/imgs/2070_button_play.png" class="play_pause_symbol"></span>
             <span class='track_name track_number' id='track_name_number_11'>#1</span>
             <span class='track_name'>Off_line</span>
-            <span class='track_name track_name_title' id='track_name_11'>Aus heutiger Sicht</span>
+            <span class='track_name track_name_title' id='track_name_11'><p>Aus heutiger Sicht</p></span>
             <span class='track_name podcast_date'>04 Nov 2020</span>
         </div>
         <div class='player-controls play' id='podcast_list_object_Trailer'>
-            <span class='track_name podcast_play_pause_icon'>►</span>
-            <span class='track_name track_number' id='track_name_number_12'>Trailer</span>
+            <span class='track_name podcast_play_pause_icon'><img src="/imgs/2070_button_play.png" class="play_pause_symbol"></span>
+            <span class='track_name track_number' id='track_name_number_12'><p>#0</p></span>
             <span class='track_name'>Off_line</span>
-            <span class='track_name track_name_title' id='track_name_12'></span>
+            <span class='track_name track_name_title' id='track_name_12'>Trailer</span>
             <span class='track_name podcast_date'>27 Oct 2020</span>
         </div>
     </ul>
@@ -420,7 +439,7 @@
     <div id="current_podcast">
         <!-- <div class="current_podcast_player_controls"> -->
         <div id="current_podcast_click_area" class="player-controls play">
-            <span class="current_podcast_track_name" id="current_podcast_play_pause_icon">►</span>
+            <span class="current_podcast_track_name" id="current_podcast_play_pause_icon"><img src="/imgs/2070_button_play.png" class="play_pause_symbol"></span>
             <span class="current_podcast_track_name track_number" id="current_podcast_track_name_number"></span>
             <span class="current_podcast_track_name">Off_line</span>
             <span class="current_podcast_track_name track_name_title" id="current_podcast_track_name"></span>
